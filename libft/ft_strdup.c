@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 15:15:17 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/11/07 17:46:33 by lde-sous         ###   ########.fr       */
+/*   Created: 2022/11/07 17:24:47 by lde-sous          #+#    #+#             */
+/*   Updated: 2022/11/07 18:13:40 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_calloc(size_t nmemb, size_t size)
-{
-	void	*tempvector;
-	size_t	i;
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+#include "libft.h"
 
-	tempvector = malloc(sizeof(nmemb) * (size + 1));
+char	*ft_strdup(const char *s)
+{
+	char	*sdup;
+	int	i;
+
 	i = 0;
-	if (nmemb == 0 || size == 0)
-		return (malloc(0));
-	if (tempvector == NULL)
+	if (!s)
 		return (NULL);
-	while (i < nmemb * size)
+	sdup = (char *)malloc(sizeof(*s) + ft_strlen(s) +1);
+	if (!sdup)
+		return (NULL);
+	while (s[i])
 	{
-		tempvector[i] = 0;
+		sdup[i] = s[i];
 		i++;
 	}
-	return (tempvector);
+	sdup[i] = 0;
+	return (sdup);
 }
