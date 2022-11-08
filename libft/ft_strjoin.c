@@ -1,49 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 18:16:28 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/11/08 19:19:13 by lde-sous         ###   ########.fr       */
+/*   Created: 2022/11/08 11:53:09 by lde-sous          #+#    #+#             */
+/*   Updated: 2022/11/08 19:52:33 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(const char *s, unsigned int start, size_t len)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char			*ring;
-	unsigned int	j;
-	size_t			o;
+	int		len;
+	int		i;
+	int		j;
+	char	*allocated;
 
+	i = 0;
 	j = 0;
-	o = 0;
-	ring = (char *)malloc(sizeof(*s) * (len + 1));
-	if (!ring)
+	if (!s1 || !s2)
 		return (NULL);
-	while (s[j])
+	allocated = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!allocated)
+		return (NULL);
+	while (s1[i])
 	{
-		if (j >= start && o < len)
-		{
-			ring[o] = s[j];
-			o++;
-		}
+		allocated[i] = s1[i];
+		i++;
+	}
+	while (s2[j])
+	{
+		allocated[i] = s2[j];
+		i++;
 		j++;
 	}
-	ring[o] = 0;
-	return (ring);
+	allocated[i] = 0;
+	return (allocated);
 }
-/*
-int	main(void)
-{
-	const char	str[] = "This is a test";
-	unsigned int	i;
-	size_t		size;
-
-	i = 5;
-	size = 11;
-	puts(ft_substr(str, i, size));
-	return (0);
-}*/

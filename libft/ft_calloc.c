@@ -6,24 +6,24 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 15:15:17 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/11/07 17:46:33 by lde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/08 20:10:04 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void	*tempvector;
-	size_t	i;
+	char	*tempvector;
+	int	i;
 
-	tempvector = malloc(sizeof(nmemb) * (size + 1));
 	i = 0;
-	if (nmemb == 0 || size == 0)
-		return (malloc(0));
-	if (tempvector == NULL)
+	tempvector = malloc(sizeof(nmemb) * (size + 1));
+	if (!tempvector)
 		return (NULL);
 	while (i < nmemb * size)
 	{
-		tempvector[i] = 0;
+		tempvector[i] = '\0';
 		i++;
 	}
 	return (tempvector);

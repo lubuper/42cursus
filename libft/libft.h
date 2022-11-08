@@ -17,6 +17,9 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <string.h>
+# include <ctype.h>
+# include <stdio.h>
+# include <strings.h>
 
 size_t	ft_strlen(const char *s);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);

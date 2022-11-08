@@ -11,8 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-/*#include <stdio.h>
-*/
+
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	size_t			i;
@@ -29,7 +28,7 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 /*
 int	main(void)
 {
-	char	a[] = "only another test";
+	char	a[] = "only another BIG test";
 	char	b[] = "only 1nother test";
 	printf("%d\n", ft_memcmp(a, b, 7));
 }*/

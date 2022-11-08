@@ -6,13 +6,12 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 16:31:14 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/11/04 17:12:19 by lde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/08 11:52:24 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-/*#include <stdio.h>
-*/
+
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	size_t			i;
@@ -32,9 +31,12 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 /*
 int	main(void)
 {
-	unsigned char	a[] = "";
+	unsigned char	a[] = "0";
 	unsigned char	b[] = "This is the source";
+	unsigned char	c[] = "0";
+	unsigned char	d[] = "This is the source";
 
-	printf("%s\n", (char *)ft_memcpy(a, b, 8));
+	puts((char *)ft_memcpy(a, b, 8));
+	puts((char *)memcpy(c, d, 8));
 	return (0);
 }*/

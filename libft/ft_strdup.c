@@ -6,19 +6,16 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 17:24:47 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/11/07 18:13:40 by lde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/08 14:40:38 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
 #include "libft.h"
 
 char	*ft_strdup(const char *s)
 {
 	char	*sdup;
-	int	i;
+	int		i;
 
 	i = 0;
 	if (!s)
