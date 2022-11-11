@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 11:53:09 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/11/08 19:52:33 by lde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/10 16:06:08 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int		len;
 	int		i;
 	int		j;
 	char	*allocated;

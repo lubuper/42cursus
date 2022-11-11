@@ -21,7 +21,7 @@ void	ft_bzero(void *s, size_t n)
 		s++;
 	}
 }
-
+/*
 int	main(void)
 {
 	char	str[] = "You know nothin";
@@ -32,4 +32,4 @@ int	main(void)
 	bzero(&str2[2], 10);
 	puts(str2);
 	return (0);
-}
+}*/

@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 15:15:17 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/11/08 20:10:04 by lde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/10 16:05:17 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	char	*tempvector;
-	int	i;
+	char		*tempvector;
+	size_t		i;
 
 	i = 0;
 	tempvector = malloc(sizeof(nmemb) * (size + 1));

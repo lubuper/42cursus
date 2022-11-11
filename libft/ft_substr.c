@@ -14,26 +14,26 @@
 
 char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
-	char			*ring;
+	char			*sub;
 	unsigned int	j;
 	size_t			o;
 
 	j = 0;
 	o = 0;
-	ring = (char *)malloc(sizeof(*s) * (len + 1));
-	if (!ring)
+	sub = (char *)malloc(sizeof(*s) * (len + 1));
+	if (!sub)
 		return (NULL);
 	while (s[j])
 	{
 		if (j >= start && o < len)
 		{
-			ring[o] = s[j];
+			sub[o] = s[j];
 			o++;
 		}
 		j++;
 	}
-	ring[o] = 0;
-	return (ring);
+	sub[o] = 0;
+	return (sub);
 }
 /*
 int	main(void)
