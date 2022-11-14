@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 15:15:17 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/11/14 21:11:00 by lde-sous         ###   ########.fr       */
+/*   Created: 2022/11/14 18:56:17 by lde-sous          #+#    #+#             */
+/*   Updated: 2022/11/14 21:10:34 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	ft_putnbr_fd(int n, int fd)
 {
-	char		*tempvector;
-	size_t		i;
+	unsigned int	number;
 
-	i = 0;
-	tempvector = malloc(sizeof(nmemb) * (size + 1));
-	if (!tempvector)
-		return (NULL);
-	while (i < nmemb * size)
+	if (fd < 0)
+		return ;
+	if (n < 0)
 	{
-		tempvector[i] = '\0';
-		i++;
+		ft_putchar_fd('-', fd);
+		number = (unsigned int)(n * -1);
 	}
-	return (tempvector);
+	else
+		number = (unsigned int)n;
+	if (number >= 10)
+		ft_putnbr_fd(number / 10, fd);
+	ft_putchar_fd((char)(number % 10 + '0'), fd);
 }

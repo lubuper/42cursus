@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 15:15:17 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/11/14 21:11:00 by lde-sous         ###   ########.fr       */
+/*   Created: 2022/11/14 17:27:21 by lde-sous          #+#    #+#             */
+/*   Updated: 2022/11/14 18:49:09 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	ft_putchar_fd(char c, int fd)
 {
-	char		*tempvector;
-	size_t		i;
-
-	i = 0;
-	tempvector = malloc(sizeof(nmemb) * (size + 1));
-	if (!tempvector)
-		return (NULL);
-	while (i < nmemb * size)
-	{
-		tempvector[i] = '\0';
-		i++;
-	}
-	return (tempvector);
+	write(fd, &c, 1);
+	return ;
 }

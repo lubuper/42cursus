@@ -1,30 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 15:15:17 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/11/14 21:11:00 by lde-sous         ###   ########.fr       */
+/*   Created: 2022/11/14 16:01:38 by lde-sous          #+#    #+#             */
+/*   Updated: 2022/11/14 17:11:34 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	char		*tempvector;
-	size_t		i;
+	unsigned int	i;
 
+	if (!s || !f)
+		return ;
 	i = 0;
-	tempvector = malloc(sizeof(nmemb) * (size + 1));
-	if (!tempvector)
-		return (NULL);
-	while (i < nmemb * size)
+	while (s[i])
 	{
-		tempvector[i] = '\0';
+		f(i, &s[i]);
 		i++;
 	}
-	return (tempvector);
+	return ;
+}
+
+void	experimental_func(unsigned int i, char* s)
+{
+	i = 0;
+	while (s[i])
+	{
+		s[i] = 'a';
+		i++;
+	}
+}
+
+int	main(void)
+{
+	char	str[] = "This is Sparta!";
+	ft_striteri(str, experimental_func);
+
+	printf("%s\n", str);
+	return (0);
 }
