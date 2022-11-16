@@ -1,47 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 16:01:38 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/11/14 17:11:34 by lde-sous         ###   ########.fr       */
+/*   Created: 2022/11/15 10:34:05 by lde-sous          #+#    #+#             */
+/*   Updated: 2022/11/16 16:51:48 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+t_list	*ft_lstnew(void *content)
 {
-	unsigned int	i;
+	t_list	*new;
 
-	if (!s || !f)
-		return ;
-	i = 0;
-	while (s[i])
+	new = malloc(sizeof(t_list));
+	if (!new)
+		return (NULL);
+	if (new)
 	{
-		f(i, &s[i]);
-		i++;
+		new->content = content;
+		new->next = NULL;
 	}
-	return ;
-}
-
-void	experimental_func(unsigned int i, char *s)
-{
-	i = 0;
-	while (s[i])
-	{
-		s[i] = 'a';
-		i++;
-	}
+	return (new);
 }
 /*
 int	main(void)
 {
-	char	str[] = "This is Sparta!";
-	ft_striteri(str, experimental_func);
+	char	str[] = "Lets test this";
+	t_list	*testl;
 
+	printf("%s", "str = ");
 	printf("%s\n", str);
+	testl = ft_lstnew((void *)str);
+	printf("%s", "ft_lstnew((void *)str) = ");
+	printf("%s\n", (char *)testl->content);
 	return (0);
 }*/

@@ -6,7 +6,7 @@
 #    By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/07 13:59:19 by lde-sous          #+#    #+#              #
-#    Updated: 2022/11/14 18:43:07 by lde-sous         ###   ########.fr        #
+#    Updated: 2022/11/16 12:12:14 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,8 @@ CFLAGS  = -Wall -Wextra -Werror
 RM = rm -f
 
 OBJ = $(FT_FUNCTIONS:.c=.o)
+
+BONUS_OBJ = $(BONUS:.c=.o)
 
 FT_FUNCTIONS = ft_atoi.c \
 	       ft_bzero.c \
@@ -35,6 +37,7 @@ FT_FUNCTIONS = ft_atoi.c \
 	       ft_memmove.c \
 	       ft_memset.c \
 	       ft_putchar_fd.c \
+	       ft_putendl_fd.c \
 	       ft_putstr_fd.c \
 	       ft_split.c \
 	       ft_strchr.c \
@@ -53,16 +56,32 @@ FT_FUNCTIONS = ft_atoi.c \
 	       ft_tolower.c \
 	       ft_toupper.c
 
+BONUS = ft_lstnew.c \
+	ft_lstadd_front.c \
+	ft_lstsize.c \
+	ft_lstlast.c \
+	ft_lstadd_back.c \
+	ft_lstdelone.c \
+	ft_lstclear.c \
+	ft_lstiter.c \
+	ft_lstmap.c \
+
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	@ar rcs $(NAME) $(OBJ)
 
+bonus: $(OBJ) $(BONUS_OBJ)
+	@ar rcs $(NAME) $(OBJ) $(BONUS_OBJ)
+
 clean:
 	@$(RM) $(OBJ)
+	@$(RM) $(BONUS_OBJ)
+	@$(RM) a.out
+	@$(RM) libft.h.gch
 
 fclean: clean
-	@rm -f $(NAME)
+	@$(RM) $(NAME)
 	
 re: fclean all
 

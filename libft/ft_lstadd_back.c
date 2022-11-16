@@ -1,47 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 16:01:38 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/11/14 17:11:34 by lde-sous         ###   ########.fr       */
+/*   Created: 2022/11/16 12:04:24 by lde-sous          #+#    #+#             */
+/*   Updated: 2022/11/16 14:00:00 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	unsigned int	i;
+	t_list	*temp;
 
-	if (!s || !f)
+	temp = ft_lstlast(*lst);
+	if (!lst)
+	{
+		*lst = new;
 		return ;
-	i = 0;
-	while (s[i])
-	{
-		f(i, &s[i]);
-		i++;
 	}
-	return ;
+	if (!new)
+		return ;
+	temp->next = new;
 }
-
-void	experimental_func(unsigned int i, char *s)
-{
-	i = 0;
-	while (s[i])
-	{
-		s[i] = 'a';
-		i++;
-	}
-}
-/*
-int	main(void)
-{
-	char	str[] = "This is Sparta!";
-	ft_striteri(str, experimental_func);
-
-	printf("%s\n", str);
-	return (0);
-}*/

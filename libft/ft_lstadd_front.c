@@ -1,47 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 16:01:38 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/11/14 17:11:34 by lde-sous         ###   ########.fr       */
+/*   Created: 2022/11/15 10:56:40 by lde-sous          #+#    #+#             */
+/*   Updated: 2022/11/16 18:08:13 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	unsigned int	i;
-
-	if (!s || !f)
-		return ;
-	i = 0;
-	while (s[i])
+	if (lst)
 	{
-		f(i, &s[i]);
-		i++;
-	}
-	return ;
-}
-
-void	experimental_func(unsigned int i, char *s)
-{
-	i = 0;
-	while (s[i])
-	{
-		s[i] = 'a';
-		i++;
+		if (*lst)
+			new->next = *lst;
+		*lst = new;
 	}
 }
-/*
-int	main(void)
-{
-	char	str[] = "This is Sparta!";
-	ft_striteri(str, experimental_func);
-
-	printf("%s\n", str);
-	return (0);
-}*/

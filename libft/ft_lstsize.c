@@ -1,47 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 16:01:38 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/11/14 17:11:34 by lde-sous         ###   ########.fr       */
+/*   Created: 2022/11/16 12:21:58 by lde-sous          #+#    #+#             */
+/*   Updated: 2022/11/16 12:24:34 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+int	ft_lstsize(t_list *lst)
 {
-	unsigned int	i;
+	int	i;
 
-	if (!s || !f)
-		return ;
 	i = 0;
-	while (s[i])
+	while (lst)
 	{
-		f(i, &s[i]);
+		lst = lst->next;
 		i++;
 	}
-	return ;
+	return (i);
 }
-
-void	experimental_func(unsigned int i, char *s)
-{
-	i = 0;
-	while (s[i])
-	{
-		s[i] = 'a';
-		i++;
-	}
-}
-/*
-int	main(void)
-{
-	char	str[] = "This is Sparta!";
-	ft_striteri(str, experimental_func);
-
-	printf("%s\n", str);
-	return (0);
-}*/
