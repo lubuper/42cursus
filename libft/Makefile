@@ -6,7 +6,7 @@
 #    By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/07 13:59:19 by lde-sous          #+#    #+#              #
-#    Updated: 2022/11/16 12:12:14 by lde-sous         ###   ########.fr        #
+#    Updated: 2022/11/17 10:11:48 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = cc
 
 CFLAGS  = -Wall -Wextra -Werror
 
-RM = rm -f
+RM = rm -rf
 
 OBJ = $(FT_FUNCTIONS:.c=.o)
 
@@ -38,6 +38,7 @@ FT_FUNCTIONS = ft_atoi.c \
 	       ft_memset.c \
 	       ft_putchar_fd.c \
 	       ft_putendl_fd.c \
+	       ft_putnbr_fd.c \
 	       ft_putstr_fd.c \
 	       ft_split.c \
 	       ft_strchr.c \
