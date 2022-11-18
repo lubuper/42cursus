@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 19:04:38 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/11/17 10:30:28 by lde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/18 19:59:58 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 
 	if (!*little)
 		return ((char *)big);
+	if (len == 0)
+		return (NULL);
 	i = 0;
 	while (big[i] && i < len)
 	{
@@ -37,10 +39,10 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 /*
 int	main(void)
 {
-	char	s1[] = "Those hi were tests";
+	char	s1[] = "";
 	char	s2[] = "hi";
 
-	printf("%s\n", ft_strnstr(s1, s2, 10));
-//	printf("%s\n", strnstr(s1, s2, 5));
+	printf("%s\n", ft_strnstr((void *)0, s2, 0));
+	printf("%s\n", strnstr(s1, s2, 5));
 	return (0);
 }*/

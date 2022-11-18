@@ -27,7 +27,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 	return ;
 }
 
-void	experimental_func(unsigned int i, char *s)
+/*void	experimental_func(unsigned int i, char *s)
 {
 	i = 0;
 	while (s[i])
@@ -36,7 +36,7 @@ void	experimental_func(unsigned int i, char *s)
 		i++;
 	}
 }
-/*
+
 int	main(void)
 {
 	char	str[] = "This is Sparta!";
