@@ -6,7 +6,7 @@
 #    By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/07 13:59:19 by lde-sous          #+#    #+#              #
-#    Updated: 2022/11/18 20:33:46 by lde-sous         ###   ########.fr        #
+#    Updated: 2022/11/21 16:49:05 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,7 +83,11 @@ clean:
 
 fclean: clean
 	@$(RM) $(NAME)
-	
+
 re: fclean all
 
 .PHONY: all clean fclean re
+
+so:
+	$(CC) -nostartfiles -fPIC $(CFLAGS) $(FT_FUNCTIONS) $(BONUS)
+	gcc -nostartfiles -shared -o libft.so $(OBJ) $(BONUS_OBJ)
