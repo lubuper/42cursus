@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 17:02:57 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/11/23 18:46:46 by lde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/25 17:34:36 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	char	*nulled_str;
 	size_t	i;
 
-	nulled_str = malloc(sizeof(char) * (nmemb * size));
+	nulled_str = malloc(sizeof(nmemb * size));
 	if (!nulled_str)
 		return (NULL);
 	i = 0;
@@ -65,6 +65,24 @@ char	*str_join_mod(char *str1, char *str2)
 	jointstr[i + j] = 0;
 	free(str1);
 	return (jointstr);
+}
+
+char	*ft_strchr_mod(char *str, int c)
+{
+	int	i;
+
+	if (!str)
+		return (NULL);
+	if (c == 0)
+		return ((char *)&str[ft_strlen(str)]);
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == c)
+			return ((char *)&str[i]);
+		i++;
+	}
+	return (0);
 }
 /* main para testar str_join_mod
 int	main(void)
