@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:23:28 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/11/25 16:33:13 by lde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/28 20:13:36 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,7 @@ char	*readnsave(int fd, char *str)
 
 	if (ft_strchr_mod(str, '\n'))
 		return (str);
-	sample = malloc(sizeof (char) * (BUFFER_SIZE + 1));
-	if (!sample)
-		return (NULL);
+	sample = calloc(BUFFER_SIZE + 1, sizeof(char));
 	bytesread = 1;
 	while (!ft_strchr_mod(str, '\n') && bytesread > 0)
 	{
@@ -72,7 +70,6 @@ char	*ft_gline(char *str)
 	}
 	if (str[i] == '\n')
 		line[i] = '\n';
-	free(str);
 	return (line);
 }
 
@@ -94,11 +91,7 @@ char	*save_rest(char *str)
 	i++;
 	j = 0;
 	while (str[i])
-	{
-		saved_trim[j] = str[i];
-		i++;
-		j++;
-	}
+		saved_trim[j++] = str[i++];
 	free(str);
 	return (saved_trim);
 }

@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 17:02:57 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/11/25 17:34:36 by lde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/28 19:49:49 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,19 @@ size_t	ft_strlen(char *s)
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	char	*nulled_str;
-	size_t	i;
+	char			*nulled_str;
+	size_t			i;
+	unsigned int	total;
 
-	nulled_str = malloc(sizeof(nmemb * size));
+	total = nmemb * size;
+	i = 0;
+	nulled_str = malloc(total);
 	if (!nulled_str)
 		return (NULL);
-	i = 0;
-	while (i < (nmemb * size))
+	while (total > 0)
 	{
 		nulled_str[i] = 0;
+		total--;
 		i++;
 	}
 	return ((void *)nulled_str);
@@ -57,12 +60,13 @@ char	*str_join_mod(char *str1, char *str2)
 		return (NULL);
 	i = 0;
 	j = 0;
-	while (str1[i])
-		jointstr[i++] = str1[j++];
+	if (str1)
+		while (str1[i])
+			jointstr[i++] = str1[j++];
 	j = 0;
 	while (str2[j])
 		jointstr[i++] = str2[j++];
-	jointstr[i + j] = 0;
+	jointstr[ft_strlen(str1) + ft_strlen(str2)] = 0;
 	free(str1);
 	return (jointstr);
 }
@@ -78,7 +82,7 @@ char	*ft_strchr_mod(char *str, int c)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] == c)
+		if (str[i] == (char)c)
 			return ((char *)&str[i]);
 		i++;
 	}
