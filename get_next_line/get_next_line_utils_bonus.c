@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/21 17:02:57 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/11/29 09:53:24 by lde-sous         ###   ########.fr       */
+/*   Created: 2022/11/29 11:24:13 by lde-sous          #+#    #+#             */
+/*   Updated: 2022/11/29 11:24:15 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	ft_strlen(char *s)
 {
@@ -88,17 +88,3 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	}
 	return ((void *)nulled_str);
 }
-
-/* main para testar str_join_mod
-int	main(void)
-{
-	char	s1[] = "This is ";
-	char	s2[] = "A TESSTTT!!!!!";
-	printf("%s", "s1 = ");
-	printf("%s\n", s1);
-	printf("%s", "s2 = ");
-	printf("%s\n\n", s2);
-	printf("%s", "str_join_mod = ");
-	printf("%s\n", str_join_mod(s1, s2));
-	return (0);
-}*/

@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/21 14:23:28 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/11/28 20:13:36 by lde-sous         ###   ########.fr       */
+/*   Created: 2022/11/29 11:23:59 by lde-sous          #+#    #+#             */
+/*   Updated: 2022/11/29 11:24:02 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*get_next_line(int fd)
 {
 	char		*outline;
-	static char	*fixed_str;
+	static char	*fixed_str[FOPEN_MAX];
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > FOPEN_MAX)
 		return (NULL);
-	fixed_str = readnsave(fd, fixed_str);
+	fixed_str = readnsave(fd, fixed_str(FOPEN_MAX);
 	if (!fixed_str)
 		return (NULL);
 	outline = ft_gline(fixed_str);
@@ -32,8 +32,6 @@ char	*readnsave(int fd, char *str)
 	char	*sample;
 	int		bytesread;
 
-	if (ft_strchr_mod(str, '\n'))
-		return (str);
 	sample = ft_calloc((BUFFER_SIZE + 1), sizeof(char));
 	bytesread = 1;
 	while (!ft_strchr_mod(str, '\n') && bytesread > 0)
