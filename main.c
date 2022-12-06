@@ -1,43 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 15:40:28 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/12/02 11:12:26 by lde-sous         ###   ########.fr       */
+/*   Created: 2022/11/25 17:02:27 by lde-sous          #+#    #+#             */
+/*   Updated: 2022/11/25 17:10:50 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "get_next_line.h"
 
-char	*ft_strrchr(const char *s, int c)
-{
-	int		i;
-	char	*str;
-
-	i = 0;
-	str = (char *)s;
-	while (s[i])
-	{
-		i++;
-		str++;
-	}
-	while (i >= 0)
-	{
-		if ((unsigned char)s[i] == (unsigned char)c)
-			return (str);
-	i--;
-	str--;
-	}
-	return (NULL);
-}
-/*
 int	main(void)
 {
-	char	str[] = "this is a test";
+	int		fd;
+	int		i;
+	char	*line;
 
-	printf("%s\n", ft_strrchr(str, 105));
+/* 	fd = open("tests/testa.txt", O_RDONLY);
+	fd = open("tests/testb.txt", O_RDONLY); */
+	fd = open("tests/testc.txt", O_RDONLY);
+/* 	fd = open("tests/testd.txt", O_RDONLY);
+	fd = open("tests/teste", O_RDONLY);
+	fd = open("tests/testf", O_RDONLY); */
+	i = 1;
+	printf("%d", fd);
+	while ((line = get_next_line(fd)))
+	{
+		printf("line [%02d]: %s", i, line);
+		free(line);
+		i++;
+	}
+	close(fd);
 	return (0);
-}*/
+}

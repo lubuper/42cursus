@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 11:23:59 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/11/29 11:24:02 by lde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/30 18:13:37 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || fd > FOPEN_MAX)
 		return (NULL);
-	fixed_str = readnsave(fd, fixed_str(FOPEN_MAX);
-	if (!fixed_str)
+	fixed_str[fd] = readnsave(fd, fixed_str[fd]);
+	if (!fixed_str[fd])
 		return (NULL);
-	outline = ft_gline(fixed_str);
-	fixed_str = save_rest(fixed_str);
+	outline = ft_gline(fixed_str[fd]);
+	fixed_str[fd] = save_rest(fixed_str[fd]);
 	return (outline);
 }
 

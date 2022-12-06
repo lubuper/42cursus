@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:55:06 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/11/14 20:36:23 by lde-sous         ###   ########.fr       */
+/*   Updated: 2022/12/02 11:04:47 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ static int	ft_stringcounter(const char *s, char c)
 	int	nstrings;
 
 	i = 0;
-	nstrings = 1;
+	nstrings = 0;
 	while (s[i])
 	{
 		i++;
-		if (s[i] && s[i] == c)
+		if (s[i] && s[i] == c && s[i + 1] != c)
 			nstrings++;
 	}
 	return (nstrings);
@@ -66,7 +66,7 @@ char	**ft_split(char const *s, char c)
 /*
 int	main(void)
 {
-	char	*c = " ola   o meu nome e luis ";
+	char	*c = "s ola   o meu nome e luis ";
 	char	s = 32;
 	int	i = 0;
 	char	**temp;

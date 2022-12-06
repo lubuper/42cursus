@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 15:20:18 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/11/08 20:18:50 by lde-sous         ###   ########.fr       */
+/*   Updated: 2022/12/02 11:14:33 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strchr(const char *s, int c)
 
 	i = 0;
 	str = (char *)s;
-	while (s[i] != c)
+	while ((unsigned char)s[i] != (unsigned char)c)
 	{
 		if (s[i] == '\0')
 			return (NULL);
