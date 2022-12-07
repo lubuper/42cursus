@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 11:23:59 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/11/30 18:13:37 by lde-sous         ###   ########.fr       */
+/*   Updated: 2022/12/07 12:58:18 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ char	*readnsave(int fd, char *str)
 		if (bytesread == -1)
 		{
 			free(sample);
+			free(str);
 			return (NULL);
 		}
 		sample[bytesread] = 0;
