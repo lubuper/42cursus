@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:38:47 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/12/12 18:37:43 by lde-sous         ###   ########.fr       */
+/*   Updated: 2022/12/15 12:22:19 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,14 @@
 # include <stdlib.h>
 # include <stdarg.h>
 
-int	ft_printcore(char specifier, va_list arguments);
-int	ft_printf(const char *format, ...);
-char	ft_check_sp(char to_check);
+int		ft_printcore(char spec, va_list arguments);
+int		ft_printf(const char *format, ...);
+char	ft_chck(char to_check);
+int		ft_printchar(char c);
+int		ft_printstring(char *str);
+int		ft_printhexa(unsigned long to_hex, char s);
+int		ft_printnum(long num);
+int		ft_printpointer(unsigned long point);
+int		ft_printundec(unsigned int decimal);
 
 #endif

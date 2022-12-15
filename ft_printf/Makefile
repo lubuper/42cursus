@@ -6,7 +6,7 @@
 #    By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/12 17:34:36 by lde-sous          #+#    #+#              #
-#    Updated: 2022/12/12 18:38:27 by lde-sous         ###   ########.fr        #
+#    Updated: 2022/12/15 12:22:00 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,16 +14,20 @@ NAME = libftprintf.a
 
 CC = cc
 
-CFLAGS = -Wall -Wexra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 RM = rm -rf
 
 OBJ = $(FT_FUNC:.c=.o)
 
-FT_FUNC = 
-	ft_printf.c\
-	ft_printf_utils.c
-
+FT_FUNC = ft_printf.c \
+	ft_printchar.c \
+	ft_printnum.c \
+	ft_chck.c \
+	ft_printhexa.c \
+	ft_printpointer.c \
+	ft_printstring.c \
+	ft_printundec.c
 
 all: $(NAME)
 

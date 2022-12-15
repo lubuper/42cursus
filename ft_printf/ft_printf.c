@@ -6,74 +6,73 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:33:25 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/12/12 19:56:15 by lde-sous         ###   ########.fr       */
+/*   Updated: 2022/12/15 14:06:46 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printcore(char specifier, va_list arguments)
+int	ft_printcore(char spec, va_list arguments)
 {
 	unsigned int	ret_sum_bytes;
 
-	bytes = 0;
-	if (specifier == '%')
+	ret_sum_bytes = 0;
+	if (spec == '%')
 		ret_sum_bytes = ft_printchar('%');
-	else if (specifier == 'c')
-		ret_sum_bytes = ft_printchar(va_arg(arguments, int))
-	else if (specifier == 's')
+	else if (spec == 'c')
+		ret_sum_bytes = ft_printchar(va_arg(arguments, int));
+	else if (spec == 's')
 		ret_sum_bytes = ft_printstring(va_arg(arguments, char *));
-	else if (specifier == 'i' || specifier == 'd')
+	else if (spec == 'i' || spec == 'd')
 		ret_sum_bytes = ft_printnum(va_arg(arguments, int));
-	else if (specifier == 'x' || specifier == 'X')
-		ret_sum_bytes = ft_printhexa(va_arg(arguments, unsigned int));
-	else if (specifier == 'p')
+	else if (spec == 'x' || spec == 'X')
+		ret_sum_bytes = ft_printhexa(va_arg(arguments, unsigned int), spec);
+	else if (spec == 'p')
 		ret_sum_bytes = ft_printpointer(va_arg(arguments, unsigned long));
-	else if (specifier == 'u')
+	else if (spec == 'u')
 		ret_sum_bytes = ft_printundec(va_arg(arguments, unsigned int));
 	return (ret_sum_bytes);
 }
 
-int	ft_printf(const char *format, ...);
+int	ft_printf(const char *format, ...)
 {
-	int		i;
-	int		counter;
+	int			i;
+	int			count;
 	va_list		arguments;
 
 	va_start(arguments, format);
+	if (!format)
+		return (-1);
 	i = 0;
 	count = 0;
 	while (format[i])
 	{
-		if (format[i] == '%' && ft_check_sp(format[i + 1]))
-			ft_printcore(format[i + 1], arguments);
-			counter++;
-		else if (format[i] == '%' && !ft_check_sp(format[i + 1]))
+		if (format[i] == '%' && format[i + 1] == ft_chck(format[i + 1]))
+			count += ft_printcore(format[i++ + 1], arguments);
+		else if (format[i] == '%' && format[i + 1] != ft_chck(format[i + 1]))
 		{
-			write(1, "Missing Specifier" 18);
-			return (counter);
+			write(1, "Spec Error", 16);
+			return (count);
 		}
-		else if (format[i] != '%')
-			write(1, &format[i], 1);
+		else
+			count += write(1, &format[i], 1);
 		i++;
 	}
 	va_end(arguments);
-	return (counter);
+	return (count);
 }
-
+/*
 int	main(void)
 {
-	void	*p_to_main = (void *) main;
-	ft_printf("Print a char: %c.\n", 'F');
-	ft_printf("Print a string: %s.\n", "Hitman: Codename 47");
+//	ft_printf("Print a char: %c.\n", 'c');
+//	ft_printf("Print a string: %s.\n", "f13itman: \nCodename 47");
 	ft_printf("Print a positive i: %d.\n", 47);
 	ft_printf("Print a zero i: %d.\n", 0);
 	ft_printf("Print a negative i: %d.\n", -42);
-	ft_printf("Print a lower hex i: %x.\n", 47);
-	ft_printf("Print a UPPER hex: %X.\n", 47);
-	ft_printf("Print a zero hex: %x.\n", 47);
-	ft_printf("Print a pointer: %p.\n", 0);
-	ft_printf("Print a %");
-	ft_printf("Print a %%");
-	return ();
-}
+//	ft_printf("Print a lower hex i: %x.\n", 477);
+//	ft_printf("Print a UPPER hex: %X.\n", 477);
+//	ft_printf("Print a zero hex: %x.\n", 0);
+//	ft_printf("Print a pointer: %p.\n", 110);
+//	ft_printf("Print a %%");
+	return (0);
+}*/
