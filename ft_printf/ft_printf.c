@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:33:25 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/12/15 14:06:46 by lde-sous         ###   ########.fr       */
+/*   Updated: 2022/12/20 15:15:50 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int	ft_printcore(char spec, va_list arguments)
 	else if (spec == 'i' || spec == 'd')
 		ret_sum_bytes = ft_printnum(va_arg(arguments, int));
 	else if (spec == 'x' || spec == 'X')
-		ret_sum_bytes = ft_printhexa(va_arg(arguments, unsigned int), spec);
+		ret_sum_bytes = ft_printhexa(va_arg(arguments, long), spec);
 	else if (spec == 'p')
-		ret_sum_bytes = ft_printpointer(va_arg(arguments, unsigned long));
+		ret_sum_bytes = ft_printpointer(va_arg(arguments, unsigned long long));
 	else if (spec == 'u')
 		ret_sum_bytes = ft_printundec(va_arg(arguments, unsigned int));
 	return (ret_sum_bytes);
@@ -52,6 +52,7 @@ int	ft_printf(const char *format, ...)
 		else if (format[i] == '%' && format[i + 1] != ft_chck(format[i + 1]))
 		{
 			write(1, "Spec Error", 16);
+			count = 16;
 			return (count);
 		}
 		else
@@ -66,13 +67,13 @@ int	main(void)
 {
 //	ft_printf("Print a char: %c.\n", 'c');
 //	ft_printf("Print a string: %s.\n", "f13itman: \nCodename 47");
-	ft_printf("Print a positive i: %d.\n", 47);
-	ft_printf("Print a zero i: %d.\n", 0);
-	ft_printf("Print a negative i: %d.\n", -42);
+//	ft_printf("Print a positive i: %d.\n", 47);
+//	ft_printf("Print a zero i: %d.\n", 0);
+//	ft_printf("Print a negative i: %d.\n", -42);
 //	ft_printf("Print a lower hex i: %x.\n", 477);
 //	ft_printf("Print a UPPER hex: %X.\n", 477);
 //	ft_printf("Print a zero hex: %x.\n", 0);
-//	ft_printf("Print a pointer: %p.\n", 110);
+	ft_printf("Print a pointer: %p.\n", 16);
 //	ft_printf("Print a %%");
 	return (0);
 }*/

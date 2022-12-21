@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 int	ft_printundec(unsigned int decimal)
 {
@@ -26,12 +27,14 @@ int	ft_printundec(unsigned int decimal)
 		count += ft_printchar(decimal + '0');
 	return (count);
 }
-
-/*int	main(void)
+/*
+int	main(void)
 {
 	unsigned int	test;
 
-	test = 123712310;
+	test = -712310;
 	ft_printundec(test);
+	write(1, "\n", 1);
+	printf("%u\n", test);
 	return (0);
 }*/
