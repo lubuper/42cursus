@@ -46,7 +46,7 @@ char	**ft_split(char const *s, char c)
 
 	o = 0;
 	if (!s)
-		return (0);
+		return (NULL);
 	nofstrs = ft_stringcounter(s, c);
 	result = malloc(sizeof(char *) * (nofstrs + 1));
 	if (!result)

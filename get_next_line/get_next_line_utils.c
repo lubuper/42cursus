@@ -30,11 +30,11 @@ char	*ft_strchr_mod(char *str, int c)
 	if (!str)
 		return (NULL);
 	if (c == 0)
-		return ((char *)&str[ft_strlen(str)]);
+		return (&str[ft_strlen(str)]);
 	while (str[i])
 	{
-		if (str[i] == (char)c)
-			return ((char *)&str[i]);
+		if (str[i] == c)
+			return (&str[i]);
 		i++;
 	}
 	return (0);
@@ -51,16 +51,15 @@ char	*str_join_mod(char *str1, char *str2)
 		str1 = malloc(sizeof(char));
 		str1[0] = 0;
 	}
-	if (!str1 || !str2)
+	if (!str1 && !str2)
 		return (NULL);
 	jointstr = malloc(sizeof(char) * (ft_strlen(str1) + ft_strlen(str2) + 1));
 	if (!jointstr)
 		return (NULL);
 	i = 0;
 	j = 0;
-	if (str1)
-		while (str1[i])
-			jointstr[i++] = str1[j++];
+	while (str1[i])
+		jointstr[i++] = str1[j++];
 	j = 0;
 	while (str2[j])
 		jointstr[i++] = str2[j++];

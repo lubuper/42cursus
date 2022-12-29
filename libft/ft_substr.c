@@ -16,25 +16,28 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
 	char			*sub;
 	unsigned int	j;
-	size_t			o;
 
 	j = 0;
-	o = 0;
-	if (!s)
-		return (NULL);
-	sub = (char *)malloc(sizeof(char) * (len + 1));
-	if (!sub || start < 0 || len < 0)
-		return (NULL);
-	while (s[j])
+	if ((start > ft_strlen(s)) || (!s) || (len == 0))
 	{
-		if (j >= start && o < len)
-		{
-			sub[o] = s[j];
-			o++;
-		}
-		j++;
+		sub = (char *)malloc(sizeof(char) * 1);
+		sub[0] = 0;
+		return (sub);
 	}
-	sub[o] = 0;
+	else
+	{
+		if (len > ft_strlen(s))
+			len = ft_strlen(s) - start;
+		sub = (char *)malloc(sizeof(char) * (len + 1));
+		if (!sub)
+			return (NULL);
+		while (j < ft_strlen(s) && len > 0)
+		{
+			sub[j++] = s[start++];
+			len--;
+		}
+		sub[j] = 0;
+	}
 	return (sub);
 }
 /*
@@ -43,9 +46,12 @@ int	main(void)
 	const char	str[] = "This is a test";
 	unsigned int	i;
 	size_t		size;
+	char	*lolo;
 
 	i = 5;
 	size = 11;
-	puts(ft_substr(str, i, size));
+	lolo = ft_substr(str, i, size);
+	puts(lolo);
+	free(lolo);
 	return (0);
 }*/
