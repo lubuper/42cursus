@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 12:31:12 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/02/07 14:07:28 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/02/07 16:09:51 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,11 @@ void	send_msg(int process_id, char *str)
 	int				i;
 	int				bit;
 	unsigned char	c;
+	int				length;
 
 	i = 0;
-	while (str[i])
+	length = ft_strlen(str);
+	while (i <= length)
 	{
 		bit = 8;
 		c = (unsigned char)str[i];
@@ -71,18 +73,34 @@ void	send_msg(int process_id, char *str)
 		}
 		i++;
 	}
+	str[i] = 0;
+}
+
+void	reply(int signal)
+{
+	if (signal == SIGUSR1)
+		ft_printf("Server Received the message! Exiting now...");
 }
 
 int	main(int ac, char **av)
 {
-	int	i;
-	int	process_id;
+	int					i;
+	int					process_id;
+	struct sigaction	the_reply;
 
 	i = 0;
 	if (ok(ac, av) == 1)
 	{
 		process_id = ft_atoi(av[1]);
 		send_msg(process_id, av[2]);
+		the_reply.sa_handler = &reply;
+		the_reply.sa_flags = SA_SIGINFO;
+		if (sigaction(SIGUSR1, &the_reply, NULL) == -1)
+			exit(1);
+		if (sigaction(SIGUSR2, &the_reply, NULL) == -1)
+			exit(1);
+		while (1)
+			pause();
 	}
 	return (0);
 }
