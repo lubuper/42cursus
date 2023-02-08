@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 12:31:12 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/02/07 16:09:51 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/02/08 20:47:37 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,17 @@ int	ok(int ac, char **av)
 		return (1);
 }
 
-void	send_msg(int process_id, char *str)
+void	send_msg(pid_t process_id, char *str)
 {
 	int				i;
 	int				bit;
+	int				len;
 	unsigned char	c;
-	int				length;
 
 	i = 0;
-	length = ft_strlen(str);
-	while (i <= length)
+	len = ft_strlen(str);
+	str[len] = '\0';
+	while (i <= len)
 	{
 		bit = 8;
 		c = (unsigned char)str[i];
@@ -73,34 +74,31 @@ void	send_msg(int process_id, char *str)
 		}
 		i++;
 	}
-	str[i] = 0;
 }
 
-void	reply(int signal)
+void	reply(int signal, siginfo_t *info, void *nothing)
 {
+	(void)info;
+	(void)nothing;
 	if (signal == SIGUSR1)
-		ft_printf("Server Received the message! Exiting now...");
+		ft_printf("The server has received the message! Exiting now...\n");
 }
 
 int	main(int ac, char **av)
 {
 	int					i;
-	int					process_id;
+	pid_t					process_id;
 	struct sigaction	the_reply;
 
 	i = 0;
 	if (ok(ac, av) == 1)
 	{
 		process_id = ft_atoi(av[1]);
-		send_msg(process_id, av[2]);
-		the_reply.sa_handler = &reply;
+		the_reply.sa_sigaction = &reply;
 		the_reply.sa_flags = SA_SIGINFO;
-		if (sigaction(SIGUSR1, &the_reply, NULL) == -1)
-			exit(1);
-		if (sigaction(SIGUSR2, &the_reply, NULL) == -1)
-			exit(1);
-		while (1)
-			pause();
+		sigaction(SIGUSR1, &the_reply, NULL);
+		sigaction(SIGUSR2, &the_reply, NULL);
+		send_msg(process_id, av[2]);
 	}
 	return (0);
 }

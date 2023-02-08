@@ -6,7 +6,7 @@
 #    By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/30 14:45:02 by lde-sous          #+#    #+#              #
-#    Updated: 2023/02/07 17:08:29 by lde-sous         ###   ########.fr        #
+#    Updated: 2023/02/08 20:50:58 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,11 +47,16 @@ $(SV): $(OBJS)
 	make -C ./libft
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o server
 
-bonus: $(B_SV) $(B_CL) $(LIBFT)
+bonus: $(B_SV) $(B_CL)
+	@echo "Libft functions compiled"
 
 $(B_CL): $(BONUS_OBJC)
+	make -C ./libft
+	@$(CC) $(CFLAGS) $(BONUS_OBJC) $(LIBFT) -o client_bonus
 
 $(B_SV): $(BONUS_OBJS)
+	make -C ./libft
+	@$(CC) $(CFLAGS) $(BONUS_OBJS) $(LIBFT) -o server_bonus
 
 clean:
 	make clean -C ./libft
@@ -62,7 +67,7 @@ clean:
 
 fclean: clean
 	make fclean -C ./libft
-	@rm -rf $(CL) $(SV)
+	@rm -rf $(CL) $(SV) $(B_CL) $(B_SV)
 
 re: fclean all
 
