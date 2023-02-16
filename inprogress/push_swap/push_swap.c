@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 18:25:30 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/02/16 15:10:16 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/02/16 16:54:49 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,16 @@ int	main(int ac, char **av)
 {
 	(void)ac;
 	int	i;
-	t_stack	*stack_a;
+	t_stack	stack_a;
 
-	stack_a = 0;
 	i = 1;
 	while (av[i])
 	{
 		saddfront(&stack_a, stacknew(ft_atoi(av[i])));
 		i++;
 	}
+	printlist(&stack_a);
+	
 	return (0);
 }
 

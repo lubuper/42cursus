@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   push_ops.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 12:30:50 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/02/16 15:18:37 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/02/16 16:38:57 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_a(t_stack **stack_a, t_stack **stack_b)
+void	push_a(t_stack *stack_a, t_stack *stack_b)
 {
 	t_stack	*new;
 
@@ -25,7 +25,7 @@ void	push_a(t_stack **stack_a, t_stack **stack_b)
 		stack_b->content = stack_b->next->content;
 }
 
-void	push_b(t_stack **stack_b, t_stack **stack_a)
+void	push_b(t_stack *stack_b, t_stack *stack_a)
 {
 	t_stack	*new;
 
