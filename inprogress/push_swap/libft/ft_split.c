@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static int	ft_stringcounter(const char *s, char c)
+int	ft_stringcounter(const char *s, char c)
 {
 	int	i;
 	int	nstrings;
