@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 15:30:18 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/02/16 16:29:07 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/02/22 14:57:32 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 t_stack	*stacknew(int content)
 {
 	t_stack	*new;
+
 	new = malloc(sizeof(t_stack));
 	if (!new)
 		return (NULL);
@@ -51,6 +52,7 @@ t_stack	*slast(t_stack *stack)
 void	saddback(t_stack *stack, t_stack *new)
 {
 	t_stack	*temp;
+
 	if (!new)
 		return ;
 	temp = slast(stack);

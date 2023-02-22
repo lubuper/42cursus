@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 15:25:40 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/11/16 10:06:14 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/02/22 15:06:02 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,6 @@ void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
 void	*ft_memmove(void *dest, const void *src, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
-int	ft_stringcounter(const char *s, char c);
+int		ft_stringcounter(const char *s, char c);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 17:38:02 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/02/16 16:40:39 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/02/22 20:10:14 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,15 @@ void	saddfront(t_stack *stack, t_stack *new);
 t_stack	*stacknew(int content);
 t_stack	*slast(t_stack *stack);
 void	saddback(t_stack *stack, t_stack *new);
-void	push_a(t_stack *stack_a, t_stack *stack_b);
-void	push_b(t_stack *stack_b, t_stack *stack_a);
+void	push_a(t_stack **stack_a, t_stack **stack_b);
+void	push_b(t_stack **stack_b, t_stack **stack_a);
+int		isbig(ssize_t num);
+int		check_errors(int ac, char *av);
+void	swap_a(t_stack **stack_a);
+//void	swap_b(t_stack **stack_b);
+//void	swap_swap(t_stack **stack_a, t_stack **stack_b);
+//void	rotate_a(t_stack *stack_a);
+//void	rotate_b(t_stack *stack_b);
+//void	rotate_rotate(t_stack *stack_a, t_stack_ *stack_b);
 
 #endif
