@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 18:25:30 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/02/22 20:09:30 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/02/23 15:38:52 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,20 @@ int	main(int ac, char **av)
 		return (0);
 	i = 0;
 	length = ac - 1;
+	stack_b = NULL;
 	stack_a = malloc(sizeof(t_stack));
-	stack_b = malloc(sizeof(t_stack));
 	stack_a->content = ft_atoi(av[++i]);
-//	stack_b->content = 0;
 	while (--length)
 	{
 		check_errors(ac, av[i]);
 		saddback(stack_a, stacknew(ft_atoi(av[++i])));
 	}
-	swap_a(&stack_a);
+	ft_printf("stack A\n");
+	printlist(stack_a);
+	ft_printf("stack B\n");
+	printlist(stack_b);
+	ft_printf("\n");
+	rotate_b(&stack_a);
 	ft_printf("stack A\n");
 	printlist(stack_a);
 	ft_printf("stack B\n");

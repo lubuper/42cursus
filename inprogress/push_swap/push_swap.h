@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 17:38:02 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/02/22 20:10:14 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/02/23 12:24:10 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,13 @@ void	push_b(t_stack **stack_b, t_stack **stack_a);
 int		isbig(ssize_t num);
 int		check_errors(int ac, char *av);
 void	swap_a(t_stack **stack_a);
-//void	swap_b(t_stack **stack_b);
-//void	swap_swap(t_stack **stack_a, t_stack **stack_b);
-//void	rotate_a(t_stack *stack_a);
-//void	rotate_b(t_stack *stack_b);
-//void	rotate_rotate(t_stack *stack_a, t_stack_ *stack_b);
+void	swap_b(t_stack **stack_b);
+void	swap_swap(t_stack **stack_a, t_stack **stack_b);
+void	rotate_a(t_stack **stack_a);
+void	rotate_b(t_stack **stack_b);
+void	rotate_rotate(t_stack **stack_a, t_stack **stack_b);
+void	rrotate_a(t_stack **stack_a);
+void	rrotate_b(t_stack **stack_b);
+void	rr_ab(t_stack **stack_a, t_stack **stack_b);
 
 #endif

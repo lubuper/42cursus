@@ -6,7 +6,7 @@
 #    By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/13 17:14:55 by lde-sous          #+#    #+#              #
-#    Updated: 2023/02/22 20:11:02 by lde-sous         ###   ########.fr        #
+#    Updated: 2023/02/23 12:17:27 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,9 @@ SRC = lst_ops.c \
 	push_swap.c \
 	push_ops.c \
 	check_errors.c \
-	swap_ops.c
+	swap_ops.c \
+	rotate_ops.c \
+	reverse_ops.c
 
 OBJ = $(SRC:%.c=%.o)
 RM = rm -rf
