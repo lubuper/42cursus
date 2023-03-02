@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:45:35 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/02/23 15:37:54 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/03/02 16:08:24 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	rotate_a(t_stack **stack_a)
 	temporary->content = temp;
 	ft_printf("ra\n");
 }
+
 void	rotate_b(t_stack **stack_b)
 {
 	int		temp;
@@ -46,6 +47,7 @@ void	rotate_b(t_stack **stack_b)
 	temporary->content = temp;
 	ft_printf("rb\n");
 }
+
 void	rotate_rotate(t_stack **stack_a, t_stack **stack_b)
 {
 	int		temp;
@@ -71,4 +73,3 @@ void	rotate_rotate(t_stack **stack_a, t_stack **stack_b)
 	temporary->content = temp;
 	ft_printf("rr\n");
 }
-

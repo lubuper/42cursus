@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 17:38:02 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/02/23 12:24:10 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/03/02 16:13:31 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@
 typedef struct s_stack
 {
 	int				content;
+	int				action_points;
 	struct s_stack	*next;
 }					t_stack;
 
 void	saddfront(t_stack *stack, t_stack *new);
 t_stack	*stacknew(int content);
 t_stack	*slast(t_stack *stack);
+t_stack	*santipenu(t_stack *stack);
 void	saddback(t_stack *stack, t_stack *new);
 void	push_a(t_stack **stack_a, t_stack **stack_b);
 void	push_b(t_stack **stack_b, t_stack **stack_a);

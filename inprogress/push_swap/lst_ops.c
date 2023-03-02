@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 15:30:18 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/02/22 14:57:32 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/03/02 15:57:59 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,13 @@ void	saddback(t_stack *stack, t_stack *new)
 		return ;
 	}
 	temp->next = new;
+}
+
+t_stack	*santipenu(t_stack *stack)
+{
+	while (stack && stack->next && stack->next->next != NULL)
+		stack = stack->next;
+	return (stack);
 }
 
 /*int	main(void)
