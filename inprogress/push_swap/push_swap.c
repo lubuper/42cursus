@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 18:25:30 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/02/23 15:38:52 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/02/28 14:07:36 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	main(int ac, char **av)
 	ft_printf("stack B\n");
 	printlist(stack_b);
 	ft_printf("\n");
-	rotate_b(&stack_a);
+	rrotate_a(&stack_a);
 	ft_printf("stack A\n");
 	printlist(stack_a);
 	ft_printf("stack B\n");
