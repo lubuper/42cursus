@@ -6,14 +6,14 @@
 #    By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/13 17:14:55 by lde-sous          #+#    #+#              #
-#    Updated: 2023/02/23 12:17:27 by lde-sous         ###   ########.fr        #
+#    Updated: 2023/03/02 16:50:36 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 LIBFT = ./libft/libft.a
 CC = cc
-CFLAGS = -Wextra -Wall -Werror
+CFLAGS = -Wextra -Wall -Werror -g 
 SRC = lst_ops.c \
 	push_swap.c \
 	push_ops.c \
