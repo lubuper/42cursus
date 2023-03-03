@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 13:32:18 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/03/03 20:47:05 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/02/22 15:17:15 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,44 +16,32 @@ int	isbig(ssize_t num)
 {
 	if (num > 2147483647)
 		return (1);
-	ft_printf("ola\n");
 	return (0);
 }
 
-int	check_errors(int ac, char **av)
+int	check_errors(int ac, char *av)
 {
 	int	i;
 	int	j;
 	int	temp_num;
-	char	**ptr;
 
-	i = -1;
-	ac--;
-	ptr = av;
-	while (av && ++i < ac) 
+	i = 1;
+	while (av[i++])
 	{
 		j = i + 1;
-		while (j <= ac)
-		{
-			if (av[0] == av[j++])
+		while (av[j])
+			if (ft_atoi(&av[i]) == ft_atoi(&av[j++]))
 				return (1);
-		}
-		av++;
 	}
-	i = 0;
-	av = ptr;
-	while (i < ac)
+	while (i <= ac)
 	{
-		temp_num = ft_atoi(av[i]);
-		ft_printf("%d\n", temp_num);
-/*		if (ft_isdigit(temp_num) == 0)
-		{
-			ft_printf("khsajdh");
+		temp_num = ft_atoi(&av[i]);
+		if (ft_isdigit(temp_num) == 0)
 			return (1);
-		}*/
-		if (isbig(temp_num) == 1)
+		else if (isbig(temp_num) == 1)
 			return (1);
 		i++;
 	}
+	ft_printf("OK");
 	return (0);
 }
