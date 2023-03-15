@@ -6,7 +6,7 @@
 #    By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/07 13:59:19 by lde-sous          #+#    #+#              #
-#    Updated: 2023/01/18 16:44:47 by lde-sous         ###   ########.fr        #
+#    Updated: 2023/03/15 13:35:24 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,7 @@ FT_FUNCTIONS = ft_printf.c \
 	       ft_strtrim.c \
 	       ft_substr.c \
 	       ft_tolower.c \
-	       ft_toupper.c
+	       ft_toupper.c 
 
 BONUS = ft_lstnew.c \
 	ft_lstadd_front.c \

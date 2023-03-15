@@ -1,23 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_errors.c                                     :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/15 13:32:18 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/03/15 14:37:52 by lde-sous         ###   ########.fr       */
+/*   Created: 2023/03/15 15:36:33 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/03/15 15:46:53 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-int	isbig(ssize_t num)
-{
-	if (num > 2147483647 || num < -2147483648)
-		return (1);
-	return (0);
-}
+#include <stdio.h>
 
 int	isnum(char **av)
 {
@@ -26,7 +19,7 @@ int	isnum(char **av)
 	
 	i = 1;
 	j = 0;
-	while (av[i][j])
+	while (i <= ac)
 	{
 		j = 0;
 		if (av[i][j] == '+' || av[i][j] == '-')
@@ -43,34 +36,12 @@ int	isnum(char **av)
 	return (1);
 }
 
-int	hasdup(char *av)
+int	main(int ac, char **av)
 {
-	int	i;
-
-	i = 1;
-	while (av[i + 1])
-	{
-		if(ft_atoi(&av[i]) == ft_atoi(&av[i + 1]))
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int	check_errors(char **av)
-{
-	int	i;
-
-	if (isnum(av) == 0)
-		return (1);
-	i = 0;
-	while (av[i])
-	{
-		if (isbig(ft_atoi(av[i]) == 1))
-			return (1);
-		if (hasdup(av[i]) == 1)
-			return (1);
-		i++;
-	}
+	(void)ac;
+	if (ac > 1)
+		printf("%d\n", isnum(av));
+	else
+		printf("no args");
 	return (0);
 }

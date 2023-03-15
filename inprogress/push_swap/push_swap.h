@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 17:38:02 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/03/03 18:36:52 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/03/15 14:37:31 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ void	saddback(t_stack *stack, t_stack *new);
 void	push_a(t_stack **stack_a, t_stack **stack_b);
 void	push_b(t_stack **stack_b, t_stack **stack_a);
 int		isbig(ssize_t num);
-int		check_errors(int ac, char **av);
+int		isnum(char **av);
+int		hasdup(char *av);
+int		check_errors(char **av);
 void	swap_a(t_stack **stack_a);
 void	swap_b(t_stack **stack_b);
 void	swap_swap(t_stack **stack_a, t_stack **stack_b);
