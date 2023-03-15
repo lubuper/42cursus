@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 13:32:18 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/03/15 14:37:52 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/03/15 18:20:12 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,8 @@ int	isnum(char **av)
 	
 	i = 1;
 	j = 0;
-	while (av[i][j])
+	while (av[i])
 	{
-		j = 0;
 		if (av[i][j] == '+' || av[i][j] == '-')
 			j++;
 		while (av[i][j])
@@ -39,6 +38,7 @@ int	isnum(char **av)
 				return (0);
 		}
 		i++;
+		j = 0;
 	}
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 18:25:30 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/03/15 13:27:06 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/03/15 18:20:52 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	main(int ac, char **av)
 	stack_a->content = ft_atoi(av[i]);
 	while (av[++i])
 	{
-		if (check_errors(ac, av))
+		if (check_errors(av))
 		{
 			ft_putstr_fd("Error", 2);
 			return (1);
