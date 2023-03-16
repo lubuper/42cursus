@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 18:25:30 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/03/15 18:20:52 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/03/16 13:24:25 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,14 @@ int	main(int ac, char **av)
 	if (!stack_a)
 		return (0);
 	i = 1;
+	if (check_errors(av) == 1)
+	{
+		ft_putstr_fd("Error", 2);
+		return (1);
+	}
 	stack_a->content = ft_atoi(av[i]);
 	while (av[++i])
-	{
-		if (check_errors(av))
-		{
-			ft_putstr_fd("Error", 2);
-			return (1);
-		}
 		saddback(stack_a, stacknew(ft_atoi(av[i])));
-	}
-//	push_a(&stack_a, &stack_b);
-//	rotate_a(&stack_a);
-
 	ft_printf("stack A\n");
 	printlist(stack_a);
 	ft_printf("stack B\n");
