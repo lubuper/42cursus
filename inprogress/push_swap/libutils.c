@@ -6,17 +6,17 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 15:50:51 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/03/16 15:50:55 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/03/17 11:06:03 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	spatoi(const char *nptr)
+long long	spatoi(const char *nptr)
 {
-	int		sign;
-	int		i;
-	long	result;
+	long long	sign;
+	int			i;
+	long long	result;
 
 	sign = 1;
 	i = 0;
