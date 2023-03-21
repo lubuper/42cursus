@@ -16,10 +16,9 @@ int	main(void)
 {
 	int	max;
 	int	num;
-	
+
 	num = 123456;
 	max = 0;
-	
 	while (num)
 	{
 		num /= 10;

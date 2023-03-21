@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 17:38:02 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/03/17 10:53:00 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/03/21 14:08:30 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void		saddfront(t_stack *stack, t_stack *new);
 t_stack		*stacknew(int content);
 t_stack		*slast(t_stack *stack);
 t_stack		*santipenu(t_stack *stack);
+t_stack		stackdup(t_stack *stack_a);
 void		saddback(t_stack *stack, t_stack *new);
 void		push_a(t_stack **stack_a, t_stack **stack_b);
 void		push_b(t_stack **stack_b, t_stack **stack_a);
