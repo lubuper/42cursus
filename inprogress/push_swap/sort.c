@@ -17,25 +17,24 @@
 	
 }
 */
-int	maxdigits(t_stack **stack)
+int	maxbits(t_stack **stack)
 {
-	int	n;
-	int	max_e;
-
-	max_e = (*stack)->content;
-	n = 0;
-	while ((*stack)->next)
+	t_list	element;
+	int		maxb;
+	int		bigg;
+	
+	element = *stack;
+	maxb = 0;
+	bigg = element->content;
+	while (element)
 	{
-		if (max_e < (*stack)->content)
-			max_e = (*stack)->content;
-		stack = (*stack)->next;
+		if (bigg < element->content)
+			bigg = element->content;
+		element = element->next;
 	}
-	while (max_e)
-	{
-		max_e /= 10;
-		n++;
-	}
-	return (n);
+	while ((bigg >> maxb) != 0)
+		maxb++;
+	return (maxb);
 }
 
 void	is_sorted(t_stack **stack_a, t_stack, **stack_b)
@@ -48,8 +47,40 @@ void	is_sorted(t_stack **stack_a, t_stack, **stack_b)
 	return (1);
 }
 
+void	radix(t_list **stack_a, t_list **stack_b)
+{
+	int	i;
+	int	j;
+	int	size;
+	int	mbit;
+	
+	i = 0;
+	size = ft_lstsize(*stack_a);
+	mbit = maxbits(stack_a);
+	while (i < mbits)
+	{
+		j = 0;
+		while (j < size)
+		{
+			if (((*stack_a->content >> i) & 1) == 1)
+				ra(stack_a);
+			else
+				pb(stack_a, stack_b);
+			j++;
+		}
+		while (ft_lstsize(*stack_b) != 0)
+			pa(stack_a, stack_b);
+		i++;
+	}
+}
+
 t_stack	stackdup(t_stack **stack_a)
 {
+	t_stack	**new;
+	
+	new = malloc(sizeof(t_stack));
+	if (!new)
+		return (0);
 	stacknew(
 	return (copy);
 }
