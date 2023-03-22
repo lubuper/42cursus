@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 18:25:30 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/03/20 14:01:23 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/03/22 15:21:06 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ int	main(int ac, char **av)
 	stack_a->content = ft_atoi(av[i]);
 	while (av[++i])
 		saddback(stack_a, stacknew(ft_atoi(av[i])));
+	if (is_sorted(&stack_a, &stack_b) == 0)
+		radix(&stack_a, &stack_b);
 	ft_printf("stack A\n");
 	printlist(stack_a);
 	ft_printf("stack B\n");

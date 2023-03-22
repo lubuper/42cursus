@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 15:30:18 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/03/02 15:57:59 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/03/22 18:47:51 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,14 +71,20 @@ t_stack	*santipenu(t_stack *stack)
 	return (stack);
 }
 
-/*int	main(void)
+int	stsize(t_stack *stack)
 {
-	int		tester;
-	t_stack	*testl;
-
-	tester = 42;
-	ft_printf("Tester = %d\n", tester);
-	testl = stacknew(43);
-	ft_printf("%d\n", testl->content);
-	return (0);
-}*/
+	int	size;
+	
+	size = 1;
+	if (!stack)
+		return (0);
+	if (stack)
+	{
+		while (stack->next)
+		{
+			stack = stack->next;
+			size++;
+		}
+	}
+	return (size);
+}
