@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:38:24 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/03/02 16:10:08 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/03/23 17:17:53 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	rrotate_a(t_stack **stack_a)
 	*stack_a = temp_endstack;
 	(*stack_a)->next = temp_stack;
 	temp_beforestack->next = NULL;
-	ft_printf("rra");
+	ft_printf("rra\n");
 }
 
 void	rrotate_b(t_stack **stack_b)
@@ -43,7 +43,7 @@ void	rrotate_b(t_stack **stack_b)
 	*stack_b = temp_endstack;
 	(*stack_b)->next = temp_stack;
 	temp_beforestack->next = NULL;
-	ft_printf("rrb");
+	ft_printf("rrb\n");
 }
 
 void	rr_ab(t_stack **stack_a, t_stack **stack_b)
@@ -66,5 +66,5 @@ void	rr_ab(t_stack **stack_a, t_stack **stack_b)
 	*stack_b = temp_endstack;
 	(*stack_b)->next = temp_stack;
 	temp_beforestack->next = NULL;
-	ft_printf("rrr");
+	ft_printf("rrr\n");
 }

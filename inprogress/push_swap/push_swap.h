@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 17:38:02 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/03/22 15:18:41 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/03/23 17:14:17 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,21 @@ t_stack		*stacknew(int content);
 t_stack		*slast(t_stack *stack);
 t_stack		*santipenu(t_stack *stack);
 t_stack		stackdup(t_stack *stack_a);
-void		saddfront(t_stack *stack, t_stack *new);
 void		saddback(t_stack *stack, t_stack *new);
 void		push_a(t_stack **stack_a, t_stack **stack_b);
 void		push_b(t_stack **stack_b, t_stack **stack_a);
 void		radix(t_stack **stack_a, t_stack **stack_b);
+void		sort_three(t_stack **stack_a);
+void		sort_five(t_stack **stack_a, t_stack **stack_b);
+void		sort_selector(t_stack **stack_a, t_stack **stack_b);
 int			isbig(ssize_t num);
 int			isnum(char **av);
 int			hasdup(char **av);
 int			avdiff(char *av1, char *av2);
 int			check_errors(char **av);
-int		stsize(t_stack *stack);
-int		maxbits(t_stack **stack);
-int		is_sorted(t_stack **stack_a, t_stack **stack_b);
+int			stsize(t_stack *stack);
+int			maxbits(t_stack **stack);
+int			is_sorted(t_stack **stack_a, t_stack **stack_b);
 long long	spatoi(const char *nptr);
 void		swap_a(t_stack **stack_a);
 void		swap_b(t_stack **stack_b);

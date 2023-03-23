@@ -47,3 +47,18 @@ int	avdiff(char *av1, char *av2)
 		i++;
 	return ((unsigned char)av1[i] - (unsigned char)av2[i]);
 }
+
+t_stack	*stacknew(int content)
+{
+	t_stack	*new;
+
+	new = malloc(sizeof(t_stack));
+	if (!new)
+		return (NULL);
+	if (new)
+	{
+		new->content = content;
+		new->next = NULL;
+	}
+	return (new);
+}

@@ -12,31 +12,6 @@
 
 #include "push_swap.h"
 
-t_stack	*stacknew(int content)
-{
-	t_stack	*new;
-
-	new = malloc(sizeof(t_stack));
-	if (!new)
-		return (NULL);
-	if (new)
-	{
-		new->content = content;
-		new->next = NULL;
-	}
-	return (new);
-}
-
-void	saddfront(t_stack *stack, t_stack *new)
-{
-	if (new)
-	{
-		if (stack)
-			new->next = stack;
-		stack = new;
-	}
-}
-
 t_stack	*slast(t_stack *stack)
 {
 	if (!stack)
@@ -74,7 +49,7 @@ t_stack	*santipenu(t_stack *stack)
 int	stsize(t_stack *stack)
 {
 	int	size;
-	
+
 	size = 1;
 	if (!stack)
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 18:25:30 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/03/22 15:21:06 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/03/23 17:11:22 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,16 @@ void	printlist(t_stack *head)
 		temp = temp->next;
 	}
 	ft_printf("\n");
+}
+
+void	sort_selector(t_stack **stack_a, t_stack **stack_b)
+{
+	if (stsize(*stack_a) < 4)
+		sort_three(stack_a, stack_b);
+	else if (stsize(*stack_a) > 3 && stsize(*stack_a) < 6)
+		sort_five(stack_a, stack_b);
+	else
+		radix(stack_a, stack_b);
 }
 
 int	main(int ac, char **av)
@@ -49,7 +59,7 @@ int	main(int ac, char **av)
 	while (av[++i])
 		saddback(stack_a, stacknew(ft_atoi(av[i])));
 	if (is_sorted(&stack_a, &stack_b) == 0)
-		radix(&stack_a, &stack_b);
+		sort_selector(&stack_a, &stack_b);
 	ft_printf("stack A\n");
 	printlist(stack_a);
 	ft_printf("stack B\n");
