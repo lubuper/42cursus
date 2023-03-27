@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 17:38:02 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/03/23 17:14:17 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/03/25 08:29:02 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,14 @@ typedef struct s_stack
 t_stack		*stacknew(int content);
 t_stack		*slast(t_stack *stack);
 t_stack		*santipenu(t_stack *stack);
-t_stack		stackdup(t_stack *stack_a);
+t_stack		**transformstack(t_stack **stack_a);
 void		saddback(t_stack *stack, t_stack *new);
 void		push_a(t_stack **stack_a, t_stack **stack_b);
 void		push_b(t_stack **stack_b, t_stack **stack_a);
 void		radix(t_stack **stack_a, t_stack **stack_b);
+void		sort_two(t_stack **stack_a);
 void		sort_three(t_stack **stack_a);
+void		sort_four(t_stack **stack_a, t_stack **stack_b);
 void		sort_five(t_stack **stack_a, t_stack **stack_b);
 void		sort_selector(t_stack **stack_a, t_stack **stack_b);
 int			isbig(ssize_t num);

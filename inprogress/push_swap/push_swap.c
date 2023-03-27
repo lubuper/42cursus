@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 18:25:30 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/03/23 17:11:22 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/03/25 09:35:40 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,32 @@ void	printlist(t_stack *head)
 
 void	sort_selector(t_stack **stack_a, t_stack **stack_b)
 {
-	if (stsize(*stack_a) < 4)
-		sort_three(stack_a, stack_b);
-	else if (stsize(*stack_a) > 3 && stsize(*stack_a) < 6)
+	int	stack_csize;
+
+	stack_csize = stsize(*stack_a);
+	if (stack_csize== 2)
+		sort_two(stack_a);
+	else if (stack_csize == 3)
+		sort_three(stack_a);
+	else if (stack_csize == 4)
+		sort_four(stack_a, stack_b);
+	else if (stack_csize == 5)
 		sort_five(stack_a, stack_b);
 	else
 		radix(stack_a, stack_b);
+}
+
+int	*index_arr(char **str)
+{
+	int	i;
+	int	*arr;
+
+	i = 1;
+	while (str[i])
+	{
+		ft_atoi(str[i])
+	
+	}
 }
 
 int	main(int ac, char **av)
@@ -40,11 +60,10 @@ int	main(int ac, char **av)
 	int		i;
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	int		length;
 
+	(void)ac;
 	if (av[1] == 0)
 		return (0);
-	length = ac - 1;
 	stack_b = NULL;
 	stack_a = malloc(sizeof(t_stack));
 	if (!stack_a)
@@ -55,6 +74,9 @@ int	main(int ac, char **av)
 		ft_putstr_fd("Error\n", 2);
 		return (1);
 	}
+	//
+	//transform array here!
+	//
 	stack_a->content = ft_atoi(av[i]);
 	while (av[++i])
 		saddback(stack_a, stacknew(ft_atoi(av[i])));
@@ -65,5 +87,6 @@ int	main(int ac, char **av)
 	ft_printf("stack B\n");
 	printlist(stack_b);
 	ft_printf("\n");
+	free (stack_a);
 	return (0);
 }
