@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 12:52:19 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/03/25 08:37:30 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/03/27 19:31:17 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,15 @@ void	sort_five(t_stack **stack_a, t_stack **stack_b)
 	push_b(stack_b, stack_a);
 	sort_three(stack_a);
 	push_a(stack_a, stack_b);
+	rotate_a(stack_a);
 	push_a(stack_a, stack_b);
-	if (is_sorted(stack_a, stack_b) == 0)
+	while (is_sorted(stack_a, stack_b) == 0)
 	{
 		rotate_a(stack_a);
-	push_b(stack_b, stack_a);
-	push_b(stack_b, stack_a);
-	sort_three(stack_a);
-	push_a(stack_a, stack_b);
-	push_a(stack_a, stack_b);
+		push_b(stack_b, stack_a);
+		push_b(stack_b, stack_a);
+		sort_three(stack_a);
+		push_a(stack_a, stack_b);
+		push_a(stack_a, stack_b);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 18:25:30 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/03/25 09:35:40 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/03/27 17:49:57 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,6 @@ void	sort_selector(t_stack **stack_a, t_stack **stack_b)
 		sort_five(stack_a, stack_b);
 	else
 		radix(stack_a, stack_b);
-}
-
-int	*index_arr(char **str)
-{
-	int	i;
-	int	*arr;
-
-	i = 1;
-	while (str[i])
-	{
-		ft_atoi(str[i])
-	
-	}
 }
 
 int	main(int ac, char **av)
