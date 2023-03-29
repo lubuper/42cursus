@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 18:57:39 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/03/25 08:28:07 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/03/29 19:58:27 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	is_sorted(t_stack **stack_a, t_stack **stack_b)
 	element = *stack_a;
 	while (element->next != 0)
 	{
-		if (element->content > element->next->content && !(*stack_b))
+		if (element->content > element->next->content || (*stack_b))
 			return (0);
 		element = element->next;
 	}
@@ -33,7 +33,7 @@ t_stack	**transformstack(t_stack **stack_a)
 	final_stack = malloc(sizeof(stack_a));
 	if (!final_stack)
 	{
-		free (stack_a);
+		free(stack_a);
 		return (NULL);
 	}
 	final_stack = 0;

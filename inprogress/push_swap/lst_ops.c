@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 15:30:18 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/03/27 18:29:32 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/03/29 18:53:38 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,21 @@ int	stsize(t_stack *stack)
 		}
 	}
 	return (size);
+}
+
+void	stclear(t_stack **stack, void (*del)(void *))
+{
+	t_stack	*temp;
+
+	temp = NULL;
+	if (!stack || !del || !*stack)
+		return ;
+	while (*stack)
+	{
+		temp = (*stack)->next;
+		del((*stack)->content);
+		free(stack);
+		*stack = temp;
+	}
+	*stack = NULL;
 }

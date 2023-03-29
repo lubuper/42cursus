@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 18:25:30 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/03/27 17:49:57 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/03/29 20:07:54 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	sort_selector(t_stack **stack_a, t_stack **stack_b)
 	int	stack_csize;
 
 	stack_csize = stsize(*stack_a);
-	if (stack_csize== 2)
+	if (stack_csize == 2)
 		sort_two(stack_a);
 	else if (stack_csize == 3)
 		sort_three(stack_a);
@@ -47,6 +47,7 @@ int	main(int ac, char **av)
 	int		i;
 	t_stack	*stack_a;
 	t_stack	*stack_b;
+	int		*temp_arr;
 
 	(void)ac;
 	if (av[1] == 0)
@@ -61,19 +62,20 @@ int	main(int ac, char **av)
 		ft_putstr_fd("Error\n", 2);
 		return (1);
 	}
-	//
-	//transform array here!
-	//
-	stack_a->content = ft_atoi(av[i]);
-	while (av[++i])
-		saddback(stack_a, stacknew(ft_atoi(av[i])));
+	temp_arr = index_arr(av, ac);
+	stack_a->content = temp_arr[0];
+	while (--ac > 1)
+		saddback(stack_a, stacknew(temp_arr[i++]));
+	printlist(stack_a);
+	ft_printf("\n");
+	ft_printf("\n");
 	if (is_sorted(&stack_a, &stack_b) == 0)
 		sort_selector(&stack_a, &stack_b);
-	ft_printf("stack A\n");
 	printlist(stack_a);
-	ft_printf("stack B\n");
-	printlist(stack_b);
 	ft_printf("\n");
-	free (stack_a);
+	ft_printf("\n");
+	stclear(&stack_a, stack_a);
+//	free(stack_a);
+	free(temp_arr);
 	return (0);
 }
