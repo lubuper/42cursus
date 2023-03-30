@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 15:30:18 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/03/29 18:53:38 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/03/30 12:53:03 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ t_stack	*slast(t_stack *stack)
 {
 	if (!stack)
 		return (NULL);
-	while (stack->next != NULL)
-			stack = stack->next;
+	while (stack->next)
+		stack = stack->next;
 	return (stack);
 }
 
@@ -61,18 +61,17 @@ int	stsize(t_stack *stack)
 	return (size);
 }
 
-void	stclear(t_stack **stack, void (*del)(void *))
+void	stclear(t_stack **stack)
 {
 	t_stack	*temp;
 
 	temp = NULL;
-	if (!stack || !del || !*stack)
+	if (!stack || !*stack)
 		return ;
 	while (*stack)
 	{
 		temp = (*stack)->next;
-		del((*stack)->content);
-		free(stack);
+		free(*stack);
 		*stack = temp;
 	}
 	*stack = NULL;

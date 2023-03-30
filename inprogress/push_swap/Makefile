@@ -6,7 +6,7 @@
 #    By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/13 17:14:55 by lde-sous          #+#    #+#              #
-#    Updated: 2023/03/29 13:01:42 by lde-sous         ###   ########.fr        #
+#    Updated: 2023/03/30 13:00:23 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,9 +31,10 @@ RM = rm -rf
 
 all: $(NAME)
 $(LIBFT):
+	@echo "Compiling..."
 	@$(MAKE) -C ./libft
 
-$(NAME): $(OBJ) $(LIBFT) 
+$(NAME): $(OBJ) $(LIBFT)
 	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o push_swap
 	@echo "Object Files READY"
 

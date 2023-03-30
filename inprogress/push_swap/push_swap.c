@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 18:25:30 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/03/29 20:07:54 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/03/30 18:14:58 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,7 @@ int	main(int ac, char **av)
 	if (av[1] == 0)
 		return (0);
 	stack_b = NULL;
-	stack_a = malloc(sizeof(t_stack));
-	if (!stack_a)
-		return (0);
+	stack_a = NULL;
 	i = 1;
 	if (check_errors(av) == 1)
 	{
@@ -63,7 +61,7 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	temp_arr = index_arr(av, ac);
-	stack_a->content = temp_arr[0];
+	stack_a = stacknew(temp_arr[0]);
 	while (--ac > 1)
 		saddback(stack_a, stacknew(temp_arr[i++]));
 	printlist(stack_a);
@@ -74,8 +72,7 @@ int	main(int ac, char **av)
 	printlist(stack_a);
 	ft_printf("\n");
 	ft_printf("\n");
-	stclear(&stack_a, stack_a);
-//	free(stack_a);
+	stclear(&stack_a);
 	free(temp_arr);
 	return (0);
 }

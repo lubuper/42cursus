@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 17:38:02 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/03/29 17:57:18 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/03/30 18:12:19 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ void		rr_ab(t_stack **stack_a, t_stack **stack_b);
 void		sort_int_tab(int *tab, int size);
 void		filler(char **str, int *arr, int *array, int n);
 void		finalizer(int *arr, int *array, int *final, int ac);
-void	stclear(t_stack **stack, void (*del)(void *));
+void		stclear(t_stack **stack);
+int			getnext_i(t_stack *stack, int poss);
 int			*index_arr(char **str, int ac);
 int			isbig(ssize_t num);
 int			isnum(char **av);

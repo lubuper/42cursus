@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 20:12:03 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/03/29 19:22:43 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/03/30 11:57:59 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ int	*index_arr(char **str, int ac)
 	int	*arr;
 	int	*final;
 
-	ft_printf("%d\n", ac);
 	arr = malloc((ac - 1) * sizeof(int));
 	array = malloc((ac - 1) * sizeof(int));
 	final = malloc((ac - 1) * sizeof(int));

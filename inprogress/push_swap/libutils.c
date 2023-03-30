@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 15:50:51 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/03/29 20:01:58 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/03/30 19:28:58 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,24 @@ t_stack	*stacknew(int content)
 		new->next = NULL;
 	}
 	return (new);
+}
+
+int	getnext_i(t_stack *stack, int poss)
+{
+	int	index;
+
+	index = 0;
+	if (!stack)
+		return (0);
+	if (stack)
+	{
+		while (stack->next)
+		{
+			if (stack->content == poss)
+				break ;
+			stack = stack->next;
+			index++;
+		}
+	}
+	return (index);
 }
