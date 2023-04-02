@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 12:52:19 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/03/30 20:56:38 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/04/02 20:50:56 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,15 @@ void	sort_five(t_stack **stack_a, t_stack **stack_b)
 		while (stsize(*stack_a) > 3)
 		{
 			index = getnext_i(*stack_a, i);
-			ft_printf("%d\n", index);
-			if (index > (stsize(*stack_a) / 2))
-				rrotate_a(stack_a);
-			else
-				rotate_a(stack_a);
 			if (index == 0)
+			{
 				push_b(stack_b, stack_a);
+				i++;
+			}
+			else if (index > (stsize(*stack_a) / 2))
+				rrotate_a(stack_a);
+			else if (index <= (stsize(*stack_a) / 2))
+				rotate_a(stack_a);
 		}
 		sort_three(stack_a);
 		push_a(stack_a, stack_b);
