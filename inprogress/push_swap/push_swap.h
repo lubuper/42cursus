@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 17:38:02 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/03/30 18:12:19 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/04/04 11:07:20 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void		sort_two(t_stack **stack_a);
 void		sort_three(t_stack **stack_a);
 void		sort_four(t_stack **stack_a, t_stack **stack_b);
 void		sort_five(t_stack **stack_a, t_stack **stack_b);
+void		sort_hundred(t_stack **stack_a, t_stack **stack_b);
 void		sort_selector(t_stack **stack_a, t_stack **stack_b);
 void		swap_a(t_stack **stack_a);
 void		swap_b(t_stack **stack_b);
