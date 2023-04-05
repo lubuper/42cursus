@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 18:25:30 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/04/04 11:10:43 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/04/03 18:03:51 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ void	sort_selector(t_stack **stack_a, t_stack **stack_b)
 		sort_four(stack_a, stack_b);
 	else if (stack_csize == 5)
 		sort_five(stack_a, stack_b);
-	else if (stack_csize == 100)
-		sort_hundred(stack_a, stack_b);
 	else
 		radix(stack_a, stack_b);
 }
