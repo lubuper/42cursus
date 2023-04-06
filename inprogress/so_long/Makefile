@@ -5,27 +5,44 @@
 #                                                     +:+ +:+         +:+      #
 #    By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/02/15 18:32:30 by lde-sous          #+#    #+#              #
-#    Updated: 2023/02/15 19:16:08 by lde-sous         ###   ########.fr        #
+#    Created: 2023/04/06 14:06:52 by lde-sous          #+#    #+#              #
+#    Updated: 2023/04/06 17:02:25 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = window
+NAME = so_long
+LIBFT = ./libft/libft.a
 CC = cc
-CFLAGS = -Wextra -Wall -Werror
-SRC = main.c
-OBJ = $(SRC:.c=.o)
+CFLAGS = -Wextra -Wall -Werror -g
+MLXFLAGS = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+SRC = test.c
+
+OBJ = $(SRC:%.c=%.o)
 RM = rm -rf
 
 all: $(NAME)
+$(LIBFT):
+	@echo "Compiling LIBFT..."
+	@$(MAKE) -C ./libft
+	@echo "Done!"
 
-$(NAME): $(OBJ)
-	@ar rcs $(NAME) $(OBJ)
+$(MINILIBX):
+	@echo "Compiling MiniLibX..."
+	@$(MAKE) -C ./mlx-linux
+	@echo "Done!"
+
+$(NAME): $(OBJ) $(LIBFT) $(MINILIBX)
+	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLXFLAGS)
+	@echo "Object Files READY"
 
 clean:
+	@$(MAKE) clean -C ./libft
 	@$(RM) $(OBJ)
-	@$(RM) a.out
-fclean: $(RM) $(NAME)
+
+fclean: clean
+	@$(MAKE) fclean -C ./libft
+	@$(RM) $(NAME)
+
 re: fclean all
 
 .SILENT:

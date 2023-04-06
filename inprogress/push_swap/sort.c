@@ -81,7 +81,7 @@ void	sort_five(t_stack **stack_a, t_stack **stack_b)
 	}
 }
 
-void	sort_hundred(t_stack **stack_a, t_stack **stack_b)
+/*void	sort_hundred(t_stack **stack_a, t_stack **stack_b)
 {
 	int	chunk;
 	int	index;
@@ -110,4 +110,4 @@ void	sort_hundred(t_stack **stack_a, t_stack **stack_b)
 			}
 		}
 	}
-}
+}*/

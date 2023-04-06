@@ -70,7 +70,7 @@ void	radix(t_stack **stack_a, t_stack **stack_b)
 	i = 0;
 	size = stsize(*stack_a);
 	mbits = maxbits(stack_a);
-	while (i <= mbits)
+	while (i < mbits)
 	{
 		j = 0;
 		while (j < size)

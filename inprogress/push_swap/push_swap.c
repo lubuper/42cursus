@@ -12,19 +12,6 @@
 
 #include "push_swap.h"
 
-void	printlist(t_stack *head)
-{
-	t_stack	*temp;
-
-	temp = head;
-	while (temp != NULL)
-	{
-		ft_printf("\n%d - ", temp->content);
-		temp = temp->next;
-	}
-	ft_printf("\n");
-}
-
 void	sort_selector(t_stack **stack_a, t_stack **stack_b)
 {
 	int	stack_csize;
@@ -64,14 +51,8 @@ int	main(int ac, char **av)
 	stack_a = stacknew(temp_arr[0]);
 	while (--ac > 1)
 		saddback(stack_a, stacknew(temp_arr[i++]));
-	printlist(stack_a);
-	ft_printf("\n");
-	ft_printf("\n");
 	if (is_sorted(&stack_a, &stack_b) == 0)
 		sort_selector(&stack_a, &stack_b);
-	printlist(stack_a);
-	ft_printf("\n");
-	ft_printf("\n");
 	stclear(&stack_a);
 	free(temp_arr);
 	return (0);

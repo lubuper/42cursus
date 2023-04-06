@@ -62,7 +62,7 @@ void	finalizer(int *arr, int *array, int *final, int ac)
 		{
 			if (array[i] == arr[j])
 			{
-				final[i] = j;
+				final[i] = j + 1;
 				break ;
 			}
 			j++;
