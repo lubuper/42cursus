@@ -59,7 +59,7 @@ void	sort_five(t_stack **stack_a, t_stack **stack_b)
 	int	index;
 	int	i;
 
-	i = 0;
+	i = 1;
 	if (is_sorted(stack_a, stack_b) == 0)
 	{
 		while (stsize(*stack_a) > 3)
@@ -80,34 +80,3 @@ void	sort_five(t_stack **stack_a, t_stack **stack_b)
 		push_a(stack_a, stack_b);
 	}
 }
-
-/*void	sort_hundred(t_stack **stack_a, t_stack **stack_b)
-{
-	int	chunk;
-	int	index;
-	int	i;
-
-	if (is_sorted(stack_a, stack_b) == 0)
-	{
-		i = 0;
-		index = getnext_i(*stack_a, i);
-		while (stsize(*stack_b) < 50)
-		{
-			if (index < 20)
-				push_b(stack_b, stack_a);
-			else if (media > (stsize(*stack_a) / 2))
-				rrotate_a(stack_a);
-			else if (media <= (stsize(*stack_a) / 2))
-				rotate_a(stack_a);
-		}
-		while (stsize(*stack_b) > 0)
-			push_a(*stack_a, *stack_b);
-		if (is_sorted(stack_a, stack_b) == 0)
-		{
-			while (i >= 0)
-			{
-				if (i > 
-			}
-		}
-	}
-}*/

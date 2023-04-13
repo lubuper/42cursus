@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 15:50:51 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/03/30 19:28:58 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/04/12 21:05:06 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,11 @@ int	getnext_i(t_stack *stack, int poss)
 	if (stack)
 	{
 		while (stack->next)
-		{
+		{	
 			if (stack->content == poss)
+			{
 				break ;
+			}
 			stack = stack->next;
 			index++;
 		}
