@@ -1,26 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_validation.c                                   :+:      :+:    :+:   */
+/*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/15 17:46:00 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/04/14 19:42:33 by lde-sous         ###   ########.fr       */
+/*   Created: 2023/04/13 17:20:43 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/04/14 18:59:10 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#ifndef SO_LONG_H
+# define SO_LONG_H
+# include "./libft/libft.h"
+# include "./mlx_linux/mlx.h"
 
-void	hold_map_m(char **map)
+typedef struct s_game
 {
-	int	fd;
+	void	*mlx;
+	void	*win;
+	void	*img;
+	char	*addr;
+	char	**map;
+	int	x;
+	int	y;
+	int	colour;
+	int	bits_per_pixel;
+	int	line_length;
+	int	endian;
+}			t_game;
 
-	fd = open("map1.ber", O_RDONLY)
-	while (get_next_line(
-}
-
-int	fill_map(char **map)
+typedef struct s_img
 {
-	
-}
+	void	*player;
+	void	*floor;
+	void	*wall;
+	void	*enemy;
+	void	*collectable;
+}			t_img;
+
+#endif
