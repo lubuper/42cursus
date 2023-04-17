@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 17:20:43 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/04/14 18:59:10 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/04/17 20:29:15 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,14 @@ typedef struct s_game
 	void	*img;
 	char	*addr;
 	char	**map;
-	int	x;
-	int	y;
-	int	colour;
-	int	bits_per_pixel;
-	int	line_length;
-	int	endian;
+	int		lines;
+	int		cols;
+	int		x;
+	int		y;
+	int		colour;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
 }			t_game;
 
 typedef struct s_img
@@ -38,5 +40,11 @@ typedef struct s_img
 	void	*enemy;
 	void	*collectable;
 }			t_img;
+
+int		check_mapfile(char **av);
+void	valid_shape(t_game game);
+void	valid_walls(t_game game);
+void	hold_map_m(t_game game, char **av);
+void	put_image(t_game game);
 
 #endif

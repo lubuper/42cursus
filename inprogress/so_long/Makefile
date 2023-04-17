@@ -6,7 +6,7 @@
 #    By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/06 14:06:52 by lde-sous          #+#    #+#              #
-#    Updated: 2023/04/06 17:02:25 by lde-sous         ###   ########.fr        #
+#    Updated: 2023/04/17 11:44:08 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ LIBFT = ./libft/libft.a
 CC = cc
 CFLAGS = -Wextra -Wall -Werror -g
 MLXFLAGS = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
-SRC = test.c
+SRC = test.c \
+      map_validation.c
 
 OBJ = $(SRC:%.c=%.o)
 RM = rm -rf
