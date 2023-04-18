@@ -1,43 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test2.c                                            :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/10 20:10:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/04/18 20:28:37 by lde-sous         ###   ########.fr       */
+/*   Created: 2022/11/16 12:04:24 by lde-sous          #+#    #+#             */
+/*   Updated: 2022/11/16 14:00:00 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-void	free_the_code(t_game *game)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	free(game->map);
-	exit (1);
-}
+	t_list	*temp;
 
-int	key_map(int keycode, t_game *game)
-{
-	if (keycode == ESC)
+	if (!new)
+		return ;
+	temp = ft_lstlast(*lst);
+	if (!*lst)
 	{
-		mlx_destroy_window(game->mlx, game->win);
-		//free (ga.map);
-		exit (0);
+		*lst = new;
+		return ;
 	}
-
-/*	else if (keycode == W)
-		dosomething;
-	else if (keycode == S)
-		dosomething;
-	else if (keycode == A)
-		dosomething;
-	else if (keycode == D)
-		dosomething;*/
-
-
-
-	return (0);
+	temp->next = new;
 }
-

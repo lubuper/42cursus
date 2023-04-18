@@ -1,43 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test2.c                                            :+:      :+:    :+:   */
+/*   put_imgs.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/10 20:10:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/04/18 20:28:37 by lde-sous         ###   ########.fr       */
+/*   Created: 2023/04/17 19:36:07 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/04/17 20:05:35 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
-
-void	free_the_code(t_game *game)
+void	put_image(t_game game)
 {
-	free(game->map);
-	exit (1);
+	game.y = 0;
+	game.x = 0;
+	while (
 }
-
-int	key_map(int keycode, t_game *game)
-{
-	if (keycode == ESC)
-	{
-		mlx_destroy_window(game->mlx, game->win);
-		//free (ga.map);
-		exit (0);
-	}
-
-/*	else if (keycode == W)
-		dosomething;
-	else if (keycode == S)
-		dosomething;
-	else if (keycode == A)
-		dosomething;
-	else if (keycode == D)
-		dosomething;*/
-
-
-
-	return (0);
-}
-

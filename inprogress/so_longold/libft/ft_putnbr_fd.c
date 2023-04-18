@@ -1,43 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test2.c                                            :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/10 20:10:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/04/18 20:28:37 by lde-sous         ###   ########.fr       */
+/*   Created: 2022/11/14 18:56:17 by lde-sous          #+#    #+#             */
+/*   Updated: 2022/11/14 21:10:34 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-void	free_the_code(t_game *game)
+void	ft_putnbr_fd(int n, int fd)
 {
-	free(game->map);
-	exit (1);
-}
+	unsigned int	number;
 
-int	key_map(int keycode, t_game *game)
-{
-	if (keycode == ESC)
+	if (fd < 0)
+		return ;
+	if (n < 0)
 	{
-		mlx_destroy_window(game->mlx, game->win);
-		//free (ga.map);
-		exit (0);
+		ft_putchar_fd('-', fd);
+		number = (unsigned int)(n * -1);
 	}
-
-/*	else if (keycode == W)
-		dosomething;
-	else if (keycode == S)
-		dosomething;
-	else if (keycode == A)
-		dosomething;
-	else if (keycode == D)
-		dosomething;*/
-
-
-
-	return (0);
+	else
+		number = (unsigned int)n;
+	if (number >= 10)
+		ft_putnbr_fd(number / 10, fd);
+	ft_putchar_fd((char)(number % 10 + '0'), fd);
 }
-

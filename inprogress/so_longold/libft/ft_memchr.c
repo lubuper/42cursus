@@ -1,43 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test2.c                                            :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/10 20:10:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/04/18 20:28:37 by lde-sous         ###   ########.fr       */
+/*   Created: 2022/11/04 16:04:20 by lde-sous          #+#    #+#             */
+/*   Updated: 2022/11/04 16:53:43 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-void	free_the_code(t_game *game)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	free(game->map);
-	exit (1);
-}
+	size_t	i;
 
-int	key_map(int keycode, t_game *game)
-{
-	if (keycode == ESC)
+	i = 0;
+	while (i < n)
 	{
-		mlx_destroy_window(game->mlx, game->win);
-		//free (ga.map);
-		exit (0);
+		if (((unsigned char *)s)[i] == (unsigned char)c)
+			return ((void *)(s + i));
+		i++;
 	}
-
-/*	else if (keycode == W)
-		dosomething;
-	else if (keycode == S)
-		dosomething;
-	else if (keycode == A)
-		dosomething;
-	else if (keycode == D)
-		dosomething;*/
-
-
-
 	return (0);
 }
+/*
+int	main(void)
+{
+	int		t;
+	char	a[] = "its a test";
 
+	t = 97;
+
+	printf("%s\n", (char *)ft_memchr(a, t, 6));
+	return (0);
+}*/

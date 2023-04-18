@@ -1,43 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test2.c                                            :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/10 20:10:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/04/18 20:28:37 by lde-sous         ###   ########.fr       */
+/*   Created: 2022/11/03 15:20:18 by lde-sous          #+#    #+#             */
+/*   Updated: 2022/12/02 11:14:33 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-void	free_the_code(t_game *game)
+char	*ft_strchr(const char *s, int c)
 {
-	free(game->map);
-	exit (1);
-}
+	int		i;
+	char	*str;
 
-int	key_map(int keycode, t_game *game)
-{
-	if (keycode == ESC)
+	i = 0;
+	str = (char *)s;
+	while ((unsigned char)s[i] != (unsigned char)c)
 	{
-		mlx_destroy_window(game->mlx, game->win);
-		//free (ga.map);
-		exit (0);
+		if (s[i] == '\0')
+			return (NULL);
+		i++;
+		str++;
 	}
-
-/*	else if (keycode == W)
-		dosomething;
-	else if (keycode == S)
-		dosomething;
-	else if (keycode == A)
-		dosomething;
-	else if (keycode == D)
-		dosomething;*/
-
-
-
-	return (0);
+	return (str);
 }
-

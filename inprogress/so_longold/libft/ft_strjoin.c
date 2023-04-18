@@ -1,43 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test2.c                                            :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/10 20:10:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/04/18 20:28:37 by lde-sous         ###   ########.fr       */
+/*   Created: 2022/11/08 11:53:09 by lde-sous          #+#    #+#             */
+/*   Updated: 2022/11/10 16:06:08 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-void	free_the_code(t_game *game)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	free(game->map);
-	exit (1);
-}
+	int		i;
+	int		j;
+	char	*allocated;
 
-int	key_map(int keycode, t_game *game)
-{
-	if (keycode == ESC)
+	i = 0;
+	j = 0;
+	if (!s1 || !s2)
+		return (NULL);
+	allocated = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!allocated)
+		return (NULL);
+	while (s1[i])
 	{
-		mlx_destroy_window(game->mlx, game->win);
-		//free (ga.map);
-		exit (0);
+		allocated[i] = s1[i];
+		i++;
 	}
-
-/*	else if (keycode == W)
-		dosomething;
-	else if (keycode == S)
-		dosomething;
-	else if (keycode == A)
-		dosomething;
-	else if (keycode == D)
-		dosomething;*/
-
-
-
-	return (0);
+	while (s2[j])
+	{
+		allocated[i] = s2[j];
+		i++;
+		j++;
+	}
+	allocated[i] = 0;
+	return (allocated);
 }
-

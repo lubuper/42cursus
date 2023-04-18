@@ -1,43 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test2.c                                            :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/10 20:10:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/04/18 20:28:37 by lde-sous         ###   ########.fr       */
+/*   Created: 2022/11/04 13:43:01 by lde-sous          #+#    #+#             */
+/*   Updated: 2022/11/14 11:53:50 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-void	free_the_code(t_game *game)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	free(game->map);
-	exit (1);
-}
+	size_t	i;
 
-int	key_map(int keycode, t_game *game)
+	i = 0;
+	while (s1[i] && s2[i] && i < n && s1[i] == s2[i])
+		i++;
+	if (n == 0 || n == i)
+		return (0);
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+}
+/*
+int	main(void)
 {
-	if (keycode == ESC)
-	{
-		mlx_destroy_window(game->mlx, game->win);
-		//free (ga.map);
-		exit (0);
-	}
+	char	a[] = "this is 2 a2st";
+	char	b[] = "this is a 2tst";
 
-/*	else if (keycode == W)
-		dosomething;
-	else if (keycode == S)
-		dosomething;
-	else if (keycode == A)
-		dosomething;
-	else if (keycode == D)
-		dosomething;*/
-
-
-
-	return (0);
-}
-
+	printf("%d\n", ft_strncmp(a, b, 13));
+}*/

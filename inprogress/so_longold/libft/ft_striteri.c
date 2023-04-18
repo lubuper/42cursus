@@ -1,43 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test2.c                                            :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/10 20:10:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/04/18 20:28:37 by lde-sous         ###   ########.fr       */
+/*   Created: 2022/11/14 16:01:38 by lde-sous          #+#    #+#             */
+/*   Updated: 2022/11/14 17:11:34 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-void	free_the_code(t_game *game)
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	free(game->map);
-	exit (1);
-}
+	unsigned int	i;
 
-int	key_map(int keycode, t_game *game)
-{
-	if (keycode == ESC)
+	if (!s || !f)
+		return ;
+	i = 0;
+	while (s[i])
 	{
-		mlx_destroy_window(game->mlx, game->win);
-		//free (ga.map);
-		exit (0);
+		f(i, &s[i]);
+		i++;
 	}
-
-/*	else if (keycode == W)
-		dosomething;
-	else if (keycode == S)
-		dosomething;
-	else if (keycode == A)
-		dosomething;
-	else if (keycode == D)
-		dosomething;*/
-
-
-
-	return (0);
+	return ;
 }
 
+/*void	experimental_func(unsigned int i, char *s)
+{
+	i = 0;
+	while (s[i])
+	{
+		s[i] = 'a';
+		i++;
+	}
+}
+
+int	main(void)
+{
+	char	str[] = "This is Sparta!";
+	ft_striteri(str, experimental_func);
+
+	printf("%s\n", str);
+	return (0);
+}*/

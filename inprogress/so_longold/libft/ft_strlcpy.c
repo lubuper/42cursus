@@ -1,43 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test2.c                                            :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/10 20:10:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/04/18 20:28:37 by lde-sous         ###   ########.fr       */
+/*   Created: 2022/11/05 10:13:29 by lde-sous          #+#    #+#             */
+/*   Updated: 2022/11/05 10:48:12 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-void	free_the_code(t_game *game)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	free(game->map);
-	exit (1);
-}
+	size_t	i;
 
-int	key_map(int keycode, t_game *game)
-{
-	if (keycode == ESC)
+	if (size == 0)
+		return (ft_strlen(src));
+	i = 0;
+	while (src[i] && i < (size - 1))
 	{
-		mlx_destroy_window(game->mlx, game->win);
-		//free (ga.map);
-		exit (0);
+		dst[i] = src[i];
+		i++;
 	}
-
-/*	else if (keycode == W)
-		dosomething;
-	else if (keycode == S)
-		dosomething;
-	else if (keycode == A)
-		dosomething;
-	else if (keycode == D)
-		dosomething;*/
-
-
-
-	return (0);
+	dst[i] = '\0';
+	return (ft_strlen(src));
 }
+/*
+int	main(void)
+{
+	char	str[] = "This is yet another test";
+	char	str2[] = "";
+	size_t	x;
 
+	x = 7;
+	ft_strlcpy(str2, str, x);
+	printf("%s\n", str2);
+	return (0);
+}*/

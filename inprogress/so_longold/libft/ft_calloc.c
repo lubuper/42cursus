@@ -1,43 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test2.c                                            :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/10 20:10:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/04/18 20:28:37 by lde-sous         ###   ########.fr       */
+/*   Created: 2022/11/07 15:15:17 by lde-sous          #+#    #+#             */
+/*   Updated: 2022/11/17 11:14:08 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-void	free_the_code(t_game *game)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	free(game->map);
-	exit (1);
-}
+	char		*tempvector;
+	size_t		i;
+	size_t		total;
 
-int	key_map(int keycode, t_game *game)
-{
-	if (keycode == ESC)
+	total = nmemb * size;
+	tempvector = malloc(total);
+	if (!tempvector)
+		return (NULL);
+	i = 0;
+	while (i < total)
 	{
-		mlx_destroy_window(game->mlx, game->win);
-		//free (ga.map);
-		exit (0);
+		tempvector[i] = '\0';
+		i++;
 	}
-
-/*	else if (keycode == W)
-		dosomething;
-	else if (keycode == S)
-		dosomething;
-	else if (keycode == A)
-		dosomething;
-	else if (keycode == D)
-		dosomething;*/
-
-
-
-	return (0);
+	return ((void *)tempvector);
 }
-

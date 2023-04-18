@@ -1,43 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test2.c                                            :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/10 20:10:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/04/18 20:28:37 by lde-sous         ###   ########.fr       */
+/*   Created: 2022/11/07 17:24:47 by lde-sous          #+#    #+#             */
+/*   Updated: 2022/11/18 20:03:21 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-void	free_the_code(t_game *game)
+char	*ft_strdup(const char *s)
 {
-	free(game->map);
-	exit (1);
-}
+	char	*sdup;
+	int		i;
 
-int	key_map(int keycode, t_game *game)
-{
-	if (keycode == ESC)
+	i = 0;
+	sdup = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!sdup)
+		return (NULL);
+	while (s[i])
 	{
-		mlx_destroy_window(game->mlx, game->win);
-		//free (ga.map);
-		exit (0);
+		sdup[i] = s[i];
+		i++;
 	}
-
-/*	else if (keycode == W)
-		dosomething;
-	else if (keycode == S)
-		dosomething;
-	else if (keycode == A)
-		dosomething;
-	else if (keycode == D)
-		dosomething;*/
-
-
-
-	return (0);
+	sdup[i] = 0;
+	return (sdup);
 }
-

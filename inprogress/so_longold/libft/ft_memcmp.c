@@ -1,43 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test2.c                                            :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/10 20:10:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/04/18 20:28:37 by lde-sous         ###   ########.fr       */
+/*   Created: 2022/11/04 17:16:53 by lde-sous          #+#    #+#             */
+/*   Updated: 2022/11/10 18:10:16 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-void	free_the_code(t_game *game)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	free(game->map);
-	exit (1);
-}
+	size_t			i;
+	unsigned char	*ns1;
+	unsigned char	*ns2;
 
-int	key_map(int keycode, t_game *game)
-{
-	if (keycode == ESC)
+	ns1 = (unsigned char *)s1;
+	ns2 = (unsigned char *)s2;
+	i = 0;
+	while (n > 0)
 	{
-		mlx_destroy_window(game->mlx, game->win);
-		//free (ga.map);
-		exit (0);
+		if (ns1[i] != ns2[i])
+			return (ns1[i] - ns2[i]);
+		i++;
+		n--;
 	}
-
-/*	else if (keycode == W)
-		dosomething;
-	else if (keycode == S)
-		dosomething;
-	else if (keycode == A)
-		dosomething;
-	else if (keycode == D)
-		dosomething;*/
-
-
-
 	return (0);
 }
-
+/*
+int	main(void)
+{
+	char	a[] = "only another BIG test";
+	char	b[] = "only 1nother test";
+	printf("%d\n", ft_memcmp(a, b, 7));
+}*/
