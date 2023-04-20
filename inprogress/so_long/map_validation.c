@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 17:46:00 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/04/18 20:37:16 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/04/20 21:26:47 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,46 +38,57 @@ int	check_mapfile(char **av)
 		return (0);
 }
 
-void	valid_shape(t_game *game)
+void	valid_shape(t_game *game, t_img *img)
 {
 	game->y = 0;
-	while (game->y < game->lines - 1)
+	while (game->y < game->lines - 2)
 	{
 		if (ft_strlen(game->map[game->y]) != ft_strlen(game->map[game->y + 1])
 			|| game->cols == game->lines)
 		{
 			ft_printf("Error: invalid map shape\n");
-			exit(1);
+			free_the_code(game, img);
 		}
 		game->y++;
 	}
 }
 
-void	valid_walls(t_game *game)
+void	valid_walls(t_game *game, t_img *img)
 {
 	game->y = 0;
 	game->x = 0;
-	while (game->y <= game->lines)
+	while (game->y < game->lines)
 	{
 		if (game->map[game->y][0] != game->map[game->y][game->cols - 1])
 		{
 			ft_printf("Error: walls are not in place\n");
-			exit(1);
+			free_the_code(game, img);
 		}
 		game->y++;
 	}
 	while (game->x < game->cols)
 	{
-		if (game->map[0][game->x] != game->map[game->lines][game->x])
+		if (game->map[0][game->x] != game->map[game->lines - 1][game->x])
 		{
 			ft_printf("Error: walls are not in place\n");
-			exit(1);
+			free_the_code(game, img);
 		}
 		game->x++;
 	}
 }
 
-void	hold_map_m(t_game *game, char **av)
+void	negate_n(t_game *game)
+{
+	int	lines;
+	int	y;
+
+	lines = game->lines;
+	y = 0;
+	while (lines-- < 0)
+		game->map[y++][game->cols - 1] = 0;
+}
+
+void	hold_map_m(t_game *game, t_img *img, char **av)
 {
 	int	fd;
 	int	rows;
@@ -85,18 +96,23 @@ void	hold_map_m(t_game *game, char **av)
 	game->y = 0;
 	game->lines = 0;
 	fd = open(av[1], O_RDONLY);
-	game->cols = ft_strlen(get_next_line(fd)) - 1;
+	game->cols = ft_strlen(get_next_line(fd));
 	close(fd);
 	fd = open(av[1], O_RDONLY);
 	while (get_next_line(fd) != 0)
 		game->lines++;
 	close(fd);
-	game->map = malloc(sizeof(char *) * --game->lines);
+	game->map = malloc(sizeof(char *) * game->lines);
+	if (!game->map)
+		free_the_code(game, img);
 	fd = open(av[1], O_RDONLY);
 	rows = game->lines;
-	while (rows-- >= 0)
+	while (rows-- > 0)
 		game->map[game->y++] = get_next_line(fd);
 	close(fd);
-	valid_shape(game);
-	valid_walls(game);
+	negate_n(game);
+	game->cols--;
+	valid_shape(game, img);
+	valid_walls(game, img);
+	check_map(game, img);
 }
