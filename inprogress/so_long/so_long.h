@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 17:20:43 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/04/26 11:12:18 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/04/26 17:59:36 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct s_game
 	void	*win;
 	char	*addr;
 	char	**map;
+	int		cs;
 	int		lines;
 	int		cols;
 	int		x;

@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 20:10:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/04/26 11:17:29 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/04/26 18:41:20 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	initialize(t_game *game, t_img *img)
 	game->line_length = 0;
 	game->endian = 0;
 	game->moves = 0;
+	game->cs = 0;
 	img->width = 16;
 	img->height = 16;
 	img->player = 0;

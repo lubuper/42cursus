@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 19:36:07 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/04/20 21:06:46 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/04/26 18:22:21 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,6 @@ void	load_img(t_game *game, t_img *img)
 			&img->width, &img->height);
 	img->exit = mlx_xpm_file_to_image(game->mlx, IMG_EXIT,
 			&img->width, &img->height);
-/*	game->addr = mlx_get_data_addr(img->wall, &game->bits_per_pixel,
-			&game->line_length, &game->endian);
-	game->addr = mlx_get_data_addr(img->player, &game->bits_per_pixel,
-			&game->line_length, &game->endian);*/
 }
 
 void	put_image(t_game *game, t_img *img)
@@ -64,19 +60,26 @@ void	put_image(t_game *game, t_img *img)
 		{
 			if (game->map[game->y][game->x] == '1')
 				mlx_put_image_to_window(game->mlx, game->win,
-					img->wall, (game->x * 16), (game->y * 16));
+					img->wall, game->x * 16, game->y * 16);
 			else if (game->map[game->y][game->x] == '0')
 				mlx_put_image_to_window(game->mlx, game->win,
-					img->floor, (game->x * 16), (game->y * 16));
+					img->floor, game->x * 16, game->y * 16);
 			else if (game->map[game->y][game->x] == 'P')
+			{
 				mlx_put_image_to_window(game->mlx, game->win,
-					img->player, (game->x * 16), (game->y * 16));
+					img->player, game->x * 16, game->y * 16);
+				game->px = game->x;
+				game->py = game->y;
+			}
 			else if (game->map[game->y][game->x] == 'C')
+			{
 				mlx_put_image_to_window(game->mlx, game->win,
-					img->collect, (game->x * 16), (game->y * 16));
+					img->collect, game->x * 16, game->y * 16);
+				game->cs++;
+			}
 			else if (game->map[game->y][game->x] == 'E')
 				mlx_put_image_to_window(game->mlx, game->win,
-					img->exit, (game->x * 16), (game->y * 16));
+					img->exit, game->x * 16, game->y * 16);
 			game->x++;
 		}
 		game->y++;
