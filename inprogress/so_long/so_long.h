@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 17:20:43 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/04/20 21:18:59 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/04/26 11:12:18 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ typedef struct s_game
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	int		py;
+	int		px;
+	int		moves;
 }			t_game;
 
 typedef struct s_img
@@ -53,6 +56,11 @@ void	hold_map_m(t_game *game, t_img *img, char **av);
 void	put_image(t_game *game, t_img *img);
 void	load_img(t_game *game, t_img *img);
 void	initialize(t_game *game, t_img *img);
+void	move_up(t_game *game, t_img *img);
+void	move_down(t_game *game, t_img *img);
+void	move_left(t_game *game, t_img *img);
+void	move_right(t_game *game, t_img *img);
+char	*freehim(char *str, int fd);
 
 # define ESC 65307
 # define W 119

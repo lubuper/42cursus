@@ -6,7 +6,7 @@
 #    By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/06 14:06:52 by lde-sous          #+#    #+#              #
-#    Updated: 2023/04/18 19:07:38 by lde-sous         ###   ########.fr        #
+#    Updated: 2023/04/26 11:05:37 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ MLXFLAGS = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -
 SRC = test.c \
       map_validation.c \
       test2.c \
-      put_imgs.c
+      put_imgs.c \
+      move_ops.c
 
 OBJ = $(SRC:%.c=%.o)
 RM = rm -rf

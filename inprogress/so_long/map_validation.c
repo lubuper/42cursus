@@ -6,12 +6,24 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 17:46:00 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/04/20 21:26:47 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/04/21 19:16:49 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/*char	*freehim(char *str, int fd)
+{
+	char	*temp;
+
+	temp = get_next_line(fd);
+	str = temp;
+	ft_printf("temp = %s\n", temp);
+	free (temp);
+	ft_printf("str = %s\n", str);
+	return (str);
+}
+*/
 int	check_mapfile(char **av)
 {
 	int	sufixp;
