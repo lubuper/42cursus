@@ -6,7 +6,7 @@
 #    By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/06 14:06:52 by lde-sous          #+#    #+#              #
-#    Updated: 2023/04/26 19:02:06 by lde-sous         ###   ########.fr        #
+#    Updated: 2023/04/28 21:42:24 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,10 +16,12 @@ CC = cc
 CFLAGS = -Wextra -Wall -Werror -g
 MLXFLAGS = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 SRC = test.c \
-      map_validation.c \
+      map_val1.c \
+      map_val2.c \
       test2.c \
       put_imgs.c \
-      move_ops.c
+      move_ops.c \
+      check_utils.c
 
 OBJ = $(SRC:%.c=%.o)
 RM = rm -rf

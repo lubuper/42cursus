@@ -6,13 +6,13 @@
 /*   By: lde-sous <lde-sous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:23:28 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/02/15 18:03:25 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/04/28 20:12:20 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft.h"
 
-char	*get_next_line(int fd)
+char	*get_next_line(int fd, bool is_file)
 {
 	char		*outline;
 	static char	*fixed_str;
@@ -23,6 +23,11 @@ char	*get_next_line(int fd)
 	if (!fixed_str)
 		return (NULL);
 	outline = ft_gline(fixed_str);
+	if (!is_file)
+	{
+		free (fixed_str);
+		return (NULL);
+	}
 	fixed_str = save_rest(fixed_str);
 	return (outline);
 }

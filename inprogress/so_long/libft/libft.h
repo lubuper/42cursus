@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 15:25:40 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/11/16 10:06:14 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/04/28 20:11:16 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <strings.h>
 # include <stdarg.h>
 # include <fcntl.h>
+# include <stdbool.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 4
@@ -86,7 +87,7 @@ void	*ft_memchr(const void *s, int c, size_t n);
 void	*ft_memmove(void *dest, const void *src, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
 
-char	*get_next_line(int fd);
+char	*get_next_line(int fd, bool is_file);
 char	*readnsave(int fd, char *str);
 char	*save_rest(char *str);
 char	*ft_gline(char *str);

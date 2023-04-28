@@ -6,24 +6,12 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 17:46:00 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/04/21 19:16:49 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/04/28 20:19:13 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-/*char	*freehim(char *str, int fd)
-{
-	char	*temp;
-
-	temp = get_next_line(fd);
-	str = temp;
-	ft_printf("temp = %s\n", temp);
-	free (temp);
-	ft_printf("str = %s\n", str);
-	return (str);
-}
-*/
 int	check_mapfile(char **av)
 {
 	int	sufixp;
@@ -50,7 +38,7 @@ int	check_mapfile(char **av)
 		return (0);
 }
 
-void	valid_shape(t_game *game, t_img *img)
+void	valid_shape(t_game *game)
 {
 	game->y = 0;
 	while (game->y < game->lines - 2)
@@ -59,13 +47,13 @@ void	valid_shape(t_game *game, t_img *img)
 			|| game->cols == game->lines)
 		{
 			ft_printf("Error: invalid map shape\n");
-			free_the_code(game, img);
+			free_the_code(game);
 		}
 		game->y++;
 	}
 }
 
-void	valid_walls(t_game *game, t_img *img)
+void	valid_walls(t_game *game)
 {
 	game->y = 0;
 	game->x = 0;
@@ -74,7 +62,7 @@ void	valid_walls(t_game *game, t_img *img)
 		if (game->map[game->y][0] != game->map[game->y][game->cols - 1])
 		{
 			ft_printf("Error: walls are not in place\n");
-			free_the_code(game, img);
+			free_the_code(game);
 		}
 		game->y++;
 	}
@@ -83,7 +71,7 @@ void	valid_walls(t_game *game, t_img *img)
 		if (game->map[0][game->x] != game->map[game->lines - 1][game->x])
 		{
 			ft_printf("Error: walls are not in place\n");
-			free_the_code(game, img);
+			free_the_code(game);
 		}
 		game->x++;
 	}
@@ -100,7 +88,7 @@ void	negate_n(t_game *game)
 		game->map[y++][game->cols - 1] = 0;
 }
 
-void	hold_map_m(t_game *game, t_img *img, char **av)
+void	hold_map_m(t_game *game, char **av)
 {
 	int	fd;
 	int	rows;
@@ -108,23 +96,23 @@ void	hold_map_m(t_game *game, t_img *img, char **av)
 	game->y = 0;
 	game->lines = 0;
 	fd = open(av[1], O_RDONLY);
-	game->cols = ft_strlen(get_next_line(fd));
+	game->cols = ft_strlen(get_next_line(fd, true));
 	close(fd);
 	fd = open(av[1], O_RDONLY);
-	while (get_next_line(fd) != 0)
+	while (get_next_line(fd, true) != 0)
 		game->lines++;
 	close(fd);
 	game->map = malloc(sizeof(char *) * game->lines);
 	if (!game->map)
-		free_the_code(game, img);
+		free_the_code(game);
 	fd = open(av[1], O_RDONLY);
 	rows = game->lines;
 	while (rows-- > 0)
-		game->map[game->y++] = get_next_line(fd);
+		game->map[game->y++] = get_next_line(fd, true);
 	close(fd);
 	negate_n(game);
 	game->cols--;
-	valid_shape(game, img);
-	valid_walls(game, img);
-	check_map(game, img);
+	valid_shape(game);
+	valid_walls(game);
+	check_map(game);
 }

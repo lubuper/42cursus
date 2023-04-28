@@ -6,13 +6,13 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 20:10:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/04/26 18:41:20 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/04/28 19:31:34 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	initialize(t_game *game, t_img *img)
+void	initialize(t_game *game)
 {
 	game->mlx = 0;
 	game->win = 0;
@@ -29,51 +29,45 @@ void	initialize(t_game *game, t_img *img)
 	game->endian = 0;
 	game->moves = 0;
 	game->cs = 0;
-	img->width = 16;
-	img->height = 16;
-	img->player = 0;
-	img->floor = 0;
-	img->wall = 0;
-	img->exit = 0;
-	img->collect = 0;
+	game->i.width = 16;
+	game->i.height = 16;
+	game->i.player = 0;
+	game->i.floor = 0;
+	game->i.wall = 0;
+	game->i.exit = 0;
+	game->i.collect = 0;
 }
 
-void	free_the_code(t_game *game, t_img *img)
+void	free_the_code(t_game *game)
 {
 	if (game->map)
-		free(game->map);
-	if (img)
 	{
-/*	mlx_destroy_image(game->mlx, IMG_WALL);
-	mlx_destroy_image(game->mlx, IMG_PLAYER);
-	mlx_destroy_image(game->mlx, IMG_COLLECT);
-	mlx_destroy_image(game->mlx, IMG_FLOOR);
-	mlx_destroy_image(game->mlx, IMG_EXIT);*/
+		free(game->map);
 	}
 	exit (1);
 }
 
-int	close_win(t_game *game, t_img *img)
+int	close_win(t_game *game)
 {
 	mlx_destroy_window(game->mlx, game->win);
-	free_the_code(game, img);
-	return(0);
+	free_the_code(game);
+	return (0);
 }
 
-int	key_map(int keycode, t_game *game, t_img *img)
+int	key_map(int keycode, t_game *game)
 {
 	if (keycode == ESC || keycode == M_CLICK_X)
 	{
 		mlx_destroy_window(game->mlx, game->win);
-		free_the_code(game, img);
+		free_the_code(game);
 	}
 	else if (keycode == W)
-		move_up(game, img);
+		move_up(game);
 	else if (keycode == S)
-		move_down(game, img);
+		move_down(game);
 	else if (keycode == A)
-		move_left(game, img);
+		move_left(game);
 	else if (keycode == D)
-		move_right(game, img);
+		move_right(game);
 	return (0);
 }
