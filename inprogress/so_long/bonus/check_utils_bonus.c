@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_utils.c                                      :+:      :+:    :+:   */
+/*   check_utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	ecount(t_game *game, char c)
 {
@@ -45,7 +45,7 @@ void	check_map(t_game *game)
 		{
 			if (!(game->map[y][x] == '1' || game->map[y][x] == '0'
 				|| game->map[y][x] == 'P' || game->map[y][x] == 'C'
-					|| game->map[y][x] == 'E'))
+					|| game->map[y][x] == 'E' || game->map[y][x] == 'M'))
 			{
 				ft_putstr_fd("Error\nInvalid map element!\n", 2);
 				free_the_code(game);

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test2.c                                            :+:      :+:    :+:   */
+/*   events_bonus.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 20:10:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/04/28 19:31:34 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/01 15:55:03 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	initialize(t_game *game)
 {
@@ -36,6 +36,8 @@ void	initialize(t_game *game)
 	game->i.wall = 0;
 	game->i.exit = 0;
 	game->i.collect = 0;
+	game->i.mob = 0;
+	game->flag = 0;
 }
 
 void	free_the_code(t_game *game)
@@ -44,6 +46,8 @@ void	free_the_code(t_game *game)
 	{
 		free(game->map);
 	}
+	if (game->mlx)
+		mlx_destroy_window(game->mlx, game->win);
 	exit (1);
 }
 
@@ -57,10 +61,7 @@ int	close_win(t_game *game)
 int	key_map(int keycode, t_game *game)
 {
 	if (keycode == ESC || keycode == M_CLICK_X)
-	{
-		mlx_destroy_window(game->mlx, game->win);
 		free_the_code(game);
-	}
 	else if (keycode == W)
 		move_up(game);
 	else if (keycode == S)

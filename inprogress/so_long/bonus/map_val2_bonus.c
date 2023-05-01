@@ -1,46 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_val2.c                                         :+:      :+:    :+:   */
+/*   map_val2_bonus.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 21:41:49 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/01 20:06:53 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/01 15:44:44 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
-void	valid_path(t_game *game)
-{
-	char	**temp;
-	int		y;
-	int		x;
-	int		flag;
-
-	flag = 0;
-	y = game->py;
-	x = game->px;
-	temp = game->map;
-	temp[y][x] = '0';
-	while (temp[y][x] != 'E')
-	{
-		if (temp[y][x] == '0')
-		{
-			temp[y][x] = 'V';
-			if (temp[y][x + 1] == 0)
-				flag++;
-			if (temp[y][x - 1] == 0)
-				flag++;
-			if (temp[y + 1][x] == 0)
-				flag++;
-			if (temp[y - 1][x] == 0)
-				flag++;
-		}
-
-	}
-}
 void	startpos(t_game *game)
 {
 	game->y = 0;
@@ -75,6 +46,11 @@ void	moving_checks(t_game *game)
 			ft_printf("Congratulations! Level Complete!\n");
 			free_the_code(game);
 		}
+	}
+	else if (game->map[game->py][game->px] == 'M')
+	{
+		ft_printf("GAME OVER! Try again!\n");
+		free_the_code(game);
 	}
 }
 

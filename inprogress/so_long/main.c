@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 15:11:35 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/04/28 17:46:55 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/01 15:01:40 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int ac, char **av)
 
 	if (ac > 2)
 	{
-		ft_printf("Error: wrong input\n");
+		ft_putstr_fd("Error\nWrong input!\n", 2);
 		exit(1);
 	}
 	initialize(&game);
@@ -26,7 +26,8 @@ int	main(int ac, char **av)
 	hold_map_m(&game, av);
 	final_checks(&game);
 	game.mlx = mlx_init();
-	game.win = mlx_new_window(game.mlx, 16 * game.cols, 16 * (game.lines), "so_long");
+	game.win = mlx_new_window(game.mlx, 16 * game.cols, 16 * (game.lines),
+			"so_long");
 	load_i(&game);
 	put_image(&game);
 	mlx_key_hook(game.win, key_map, &game);

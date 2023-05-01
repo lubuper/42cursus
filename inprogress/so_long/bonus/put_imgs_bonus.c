@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_imgs.c                                         :+:      :+:    :+:   */
+/*   put_imgs_bonus.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	load_i(t_game *game)
 {
@@ -24,7 +24,33 @@ void	load_i(t_game *game)
 		&game->i.width, &game->i.height);
 	game->i.exit = mlx_xpm_file_to_image(game->mlx, I_EXIT,
 		&game->i.width, &game->i.height);
+	game->i.mob = mlx_xpm_file_to_image(game->mlx, I_MOB,
+		&game->i.width, &game->i.height);
 }
+
+/*char	premove(t_game *game)
+{
+	
+}
+
+void	put_player(t_game *game)
+{
+	if (!premove)
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->i.splayer, game->x * 16, game->y * 16);
+	else if (premove == 'W')
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->i.wplayer, game->x * 16, game->y * 16);
+	else if (premove == 'A')
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->i.aplayer, game->x * 16, game->y * 16);
+	else if (premove == 'S')
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->i.splayer, game->x * 16, game->y * 16);
+	else if (premove == 'D')
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->i.dplayer, game->x * 16, game->y * 16);
+}*/
 
 void	choose_img(t_game *game)
 {
@@ -43,6 +69,9 @@ void	choose_img(t_game *game)
 	else if (game->map[game->y][game->x] == 'E')
 		mlx_put_image_to_window(game->mlx, game->win,
 			game->i.exit, game->x * 16, game->y * 16);
+	else if (game->map[game->y][game->x] == 'M')
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->i.mob, game->x * 16, game->y * 16);
 }
 
 void	put_image(t_game *game)

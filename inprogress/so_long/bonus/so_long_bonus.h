@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 # include "./libft/libft.h"
 # include "./mlx_linux/mlx.h"
 
@@ -24,6 +24,7 @@ typedef struct s_i
 	void	*wall;
 	void	*exit;
 	void	*collect;
+	void	*mob;
 }			t_i;
 
 typedef struct s_game
@@ -81,5 +82,6 @@ void	free_the_code(t_game *game);
 # define I_COLLECT "./textures/collect.xpm"
 # define I_FLOOR "./textures/floor.xpm"
 # define I_EXIT "./textures/exit.xpm"
+# define I_MOB "./textures/mob.xpm"
 
 #endif
