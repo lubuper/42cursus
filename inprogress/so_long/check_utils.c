@@ -12,6 +12,56 @@
 
 #include "so_long.h"
 
+int	gnllen(int fd)
+{
+	char	*temp;
+	int		len;
+
+	temp = 0;
+	len = 0;
+	temp = get_next_line(fd, true);
+	len = ft_strlen(temp);
+	free (temp);
+	return (len);
+}
+
+int	gnllines(int fd)
+{
+	int		count;
+	char	*temp;
+
+	count = 0;
+	while (1)
+	{
+		temp = get_next_line(fd, true);
+		if (!temp)
+		{
+			free (temp);
+			break ;
+		}
+		count++;
+		free (temp);
+		temp = 0;
+	}
+	return (count);
+}
+
+void	gnlfreed(t_game *game, int fd)
+{
+	char	*temp;
+
+	while (1)
+	{
+		temp = get_next_line(fd, true);
+		if (!temp)
+		{
+			free (temp);
+			break ;
+		}
+		game->map[game->y++] = temp;
+	}
+}
+
 int	ecount(t_game *game, char c)
 {
 	int	count;
@@ -54,7 +104,7 @@ void	check_map(t_game *game)
 		}
 			y++;
 	}
-	if (ecount(game, 'P') > 1 || ecount(game, 'E') > 1 || ecount(game, 'C') < 1)
+	if (ecount(game, 'P') != 1 || ecount(game, 'E') != 1 || ecount(game, 'C') < 1)
 	{
 		ft_putstr_fd("Error\nInvalid number of map elements!\n", 2);
 		free_the_code(game);

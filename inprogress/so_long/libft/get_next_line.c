@@ -29,6 +29,11 @@ char	*get_next_line(int fd, bool is_file)
 		return (NULL);
 	}
 	fixed_str = save_rest(fixed_str);
+	if (fixed_str)
+	{
+		free (fixed_str);
+		fixed_str = 0;
+	}
 	return (outline);
 }
 

@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 17:46:00 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/01 15:09:12 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/02 20:39:04 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,19 +96,17 @@ void	hold_map_m(t_game *game, char **av)
 	game->y = 0;
 	game->lines = 0;
 	fd = open(av[1], O_RDONLY);
-	game->cols = ft_strlen(get_next_line(fd, true));
+	game->cols = gnllen(fd);
 	close(fd);
 	fd = open(av[1], O_RDONLY);
-	while (get_next_line(fd, true) != 0)
-		game->lines++;
+		game->lines = gnllines(fd);
 	close(fd);
 	game->map = malloc(sizeof(char *) * game->lines);
 	if (!game->map)
 		free_the_code(game);
 	fd = open(av[1], O_RDONLY);
 	rows = game->lines;
-	while (rows-- > 0)
-		game->map[game->y++] = get_next_line(fd, true);
+	gnlfreed(game, fd);
 	close(fd);
 	negate_n(game);
 	game->cols--;

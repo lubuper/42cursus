@@ -1,7 +1,7 @@
 /* XPM */
 static char * collect_xpm[] = {
 "16 16 19 1",
-" 	c None",
+" 	c #B6B37B",
 ".	c #171717",
 "+	c #6A4632",
 "@	c #DDAA6B",

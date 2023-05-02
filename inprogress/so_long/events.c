@@ -42,11 +42,18 @@ void	initialize(t_game *game)
 void	free_the_code(t_game *game)
 {
 	if (game->map)
-	{
 		free(game->map);
-	}
 	if (game->mlx)
+	{
+		mlx_destroy_image(game->mlx, game->i.player);
+		mlx_destroy_image(game->mlx, game->i.floor);
+		mlx_destroy_image(game->mlx, game->i.wall);
+		mlx_destroy_image(game->mlx, game->i.exit);
+		mlx_destroy_image(game->mlx, game->i.collect);
 		mlx_destroy_window(game->mlx, game->win);
+		mlx_destroy_display(game->mlx);
+		free(game->mlx);
+	}
 	exit (1);
 }
 
