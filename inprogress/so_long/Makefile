@@ -6,7 +6,7 @@
 #    By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/06 14:06:52 by lde-sous          #+#    #+#              #
-#    Updated: 2023/05/02 20:09:05 by lde-sous         ###   ########.fr        #
+#    Updated: 2023/05/03 11:02:44 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,16 +24,16 @@ SRC = main.c \
       move_ops.c \
       check_utils.c
 
-SRC_BONUS = /bonus/main_bonus.c \
-	    /bonus/map_val1_bonus.c \
-	    /bonus/map_val2_bonus.c \
-	    /bonus/events_bonus.c \
-	    /bonus/put_imgs_bonus.c \
-	    /bonus/move_ops_bonus.c \
-	    /bonus/check_utils_bonus.c
+SRC_BONUS = main_bonus.c \
+	    map_val1_bonus.c \
+	    map_val2_bonus.c \
+	    events_bonus.c \
+	    put_imgs_bonus.c \
+	    move_ops_bonus.c \
+	    check_utils_bonus.c
 
 OBJ = $(SRC:%.c=%.o)
-OBJ_BONUS = $(SRC_BONUS:.c=.o)
+OBJ_BONUS = $(SRC_BONUS:%.c=%.o)
 RM = rm -rf
 
 all: $(NAME)

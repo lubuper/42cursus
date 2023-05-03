@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events_bonus.c                                            :+:      :+:    :+:   */
+/*   events_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 20:10:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/01 15:55:03 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/03 10:55:03 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,20 +40,27 @@ void	initialize(t_game *game)
 	game->flag = 0;
 }
 
-void	free_the_code(t_game *game)
+void    free_the_code(t_game *game)
 {
-	if (game->map)
-	{
-		free(game->map);
-	}
-	if (game->mlx)
-		mlx_destroy_window(game->mlx, game->win);
-	exit (1);
+        if (game->map)
+                free(game->map);
+        if (game->mlx)
+        {
+                mlx_destroy_image(game->mlx, game->i.player);
+                mlx_destroy_image(game->mlx, game->i.floor);
+                mlx_destroy_image(game->mlx, game->i.wall);
+                mlx_destroy_image(game->mlx, game->i.exit);
+                mlx_destroy_image(game->mlx, game->i.collect);
+                mlx_destroy_image(game->mlx, game->i.mob);
+                mlx_destroy_window(game->mlx, game->win);
+                mlx_destroy_display(game->mlx);
+                free(game->mlx);
+        }
+        exit (1);
 }
 
 int	close_win(t_game *game)
 {
-	mlx_destroy_window(game->mlx, game->win);
 	free_the_code(game);
 	return (0);
 }

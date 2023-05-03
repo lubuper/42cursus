@@ -1,16 +1,66 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_utils_bonus.c                                      :+:      :+:    :+:   */
+/*   check_utils_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 20:45:29 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/01 15:10:18 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/03 10:45:02 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
+
+int     gnllen(int fd)
+{
+        char    *temp;
+        int             len;
+
+        temp = 0;
+        len = 0;
+        temp = get_next_line(fd, true);
+        len = ft_strlen(temp);
+        free (temp);
+        return (len);
+}
+
+int     gnllines(int fd)
+{
+        int             count;
+        char    *temp;
+
+        count = 0;
+        while (1)
+        {
+                temp = get_next_line(fd, true);
+                if (!temp)
+                {
+                        free (temp);
+                        break ;
+                }
+                count++;
+                free (temp);
+                temp = 0;
+        }
+        return (count);
+}
+
+void    gnlfreed(t_game *game, int fd)
+{
+        char    *temp;
+
+        while (1)
+        {
+                temp = get_next_line(fd, true);
+                if (!temp)
+                {
+                        free (temp);
+                        break ;
+                }
+                game->map[game->y++] = temp;
+        }
+}
 
 int	ecount(t_game *game, char c)
 {
@@ -54,7 +104,7 @@ void	check_map(t_game *game)
 		}
 			y++;
 	}
-	if (ecount(game, 'P') > 1 || ecount(game, 'E') > 1 || ecount(game, 'C') < 1)
+	if (ecount(game, 'P') != 1 || ecount(game, 'E') != 1 || ecount(game, 'C') < 1)
 	{
 		ft_putstr_fd("Error\nInvalid number of map elements!\n", 2);
 		free_the_code(game);

@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 17:46:00 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/02 20:39:04 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/03 00:47:32 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ void	negate_n(t_game *game)
 void	hold_map_m(t_game *game, char **av)
 {
 	int	fd;
-	int	rows;
 
 	game->y = 0;
 	game->lines = 0;
@@ -105,7 +104,6 @@ void	hold_map_m(t_game *game, char **av)
 	if (!game->map)
 		free_the_code(game);
 	fd = open(av[1], O_RDONLY);
-	rows = game->lines;
 	gnlfreed(game, fd);
 	close(fd);
 	negate_n(game);
