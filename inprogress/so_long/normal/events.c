@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 20:10:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/03 10:53:10 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/04 19:09:29 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	initialize(t_game *game)
 	game->win = 0;
 	game->addr = 0;
 	game->map = 0;
+	game->mapd = 0;
 	game->lines = 0;
 	game->cols = 0;
 	game->x = 0;

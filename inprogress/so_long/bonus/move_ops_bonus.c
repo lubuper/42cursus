@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 11:05:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/04 10:53:56 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/04 17:16:46 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	move_up(t_game *game)
 		game->moves++;
 		game->map[game->py][game->px] = 'P';
 		game->map[game->py + 1][game->px] = '0';
+		is_mob(game);
 		put_image(game);
 		ft_printf("Move count = %d\n", game->moves);
 	}
@@ -56,6 +57,7 @@ void	move_down(t_game *game)
 		game->moves++;
 		game->map[game->py][game->px] = 'P';
 		game->map[game->py - 1][game->px] = '0';
+		is_mob(game);
 		put_image(game);
 		ft_printf("Move count = %d\n", game->moves);
 	}
@@ -74,6 +76,7 @@ void	move_left(t_game *game)
 		game->moves++;
 		game->map[game->py][game->px] = 'P';
 		game->map[game->py][game->px + 1] = '0';
+		is_mob(game);
 		put_image(game);
 		ft_printf("Move count = %d\n", game->moves);
 	}
@@ -92,6 +95,7 @@ void	move_right(t_game *game)
 		game->moves++;
 		game->map[game->py][game->px] = 'P';
 		game->map[game->py][game->px - 1] = '0';
+		is_mob(game);
 		put_image(game);
 		ft_printf("Move count = %d\n", game->moves);
 	}

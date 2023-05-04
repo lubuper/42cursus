@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 19:36:07 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/01 14:13:30 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/04 21:39:42 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,42 +15,18 @@
 void	load_i(t_game *game)
 {
 	game->i.wall = mlx_xpm_file_to_image(game->mlx, I_WALL,
-		&game->i.width, &game->i.height);
+			&game->i.width, &game->i.height);
 	game->i.player = mlx_xpm_file_to_image(game->mlx, I_PLAYER,
-		&game->i.width, &game->i.height);
+			&game->i.width, &game->i.height);
 	game->i.collect = mlx_xpm_file_to_image(game->mlx, I_COLLECT,
-		&game->i.width, &game->i.height);
+			&game->i.width, &game->i.height);
 	game->i.floor = mlx_xpm_file_to_image(game->mlx, I_FLOOR,
-		&game->i.width, &game->i.height);
+			&game->i.width, &game->i.height);
 	game->i.exit = mlx_xpm_file_to_image(game->mlx, I_EXIT,
-		&game->i.width, &game->i.height);
+			&game->i.width, &game->i.height);
 	game->i.mob = mlx_xpm_file_to_image(game->mlx, I_MOB,
-		&game->i.width, &game->i.height);
+			&game->i.width, &game->i.height);
 }
-
-/*char	premove(t_game *game)
-{
-	
-}
-
-void	put_player(t_game *game)
-{
-	if (!premove)
-		mlx_put_image_to_window(game->mlx, game->win,
-			game->i.splayer, game->x * 16, game->y * 16);
-	else if (premove == 'W')
-		mlx_put_image_to_window(game->mlx, game->win,
-			game->i.wplayer, game->x * 16, game->y * 16);
-	else if (premove == 'A')
-		mlx_put_image_to_window(game->mlx, game->win,
-			game->i.aplayer, game->x * 16, game->y * 16);
-	else if (premove == 'S')
-		mlx_put_image_to_window(game->mlx, game->win,
-			game->i.splayer, game->x * 16, game->y * 16);
-	else if (premove == 'D')
-		mlx_put_image_to_window(game->mlx, game->win,
-			game->i.dplayer, game->x * 16, game->y * 16);
-}*/
 
 void	choose_img(t_game *game)
 {

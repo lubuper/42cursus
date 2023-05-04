@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_bonus.h                                          :+:      :+:    :+:   */
+/*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 17:20:43 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/01 14:01:50 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/04 22:11:11 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_BONUS_H
-# define SO_LONG_BONUS_H
+#ifndef SO_LONG_H
+# define SO_LONG_H
 # include "./libft/libft.h"
 # include "./mlx_linux/mlx.h"
 
@@ -24,7 +24,6 @@ typedef struct s_i
 	void	*wall;
 	void	*exit;
 	void	*collect;
-	void	*mob;
 }			t_i;
 
 typedef struct s_game
@@ -33,6 +32,7 @@ typedef struct s_game
 	void	*win;
 	char	*addr;
 	char	**map;
+	char	**mapd;
 	t_i		i;
 	int		cs;
 	int		lines;
@@ -52,9 +52,13 @@ int		key_map(int keycode, t_game *game);
 int		ecount(t_game *game, char c);
 int		check_mapfile(char **av);
 int		close_win(t_game *game);
+int		gnllen(int fd);
+int		gnllines(int fd);
+int		valid_path(t_game *game, char **map, int y, int x);
 void	initialize(t_game *game);
 void	startpos(t_game *game);
 void	hold_map_m(t_game *game, char **av);
+void	gnlfreed(t_game *game, int fd);
 void	negate_n(t_game *game);
 void	valid_shape(t_game *game);
 void	valid_walls(t_game *game);
@@ -82,6 +86,5 @@ void	free_the_code(t_game *game);
 # define I_COLLECT "./textures/collect.xpm"
 # define I_FLOOR "./textures/floor.xpm"
 # define I_EXIT "./textures/exit.xpm"
-# define I_MOB "./textures/mob.xpm"
 
 #endif

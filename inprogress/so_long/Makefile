@@ -6,7 +6,7 @@
 #    By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/06 14:06:52 by lde-sous          #+#    #+#              #
-#    Updated: 2023/05/03 11:02:44 by lde-sous         ###   ########.fr        #
+#    Updated: 2023/05/04 17:06:09 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ SRC_BONUS = main_bonus.c \
 	    events_bonus.c \
 	    put_imgs_bonus.c \
 	    move_ops_bonus.c \
-	    check_utils_bonus.c
+	    check_utils_bonus.c \
+	    move_mobs.c
 
 OBJ = $(SRC:%.c=%.o)
 OBJ_BONUS = $(SRC_BONUS:%.c=%.o)

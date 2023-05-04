@@ -15,15 +15,15 @@
 void	load_i(t_game *game)
 {
 	game->i.wall = mlx_xpm_file_to_image(game->mlx, I_WALL,
-		&game->i.width, &game->i.height);
+			&game->i.width, &game->i.height);
 	game->i.player = mlx_xpm_file_to_image(game->mlx, I_PLAYER,
-		&game->i.width, &game->i.height);
+			&game->i.width, &game->i.height);
 	game->i.collect = mlx_xpm_file_to_image(game->mlx, I_COLLECT,
-		&game->i.width, &game->i.height);
+			&game->i.width, &game->i.height);
 	game->i.floor = mlx_xpm_file_to_image(game->mlx, I_FLOOR,
-		&game->i.width, &game->i.height);
+			&game->i.width, &game->i.height);
 	game->i.exit = mlx_xpm_file_to_image(game->mlx, I_EXIT,
-		&game->i.width, &game->i.height);
+			&game->i.width, &game->i.height);
 }
 
 void	choose_img(t_game *game)

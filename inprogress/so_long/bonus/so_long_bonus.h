@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 17:20:43 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/01 14:01:50 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/04 17:25:34 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 # include "./libft/libft.h"
 # include "./mlx_linux/mlx.h"
 
@@ -24,6 +24,7 @@ typedef struct s_i
 	void	*wall;
 	void	*exit;
 	void	*collect;
+	void	*mob;
 }			t_i;
 
 typedef struct s_game
@@ -32,6 +33,7 @@ typedef struct s_game
 	void	*win;
 	char	*addr;
 	char	**map;
+	char	**mapd;
 	t_i		i;
 	int		cs;
 	int		lines;
@@ -42,7 +44,9 @@ typedef struct s_game
 	int		line_length;
 	int		endian;
 	int		py;
+	int		my;
 	int		px;
+	int		mx;
 	int		moves;
 	int		flag;
 }			t_game;
@@ -53,6 +57,7 @@ int		check_mapfile(char **av);
 int		close_win(t_game *game);
 int		gnllen(int fd);
 int		gnllines(int fd);
+int		valid_path(t_game *game, char **map, int y, int x);
 void	initialize(t_game *game);
 void	startpos(t_game *game);
 void	hold_map_m(t_game *game, char **av);
@@ -71,6 +76,13 @@ void	move_up(t_game *game);
 void	move_down(t_game *game);
 void	move_left(t_game *game);
 void	move_right(t_game *game);
+void	is_mob(t_game *game);
+void	mob_move(t_game *game);
+void	mob_up(t_game *game);
+void	mob_dn(t_game *game);
+void	mob_l(t_game *game);
+void	mob_r(t_game *game);
+void	mob_v(t_game *game);
 void	free_the_code(t_game *game);
 
 # define ESC 65307
@@ -84,5 +96,6 @@ void	free_the_code(t_game *game);
 # define I_COLLECT "./textures/collect.xpm"
 # define I_FLOOR "./textures/floor.xpm"
 # define I_EXIT "./textures/exit.xpm"
+# define I_MOB "./textures/mob.xpm"
 
 #endif

@@ -1,46 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_val2.c                                         :+:      :+:    :+:   */
+/*   map_val2_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 21:41:49 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/01 20:06:53 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/05 00:13:16 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
-void	valid_path(t_game *game)
+int	valid_path(t_game *game, char **map, int y, int x)
 {
-	char	**temp;
-	int		y;
-	int		x;
-	int		flag;
+	static int	wayout;
+	static int	pickup;
 
-	flag = 0;
-	y = game->py;
-	x = game->px;
-	temp = game->map;
-	temp[y][x] = '0';
-	while (temp[y][x] != 'E')
+	if (map[y][x] == 'E')
 	{
-		if (temp[y][x] == '0')
-		{
-			temp[y][x] = 'V';
-			if (temp[y][x + 1] == 0)
-				flag++;
-			if (temp[y][x - 1] == 0)
-				flag++;
-			if (temp[y + 1][x] == 0)
-				flag++;
-			if (temp[y - 1][x] == 0)
-				flag++;
-		}
-
+		wayout = 1;
+		return (0);
 	}
+	if (map[y][x] == 'C')
+		pickup++;
+	if (map[y][x] == '1' || x > game->cols || y > game->lines
+			|| map[y][x] == 'V' || map[y][x] == 'M')
+		return (0);
+	map[y][x] = 'V';
+	valid_path(game, game->mapd, y + 1, x);
+	valid_path(game, game->mapd, y - 1, x);
+	valid_path(game, game->mapd, y, x + 1);
+	valid_path(game, game->mapd, y, x - 1);
+	if (wayout == 1 && pickup == game->cs)
+		return (1);
+	else
+		return (0);
 }
+
 void	startpos(t_game *game)
 {
 	game->y = 0;
@@ -76,9 +73,20 @@ void	moving_checks(t_game *game)
 			free_the_code(game);
 		}
 	}
+	else if (game->map[game->py][game->px] == 'M')
+	{
+		ft_printf("GAME OVER! Try again!\n");
+		free_the_code(game);
+	}
 }
 
 void	final_checks(t_game *game)
 {
 	startpos(game);
+	if (valid_path(game, game->mapd, game->py, game->px) == 0)
+	{
+		ft_putstr_fd("Error\nMap exit unreachable!\n", 2);
+		free_the_code(game);
+	}
+	free(game->mapd);
 }

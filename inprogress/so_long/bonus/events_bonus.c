@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 20:10:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/03 10:55:03 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/04 21:38:39 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	initialize(t_game *game)
 	game->win = 0;
 	game->addr = 0;
 	game->map = 0;
+	game->mapd = 0;
 	game->lines = 0;
 	game->cols = 0;
 	game->x = 0;
@@ -40,23 +41,23 @@ void	initialize(t_game *game)
 	game->flag = 0;
 }
 
-void    free_the_code(t_game *game)
+void	free_the_code(t_game *game)
 {
-        if (game->map)
-                free(game->map);
-        if (game->mlx)
-        {
-                mlx_destroy_image(game->mlx, game->i.player);
-                mlx_destroy_image(game->mlx, game->i.floor);
-                mlx_destroy_image(game->mlx, game->i.wall);
-                mlx_destroy_image(game->mlx, game->i.exit);
-                mlx_destroy_image(game->mlx, game->i.collect);
-                mlx_destroy_image(game->mlx, game->i.mob);
-                mlx_destroy_window(game->mlx, game->win);
-                mlx_destroy_display(game->mlx);
-                free(game->mlx);
-        }
-        exit (1);
+	if (game->map)
+		free(game->map);
+	if (game->mlx)
+	{
+		mlx_destroy_image(game->mlx, game->i.player);
+		mlx_destroy_image(game->mlx, game->i.floor);
+		mlx_destroy_image(game->mlx, game->i.wall);
+		mlx_destroy_image(game->mlx, game->i.exit);
+		mlx_destroy_image(game->mlx, game->i.collect);
+		mlx_destroy_image(game->mlx, game->i.mob);
+		mlx_destroy_window(game->mlx, game->win);
+		mlx_destroy_display(game->mlx);
+		free(game->mlx);
+	}
+	exit (1);
 }
 
 int	close_win(t_game *game)

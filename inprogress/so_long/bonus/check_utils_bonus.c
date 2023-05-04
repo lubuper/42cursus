@@ -6,60 +6,63 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 20:45:29 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/03 10:45:02 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/04 21:33:50 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-int     gnllen(int fd)
+int	gnllen(int fd)
 {
-        char    *temp;
-        int             len;
+	char	*temp;
+	int		len;
 
-        temp = 0;
-        len = 0;
-        temp = get_next_line(fd, true);
-        len = ft_strlen(temp);
-        free (temp);
-        return (len);
+	temp = 0;
+	len = 0;
+	temp = get_next_line(fd, true);
+	len = ft_strlen(temp);
+	free (temp);
+	return (len);
 }
 
-int     gnllines(int fd)
+int	gnllines(int fd)
 {
-        int             count;
-        char    *temp;
+	int		count;
+	char	*temp;
 
-        count = 0;
-        while (1)
-        {
-                temp = get_next_line(fd, true);
-                if (!temp)
-                {
-                        free (temp);
-                        break ;
-                }
-                count++;
-                free (temp);
-                temp = 0;
-        }
-        return (count);
+	count = 0;
+	while (1)
+	{
+		temp = get_next_line(fd, true);
+		if (!temp)
+		{
+			free (temp);
+			break ;
+		}
+		count++;
+		free (temp);
+		temp = 0;
+	}
+	return (count);
 }
 
-void    gnlfreed(t_game *game, int fd)
+void	gnlfreed(t_game *game, int fd)
 {
-        char    *temp;
+	char	*temp;
 
-        while (1)
-        {
-                temp = get_next_line(fd, true);
-                if (!temp)
-                {
-                        free (temp);
-                        break ;
-                }
-                game->map[game->y++] = temp;
-        }
+	game->y = 0;
+	while (1)
+	{
+		temp = get_next_line(fd, true);
+		if (!temp)
+		{
+			free (temp);
+			break ;
+		}
+		game->map[game->y] = temp;
+		game->mapd[game->y] = ft_strdup(temp);
+		game->y++;
+	}
 }
 
 int	ecount(t_game *game, char c)
@@ -87,8 +90,8 @@ void	check_map(t_game *game)
 	int	y;
 	int	x;
 
-	y = 0;
-	while (y < game->lines)
+	y = -1;
+	while (++y < game->lines)
 	{
 		x = 0;
 		while (x < game->cols)
@@ -102,9 +105,9 @@ void	check_map(t_game *game)
 			}
 			x++;
 		}
-			y++;
 	}
-	if (ecount(game, 'P') != 1 || ecount(game, 'E') != 1 || ecount(game, 'C') < 1)
+	if (ecount(game, 'P') != 1 || ecount(game, 'E') != 1
+		|| ecount(game, 'C') < 1)
 	{
 		ft_putstr_fd("Error\nInvalid number of map elements!\n", 2);
 		free_the_code(game);

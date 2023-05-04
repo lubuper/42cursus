@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_val1.c                                         :+:      :+:    :+:   */
+/*   map_val1_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 17:46:00 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/03 00:47:32 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/01 15:09:12 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	check_mapfile(char **av)
 {
@@ -85,7 +85,14 @@ void	negate_n(t_game *game)
 	lines = game->lines;
 	y = 0;
 	while (lines-- < 0)
-		game->map[y++][game->cols - 1] = 0;
+	{
+		if (game->map[y][game->cols - 1] == '\n')
+		{
+			game->map[y][game->cols - 1] = 0;
+			game->mapd[y][game->cols - 1] = 0;
+			y++;
+		}
+	}
 }
 
 void	hold_map_m(t_game *game, char **av)
@@ -101,6 +108,7 @@ void	hold_map_m(t_game *game, char **av)
 		game->lines = gnllines(fd);
 	close(fd);
 	game->map = malloc(sizeof(char *) * game->lines);
+	game->mapd = malloc(sizeof(char *) * game->lines);
 	if (!game->map)
 		free_the_code(game);
 	fd = open(av[1], O_RDONLY);

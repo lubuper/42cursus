@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 15:25:40 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/04/28 20:11:16 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/04 17:24:43 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <stdarg.h>
 # include <fcntl.h>
 # include <stdbool.h>
+# include <time.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1
