@@ -74,7 +74,7 @@ void	move_left(t_game *game)
 		game->moves++;
 		game->map[game->py][game->px] = 'P';
 		game->map[game->py][game->px + 1] = '0';
-		put_image(game);
+		put_image_l(game);
 		ft_printf("Move count = %d\n", game->moves);
 	}
 }
@@ -92,7 +92,7 @@ void	move_right(t_game *game)
 		game->moves++;
 		game->map[game->py][game->px] = 'P';
 		game->map[game->py][game->px - 1] = '0';
-		put_image(game);
+		put_image_r(game);
 		ft_printf("Move count = %d\n", game->moves);
 	}
 }

@@ -12,6 +12,35 @@
 
 #include "so_long.h"
 
+void	check_map(t_game *game)
+{
+	int	y;
+	int	x;
+
+	y = -1;
+	while (++y < game->lines)
+	{
+		x = 0;
+		while (x < game->cols)
+		{
+			if (!(game->map[y][x] == '1' || game->map[y][x] == '0'
+				|| game->map[y][x] == 'P' || game->map[y][x] == 'C'
+					|| game->map[y][x] == 'E'))
+			{
+				ft_putstr_fd("Error\nInvalid map element!\n", 2);
+				free_the_code(game);
+			}
+			x++;
+		}
+	}
+	if (ecount(game, 'P') != 1 || ecount(game, 'E') != 1
+		|| ecount(game, 'C') < 1)
+	{
+		ft_putstr_fd("Error\nInvalid number of map elements!\n", 2);
+		free_the_code(game);
+	}
+}
+
 int	valid_path(t_game *game, char **map, int y, int x)
 {
 	static int	wayout;
@@ -85,5 +114,4 @@ void	final_checks(t_game *game)
 		ft_putstr_fd("Error\nMap exit unreachable!\n", 2);
 		free_the_code(game);
 	}
-	free(game->mapd);
 }

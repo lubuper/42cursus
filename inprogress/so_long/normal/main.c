@@ -26,7 +26,7 @@ int	main(int ac, char **av)
 	hold_map_m(&game, av);
 	final_checks(&game);
 	game.mlx = mlx_init();
-	game.win = mlx_new_window(game.mlx, 16 * game.cols, 16 * (game.lines),
+	game.win = mlx_new_window(game.mlx, 64 * game.cols, 64 * (game.lines),
 			"so_long");
 	load_i(&game);
 	put_image(&game);

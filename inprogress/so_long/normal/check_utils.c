@@ -85,31 +85,15 @@ int	ecount(t_game *game, char c)
 	return (count);
 }
 
-void	check_map(t_game *game)
+void	init_imgs(t_game *game)
 {
-	int	y;
-	int	x;
-
-	y = -1;
-	while (++y < game->lines)
-	{
-		x = 0;
-		while (x < game->cols)
-		{
-			if (!(game->map[y][x] == '1' || game->map[y][x] == '0'
-				|| game->map[y][x] == 'P' || game->map[y][x] == 'C'
-					|| game->map[y][x] == 'E'))
-			{
-				ft_putstr_fd("Error\nInvalid map element!\n", 2);
-				free_the_code(game);
-			}
-			x++;
-		}
-	}
-	if (ecount(game, 'P') != 1 || ecount(game, 'E') != 1
-		|| ecount(game, 'C') < 1)
-	{
-		ft_putstr_fd("Error\nInvalid number of map elements!\n", 2);
-		free_the_code(game);
-	}
+	game->i.width = 64;
+	game->i.height = 64;
+	game->i.player = 0;
+	game->i.playerl = 0;
+	game->i.playerr = 0;
+	game->i.floor = 0;
+	game->i.wall = 0;
+	game->i.exit = 0;
+	game->i.collect = 0;
 }

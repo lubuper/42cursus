@@ -30,23 +30,14 @@ void	initialize(t_game *game)
 	game->endian = 0;
 	game->moves = 0;
 	game->cs = 0;
-	game->i.width = 16;
-	game->i.height = 16;
-	game->i.player = 0;
-	game->i.floor = 0;
-	game->i.wall = 0;
-	game->i.exit = 0;
-	game->i.collect = 0;
-	game->i.mob = 0;
 	game->flag = 0;
+	init_imgs(game);
 }
 
-void	free_the_code(t_game *game)
+void	destroy_imgs(t_game *game)
 {
-	if (game->map)
-		free(game->map);
-	if (game->mlx)
-	{
+		mlx_destroy_image(game->mlx, game->i.playerl);
+		mlx_destroy_image(game->mlx, game->i.playerr);
 		mlx_destroy_image(game->mlx, game->i.player);
 		mlx_destroy_image(game->mlx, game->i.floor);
 		mlx_destroy_image(game->mlx, game->i.wall);
@@ -56,7 +47,25 @@ void	free_the_code(t_game *game)
 		mlx_destroy_window(game->mlx, game->win);
 		mlx_destroy_display(game->mlx);
 		free(game->mlx);
+}
+
+void	free_the_code(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	if (game->map)
+	{
+		while (i < game->lines)
+		{
+			free(game->mapd[i]);
+			free(game->map[i++]);
+		}
+		free(game->map);
+		free(game->mapd);
 	}
+	if (game->mlx)
+		destroy_imgs(game);
 	exit (1);
 }
 

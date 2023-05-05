@@ -105,7 +105,7 @@ void	hold_map_m(t_game *game, char **av)
 	game->cols = gnllen(fd);
 	close(fd);
 	fd = open(av[1], O_RDONLY);
-		game->lines = gnllines(fd);
+	game->lines = gnllines(fd);
 	close(fd);
 	game->map = malloc(sizeof(char *) * game->lines);
 	game->mapd = malloc(sizeof(char *) * game->lines);

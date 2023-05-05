@@ -6,7 +6,7 @@
 #    By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/06 14:06:52 by lde-sous          #+#    #+#              #
-#    Updated: 2023/05/04 17:06:09 by lde-sous         ###   ########.fr        #
+#    Updated: 2023/05/05 23:34:16 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRC = main.c \
       map_val2.c \
       events.c \
       put_imgs.c \
+      put_imgs_two.c \
       move_ops.c \
       check_utils.c
 
@@ -29,6 +30,7 @@ SRC_BONUS = main_bonus.c \
 	    map_val2_bonus.c \
 	    events_bonus.c \
 	    put_imgs_bonus.c \
+	    put_imgs_two_bonus.c \
 	    move_ops_bonus.c \
 	    check_utils_bonus.c \
 	    move_mobs.c
