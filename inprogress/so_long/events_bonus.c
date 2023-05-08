@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 20:10:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/04 21:38:39 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/08 16:03:44 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,10 @@ void	destroy_imgs(t_game *game)
 		mlx_destroy_image(game->mlx, game->i.floor);
 		mlx_destroy_image(game->mlx, game->i.wall);
 		mlx_destroy_image(game->mlx, game->i.exit);
+		mlx_destroy_image(game->mlx, game->i.exit1);
+		mlx_destroy_image(game->mlx, game->i.exit2);
+		mlx_destroy_image(game->mlx, game->i.exit3);
+		mlx_destroy_image(game->mlx, game->i.exit4);
 		mlx_destroy_image(game->mlx, game->i.collect);
 		mlx_destroy_image(game->mlx, game->i.mob);
 		mlx_destroy_window(game->mlx, game->win);

@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 15:11:35 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/01 15:01:40 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/08 20:10:02 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int ac, char **av)
 	hold_map_m(&game, av);
 	final_checks(&game);
 	game.mlx = mlx_init();
-	game.win = mlx_new_window(game.mlx, 64 * game.cols, 64 * (game.lines + 3),
+	game.win = mlx_new_window(game.mlx, 64 * game.cols, (64 * game.lines) + 25,
 			"so_long");
 	load_i(&game);
 	put_image(&game);

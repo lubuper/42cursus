@@ -1,16 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_imgs_two.c                                     :+:      :+:    :+:   */
+/*   put_imgs_two_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 23:13:39 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/05 23:13:46 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/08 16:22:44 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
+
+void	instring(t_game *game)
+{
+	char	*str;
+	char	*strw;
+
+	str = ft_itoa(game->moves);
+	strw = ft_itoa(game->moves - 1);
+	mlx_string_put(game->mlx, game->win,
+	       10, (game->lines * 64) + 18, 0xFFFFFF, "Gohan made     moves!");
+	mlx_string_put(game->mlx, game->win,
+	       75, (game->lines * 64 ) + 18, 0x000000, strw);
+	mlx_string_put(game->mlx, game->win,
+	       75, (game->lines * 64) + 18, 0xFFFFFF, str);
+	       free(str);
+	       free(strw);
+}
 
 void	choose_img_l(t_game *game)
 {

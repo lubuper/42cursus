@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 17:20:43 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/04 17:25:34 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/08 16:17:42 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@ typedef struct s_i
 	void	*floor;
 	void	*wall;
 	void	*exit;
+	void	*exit1;
+	void	*exit2;
+	void	*exit3;
+	void	*exit4;
 	void	*collect;
 	void	*mob;
 }			t_i;
@@ -60,6 +64,7 @@ int		close_win(t_game *game);
 int		gnllen(int fd);
 int		gnllines(int fd);
 int		valid_path(t_game *game, char **map, int y, int x);
+int		anima(t_game *game);
 void	initialize(t_game *game);
 void	init_imgs(t_game *game);
 void	startpos(t_game *game);
@@ -83,6 +88,7 @@ void	move_up(t_game *game);
 void	move_down(t_game *game);
 void	move_left(t_game *game);
 void	move_right(t_game *game);
+void	instring(t_game *game);
 void	is_mob(t_game *game);
 void	mob_move(t_game *game);
 void	mob_up(t_game *game);
@@ -105,6 +111,10 @@ void	free_the_code(t_game *game);
 # define I_COLLECT "./textures/collect.xpm"
 # define I_FLOOR "./textures/floor.xpm"
 # define I_EXIT "./textures/exit.xpm"
+# define I_EXIT1 "./textures/exit1.xpm"
+# define I_EXIT2 "./textures/exit2.xpm"
+# define I_EXIT3 "./textures/exit3.xpm"
+# define I_EXIT4 "./textures/exit4.xpm"
 # define I_MOB "./textures/mob.xpm"
 
 #endif
