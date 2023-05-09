@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 19:36:07 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/08 14:59:54 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/09 13:56:42 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ void	load_i(t_game *game)
 			&game->i.width, &game->i.height);
 	game->i.floor = mlx_xpm_file_to_image(game->mlx, I_FLOOR,
 			&game->i.width, &game->i.height);
-	game->i.exit = mlx_xpm_file_to_image(game->mlx, I_EXIT,
-			&game->i.width, &game->i.height);
 	game->i.exit1 = mlx_xpm_file_to_image(game->mlx, I_EXIT1,
 			&game->i.width, &game->i.height);
 	game->i.exit2 = mlx_xpm_file_to_image(game->mlx, I_EXIT2,
@@ -37,6 +35,8 @@ void	load_i(t_game *game)
 	game->i.exit4 = mlx_xpm_file_to_image(game->mlx, I_EXIT4,
 			&game->i.width, &game->i.height);
 	game->i.mob = mlx_xpm_file_to_image(game->mlx, I_MOB,
+			&game->i.width, &game->i.height);
+	game->i.mobl = mlx_xpm_file_to_image(game->mlx, I_MOBL,
 			&game->i.width, &game->i.height);
 }
 
@@ -54,9 +54,6 @@ void	choose_img(t_game *game)
 	else if (game->map[game->y][game->x] == 'C')
 		mlx_put_image_to_window(game->mlx, game->win,
 			game->i.collect, game->x * 64, game->y * 64);
-	else if (game->map[game->y][game->x] == 'E')
-		mlx_put_image_to_window(game->mlx, game->win,
-			game->i.exit, game->x * 64, game->y * 64);
 	else if (game->map[game->y][game->x] == 'M')
 		mlx_put_image_to_window(game->mlx, game->win,
 			game->i.mob, game->x * 64, game->y * 64);
@@ -80,21 +77,27 @@ void	put_image(t_game *game)
 int	anima(t_game *game)
 {
 	static int	i;
-	int		lim;
-	
-	lim = 18000;
-		i++;
-		if (i == lim)
-			mlx_put_image_to_window(game->mlx, game->win,
-				game->i.exit1, game->x * 32, game->y * 32);
-		if (i == lim * 2)
-			mlx_put_image_to_window(game->mlx, game->win,
-				game->i.exit2, game->x * 32, game->y * 32);
-		if (i == lim * 3)
-			mlx_put_image_to_window(game->mlx, game->win,
-				game->i.exit3, game->x * 32, game->y * 32);
-		if (i == lim * 4)
-			mlx_put_image_to_window(game->mlx, game->win,
-				game->i.exit4, game->x * 32, game->y * 32);
+
+	i++;
+	if (i == 100)
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->i.exit1, game->ex * 64, game->ey * 64);
+	if (i == 5000)
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->i.exit2, game->ex * 64, game->ey * 64);
+	if (i == 9000)
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->i.exit3, game->ex * 64, game->ey * 64);
+	if (i == 12000)
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->i.exit4, game->ex * 64, game->ey * 64);
+	if (i == 15000)
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->i.exit3, game->ex * 64, game->ey * 64);
+	if (i == 17000)
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->i.exit4, game->ex * 64, game->ey * 64);
+	if (i == 20000)
+		i = 4999;
 	return (0);
 }

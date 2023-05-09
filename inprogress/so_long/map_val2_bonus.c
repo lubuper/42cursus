@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 21:41:49 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/05 00:13:16 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/09 09:54:17 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ int	valid_path(t_game *game, char **map, int y, int x)
 
 	if (map[y][x] == 'E')
 	{
+		game->ex = x;
+		game->ey = y;
 		wayout = 1;
 		return (0);
 	}

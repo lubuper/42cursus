@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 21:41:49 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/04 23:45:45 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/09 14:01:20 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ int	valid_path(t_game *game, char **map, int y, int x)
 		pickup++;
 		map[y][x] = 'V';
 	}
-	if (map[y][x] == '1' || x > game->cols || y > game->lines || map[y][x] == 'V')
+	if (map[y][x] == '1' || x > game->cols
+			|| y > game->lines || map[y][x] == 'V')
 		return (0);
 	map[y][x] = 'V';
 	valid_path(game, game->mapd, y + 1, x);

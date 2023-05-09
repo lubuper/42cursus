@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 20:10:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/05 19:26:55 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/09 14:02:06 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,16 @@ void	initialize(t_game *game)
 
 void	destroy_imgs(t_game *game)
 {
-		mlx_destroy_image(game->mlx, game->i.playerl);
-		mlx_destroy_image(game->mlx, game->i.playerr);
-		mlx_destroy_image(game->mlx, game->i.player);
-		mlx_destroy_image(game->mlx, game->i.floor);
-		mlx_destroy_image(game->mlx, game->i.wall);
-		mlx_destroy_image(game->mlx, game->i.exit);
-		mlx_destroy_image(game->mlx, game->i.collect);
-		mlx_destroy_window(game->mlx, game->win);
-		mlx_destroy_display(game->mlx);
-		free(game->mlx);
+	mlx_destroy_image(game->mlx, game->i.playerl);
+	mlx_destroy_image(game->mlx, game->i.playerr);
+	mlx_destroy_image(game->mlx, game->i.player);
+	mlx_destroy_image(game->mlx, game->i.floor);
+	mlx_destroy_image(game->mlx, game->i.wall);
+	mlx_destroy_image(game->mlx, game->i.exit);
+	mlx_destroy_image(game->mlx, game->i.collect);
+	mlx_destroy_window(game->mlx, game->win);
+	mlx_destroy_display(game->mlx);
+	free(game->mlx);
 }
 
 void	free_the_code(t_game *game)

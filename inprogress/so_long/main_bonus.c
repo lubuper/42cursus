@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 15:11:35 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/08 20:10:02 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/09 12:26:25 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ int	main(int ac, char **av)
 	put_image(&game);
 	mlx_key_hook(game.win, key_map, &game);
 	mlx_hook(game.win, 17, M_CLICK_X, close_win, &game);
+	mlx_loop_hook(game.mlx, anima, &game);
 	mlx_loop(game.mlx);
 }

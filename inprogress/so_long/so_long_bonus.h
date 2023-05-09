@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 17:20:43 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/08 16:17:42 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/09 13:14:45 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ typedef struct s_i
 	void	*playerr;
 	void	*floor;
 	void	*wall;
-	void	*exit;
 	void	*exit1;
 	void	*exit2;
 	void	*exit3;
 	void	*exit4;
 	void	*collect;
 	void	*mob;
+	void	*mobl;
 }			t_i;
 
 typedef struct s_game
@@ -53,6 +53,8 @@ typedef struct s_game
 	int		my;
 	int		px;
 	int		mx;
+	int		ex;
+	int		ey;
 	int		moves;
 	int		flag;
 }			t_game;
@@ -110,11 +112,11 @@ void	free_the_code(t_game *game);
 # define I_PLAYERR "./textures/playerr.xpm"
 # define I_COLLECT "./textures/collect.xpm"
 # define I_FLOOR "./textures/floor.xpm"
-# define I_EXIT "./textures/exit.xpm"
 # define I_EXIT1 "./textures/exit1.xpm"
 # define I_EXIT2 "./textures/exit2.xpm"
 # define I_EXIT3 "./textures/exit3.xpm"
 # define I_EXIT4 "./textures/exit4.xpm"
 # define I_MOB "./textures/mob.xpm"
+# define I_MOBL "./textures/mobl.xpm"
 
 #endif

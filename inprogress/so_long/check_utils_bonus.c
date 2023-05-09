@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 20:45:29 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/08 16:05:43 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/09 13:25:26 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,11 +92,11 @@ void	init_imgs(t_game *game)
 	game->i.player = 0;
 	game->i.floor = 0;
 	game->i.wall = 0;
-	game->i.exit = 0;
 	game->i.exit1 = 0;
 	game->i.exit2 = 0;
 	game->i.exit3 = 0;
 	game->i.exit4 = 0;
 	game->i.collect = 0;
 	game->i.mob = 0;
+	game->i.mobl = 0;
 }

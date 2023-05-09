@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 23:13:39 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/08 16:22:44 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/09 13:00:36 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ void	instring(t_game *game)
 	str = ft_itoa(game->moves);
 	strw = ft_itoa(game->moves - 1);
 	mlx_string_put(game->mlx, game->win,
-	       10, (game->lines * 64) + 18, 0xFFFFFF, "Gohan made     moves!");
+		10, (game->lines * 64) + 18, 0xFFFFFF, "Gohan made     moves!");
 	mlx_string_put(game->mlx, game->win,
-	       75, (game->lines * 64 ) + 18, 0x000000, strw);
+		75, (game->lines * 64) + 18, 0x000000, strw);
 	mlx_string_put(game->mlx, game->win,
-	       75, (game->lines * 64) + 18, 0xFFFFFF, str);
-	       free(str);
-	       free(strw);
+		75, (game->lines * 64) + 18, 0xFFFFFF, str);
+	free(str);
+	free(strw);
 }
 
 void	choose_img_l(t_game *game)
@@ -43,9 +43,6 @@ void	choose_img_l(t_game *game)
 	else if (game->map[game->y][game->x] == 'C')
 		mlx_put_image_to_window(game->mlx, game->win,
 			game->i.collect, game->x * 64, game->y * 64);
-	else if (game->map[game->y][game->x] == 'E')
-		mlx_put_image_to_window(game->mlx, game->win,
-			game->i.exit, game->x * 64, game->y * 64);
 	else if (game->map[game->y][game->x] == 'M')
 		mlx_put_image_to_window(game->mlx, game->win,
 			game->i.mob, game->x * 64, game->y * 64);
@@ -80,9 +77,6 @@ void	choose_img_r(t_game *game)
 	else if (game->map[game->y][game->x] == 'C')
 		mlx_put_image_to_window(game->mlx, game->win,
 			game->i.collect, game->x * 64, game->y * 64);
-	else if (game->map[game->y][game->x] == 'E')
-		mlx_put_image_to_window(game->mlx, game->win,
-			game->i.exit, game->x * 64, game->y * 64);
 	else if (game->map[game->y][game->x] == 'M')
 		mlx_put_image_to_window(game->mlx, game->win,
 			game->i.mob, game->x * 64, game->y * 64);
