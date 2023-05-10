@@ -6,7 +6,7 @@
 #    By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/06 14:06:52 by lde-sous          #+#    #+#              #
-#    Updated: 2023/05/05 23:34:16 by lde-sous         ###   ########.fr        #
+#    Updated: 2023/05/10 11:46:44 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,24 +16,25 @@ LIBFT = ./libft/libft.a
 CC = cc
 CFLAGS = -Wextra -Wall -Werror -g
 MLXFLAGS = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
-SRC = main.c \
-      map_val1.c \
-      map_val2.c \
-      events.c \
-      put_imgs.c \
-      put_imgs_two.c \
-      move_ops.c \
-      check_utils.c
+SRC = std/main.c \
+      std/map_val1.c \
+      std/map_val2.c \
+      std/events.c \
+      std/put_imgs.c \
+      std/put_imgs_two.c \
+      std/move_ops.c \
+      std/check_utils.c
 
-SRC_BONUS = main_bonus.c \
-	    map_val1_bonus.c \
-	    map_val2_bonus.c \
-	    events_bonus.c \
-	    put_imgs_bonus.c \
-	    put_imgs_two_bonus.c \
-	    move_ops_bonus.c \
-	    check_utils_bonus.c \
-	    move_mobs.c
+SRC_BONUS = bonus/main_bonus.c \
+	    bonus/map_val1_bonus.c \
+	    bonus/map_val2_bonus.c \
+	    bonus/events_bonus.c \
+	    bonus/put_imgs_bonus.c \
+	    bonus/put_imgs_two_bonus.c \
+	    bonus/move_ops_bonus.c \
+	    bonus/check_utils_bonus.c \
+	    bonus/move_mobs.c \
+	    bonus/moby.c
 
 OBJ = $(SRC:%.c=%.o)
 OBJ_BONUS = $(SRC_BONUS:%.c=%.o)

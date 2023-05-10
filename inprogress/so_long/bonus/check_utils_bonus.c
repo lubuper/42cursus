@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_utils.c                                      :+:      :+:    :+:   */
+/*   check_utils_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 20:45:29 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/04 23:45:21 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/09 13:25:26 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	gnllen(int fd)
 {
@@ -20,6 +20,8 @@ int	gnllen(int fd)
 	temp = 0;
 	len = 0;
 	temp = get_next_line(fd, true);
+	if (temp == 0)
+		return (0);
 	len = ft_strlen(temp);
 	free (temp);
 	return (len);
@@ -87,13 +89,16 @@ int	ecount(t_game *game, char c)
 
 void	init_imgs(t_game *game)
 {
-	game->i.width = 64;
-	game->i.height = 64;
+	game->i.width = 16;
+	game->i.height = 16;
 	game->i.player = 0;
-	game->i.playerl = 0;
-	game->i.playerr = 0;
 	game->i.floor = 0;
 	game->i.wall = 0;
-	game->i.exit = 0;
+	game->i.exit1 = 0;
+	game->i.exit2 = 0;
+	game->i.exit3 = 0;
+	game->i.exit4 = 0;
 	game->i.collect = 0;
+	game->i.mob = 0;
+	game->i.mobl = 0;
 }

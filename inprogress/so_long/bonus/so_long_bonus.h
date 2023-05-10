@@ -12,8 +12,8 @@
 
 #ifndef SO_LONG_BONUS_H
 # define SO_LONG_BONUS_H
-# include "./libft/libft.h"
-# include "./mlx_linux/mlx.h"
+# include "../libft/libft.h"
+# include "../mlx_linux/mlx.h"
 
 typedef struct s_i
 {

@@ -59,7 +59,8 @@ void	valid_walls(t_game *game)
 	game->x = 0;
 	while (game->y < game->lines)
 	{
-		if (game->map[game->y][0] != game->map[game->y][game->cols - 1])
+		if ((game->map[game->y][0] != game->map[game->y][game->cols - 1])
+			|| (game->map[game->y][0] != '1'))
 		{
 			ft_putstr_fd("Error\nWalls are not in place!\n", 2);
 			free_the_code(game);
@@ -68,7 +69,8 @@ void	valid_walls(t_game *game)
 	}
 	while (game->x < game->cols)
 	{
-		if (game->map[0][game->x] != game->map[game->lines - 1][game->x])
+		if ((game->map[0][game->x] != game->map[game->lines - 1][game->x])
+			|| (game->map[0][game->x] != '1'))
 		{
 			ft_putstr_fd("Error\nWalls are not in place!\n", 2);
 			free_the_code(game);
