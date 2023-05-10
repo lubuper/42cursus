@@ -52,10 +52,7 @@ int	valid_path(t_game *game, char **map, int y, int x)
 		return (0);
 	}
 	if (map[y][x] == 'C')
-	{
 		pickup++;
-		map[y][x] = 'V';
-	}
 	if (map[y][x] == '1' || x > game->cols
 			|| y > game->lines || map[y][x] == 'V')
 		return (0);
