@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 15:25:40 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/11/16 10:06:14 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/04 17:24:43 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,13 @@
 # include <stdio.h>
 # include <strings.h>
 # include <stdarg.h>
+# include <fcntl.h>
+# include <stdbool.h>
+# include <time.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
 
 typedef struct s_list
 {
@@ -80,5 +87,14 @@ void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
 void	*ft_memmove(void *dest, const void *src, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
+
+char	*get_next_line(int fd, bool is_file);
+char	*readnsave(int fd, char *str);
+char	*save_rest(char *str);
+char	*ft_gline(char *str);
+size_t	ft_cstrlen(char *s);
+void	*ft_calloc(size_t nmemb, size_t size);
+char	*str_join_mod(char *str1, char *str2);
+char	*ft_strchr_mod(char *str, int c);
 
 #endif

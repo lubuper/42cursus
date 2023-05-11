@@ -6,7 +6,7 @@
 #    By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/06 14:06:52 by lde-sous          #+#    #+#              #
-#    Updated: 2023/05/10 11:46:44 by lde-sous         ###   ########.fr        #
+#    Updated: 2023/05/11 13:44:34 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,8 +64,6 @@ clean:
 	@$(MAKE) clean -C ./libft
 	@$(RM) $(OBJ)
 	@$(RM) $(OBJ_BONUS)
-	@$(RM) $(NAME) 
-	@$(RM) $(NAME_BONUS)
 	@echo "Done!"
 fclean: clean
 	@$(MAKE) fclean -C ./libft

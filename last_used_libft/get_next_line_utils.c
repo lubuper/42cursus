@@ -6,11 +6,11 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 17:02:57 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/12/07 12:56:59 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/02/15 18:03:50 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "./libft.h"
 
 size_t	ft_cstrlen(char *s)
 {
