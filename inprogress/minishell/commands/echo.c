@@ -3,14 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 19:41:29 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/15 19:53:23 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/16 22:26:50 by alexfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+char	*trim_back(const char *input)
+{
+	char *result;
+	int i;
+	int j;
+	
+	i = 0;
+	while (input[i] == ' ')
+		i++;
+	result = malloc(sizeof(char) * (ft_strlen(input) - i) + 1);
+	if (!result)
+		return (NULL);
+	j = 0;
+	while (input[i])
+	{
+		result[j] = input[i];
+		j++;
+		i++;
+	}
+	result[j] = '\0';
+	return (result);
+}
 
 void	echo(const char *input)
 {
@@ -22,6 +45,4 @@ void	echo(const char *input)
 	}
 	else if (strcmp(input, "echo") == 0)
 		printf("\n");
-	else if (strncmp(input, "echo", 4) == 0)
-		printf("%s: command not found\n", input);
 }

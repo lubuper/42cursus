@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/05/15 19:53:16 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/16 19:31:52 by alexfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,12 @@ void    set_signals(void)
 
 int	main(int ac, char **av, char **envp)
 {
-	char	*str;
-	
-	(void)ac; 
+    (void)ac;
 	(void)av; 
 	(void)envp;
+	char	*str;
+    t_attr  tok;
+
 	str = av[1];
 
 	rl_clear_history();
@@ -56,11 +57,12 @@ int	main(int ac, char **av, char **envp)
 		command(str);
         // Add the command to the history
         add_history(str);
-
+        
         // Check if the comsmand is "exit"
         if (strcmp(str, "exit") == 0)
             break;
-
+        tok.s_arr = get_tokens(str, tok);
+        
         // Save the command history to a file
         //write_history("minishell_history.txt");
         free(str);

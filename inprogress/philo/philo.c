@@ -6,7 +6,7 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 13:50:44 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/11 16:45:06 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/16 16:16:08 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	positive_atoi(char *str)
 	i = 0;
 	result = 0;
 	if (!str)
+		return (0);
+	if (st[i] == '-')
 		return (0);
 	if (str[i] == '+')
 			i++;
@@ -42,7 +44,7 @@ void	*function(void)
 
 int	main(int ac, char *av)
 {
-	pthread_t		thread[positive_atoi(ac[2])];
+	pthread_t		thread[positive_atoi(av[2])];
 	pthread_t		thread2;
 	pthread_mutex_t mutex;
 
