@@ -11,20 +11,3 @@
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-/*
-	prints the string after echo command to the terminal
-	> format: "echo <string>"
-	> status: working
-*/
-void	echo(const char *input)
-{
-	if (strncmp(input, "echo ", 5) == 0)
-    {
-		input = input + 5;
-		rl_redisplay();
-		printf("%s\n", input);
-	}
-	else if (strcmp(input, "echo") == 0)
-		printf("\n");
-}

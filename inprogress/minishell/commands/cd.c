@@ -12,28 +12,34 @@
 
 #include "../minishell.h"
 
-void    cd(const char *input)
+/*
+    change directory to path given in input string
+    > format: "cd <path>"
+    > status: not working
+*/
+
+void cd(const char *input)
 {
     char *current_path;
 
-    current_path = malloc(sizeof(char) * (strlen(input) + 1));
+    current_path = getcwd(NULL, 0);
     if (!current_path)
-        return ;
-    current_path = getcwd(current_path, 1024);
+        return;
+
     printf("%s\n", current_path);
+
     if (strncmp(input, "cd ", 3) == 0)
     {
-        const char *path = input + 3;// Skip "cd " prefix in input string (3 chars) 
-        chdir(ft_strjoin(current_path, path));// Change directory to path given in input
-        
-        /*  if (result)// Success?!
+        const char *path = input + 3; // Skip "cd " prefix in input string (3 chars)
+        if (chdir(ft_strjoin(current_path, path)) != 0) // Change directory to path given in input
         {
-            printf("Directory changed to: %s\n", path);
+            printf("Failed to change directory.\n");
         }
         else
         {
-            printf("chdir() erro");
-        } */
-        printf("Directory changed to: %s\n", current_path);
+            printf("Directory changed to: %s\n", path);
+        }
     }
+
+    free(current_path);
 }

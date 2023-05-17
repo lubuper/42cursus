@@ -12,19 +12,37 @@
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
+
+// includes
 # include "libft/libft.h"
 # include <readline/readline.h>
 # include <readline/history.h>
-# include <signal.h>
 # include <sys/types.h>
 # include <sys/wait.h>
-# include <stdio.h>
-# include <unistd.h>
+# include <signal.h>
 # include <stdlib.h>
+# include <string.h>
+# include <unistd.h>
+# include <stdio.h>
 # include <limits.h>
-#include <dirent.h>
+# include <dirent.h>
+# include <errno.h>
 
+// defines
+# define PATH_MAX 4096
 
+// colors
+# define GREEN "\033[0;32m"
+# define RED "\033[0;31m"
+# define YELLOW "\033[0;33m"
+# define CYAN "\033[0;36m"
+# define GREEN_BOLD "\033[1;32m"
+# define RED_BOLD "\033[1;31m"
+# define YELLOW_BOLD "\033[1;33m"
+# define CYAN_BOLD "\033[1;36m"
+# define RESET "\033[0m"
+
+// structures
 /*typedef struct  s_commands
 {
     char    *pwd;
@@ -52,17 +70,21 @@ typedef struct s_attr
 
 // functions
 void 	command(const char *input);
-void	echo(const char *input);
 char    **get_tokens(char *str, t_attr t);
 void    free_tokens(char **tokens, t_attr t);
 void	ft_print_array(char **array, int nb);
 
 // commands
 int pwd();
-
-// aux
-char    *white_sp_rm(const char *str);
-char	*trim_back(const char *input);
 void    cd(const char *input);
+void	echo(const char *input);
+
+// signals
+void handle_interrupt(int signal);
+void    set_signals(void);
+
+// utilities
+char	*trim_back(const char *input);
+char    *white_sp_rm(const char *str);
 
 #endif

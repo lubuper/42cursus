@@ -12,37 +12,19 @@
 
 #include "../minishell.h"
 
-/* char    *white_sp_rm(const char *str)
-{
-    char    *output;
-    int     i;
-    int     j;
-	
-    output = malloc(sizeof(char) * 4);
-    if (!output)
-        return (0);
-    i = 0;
-    j = 0;
-    while (str[i])
-    {
-        if (str[i] == ' ')
-            i++;
-        else
-        {
-            output[j] = str[i];
-            j++;
-        }
-        i++;
-    }
-        output[3] = 0;
-    return (output);
-} */
+/*
+    prints the current working directory to the terminal
+	'getcwd(pwd, PATH_MAX)' copy the entire path to pwd
+	use 'getcwd(pwd, 0)' to allocate memory automatically
+	> format: "pwd"
+	> status: working
+*/
 
-int pwd(void)
+int	pwd(void)
 {
-	char	pwd[1024];
+	char	pwd[PATH_MAX];
 
-	if (getcwd(pwd, 1024) == NULL)
+	if (getcwd(pwd, PATH_MAX) == NULL)
 		return (EXIT_FAILURE);
 	printf("%s\n", pwd);
 	return (EXIT_SUCCESS);

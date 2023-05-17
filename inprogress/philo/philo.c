@@ -6,32 +6,11 @@
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 13:50:44 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/16 16:16:08 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/17 16:02:37 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-int	positive_atoi(char *str)
-{
-	int	i;
-	int	result;
-
-	i = 0;
-	result = 0;
-	if (!str)
-		return (0);
-	if (st[i] == '-')
-		return (0);
-	if (str[i] == '+')
-			i++;
-	while (str[i] && (str[i] < '0') || (str[i] > '9'))
-	{
-		result = result * 10 + (str[i] - '0');
-		i++;
-	}
-	return (result);
-}
 
 void	*function(void)
 {
@@ -42,21 +21,35 @@ void	*function(void)
 
 
 
-int	main(int ac, char *av)
+void	thread_maker(int ac, char **av, t_phil t_phil)
 {
-	pthread_t		thread[positive_atoi(av[2])];
-	pthread_t		thread2;
+	int		i;
+	pthread_t	thread[t_phil->t_args.num];
 	pthread_mutex_t mutex;
+	
+	i = 0;
+	while (av[i])
+	{
+		pthread_mutex_init(&mutex, NULL);
+		if (pthread_create(&thread1, NULL, &function, NULL) != 0)
+			return (1);
+		if (pthread_create(&thread2, NULL, &function, NULL) != 0)
+			return (2);
+		if (pthread_join(thread1, NULL) != 0)
+			return (3);
+		if (pthread_join(thread2, NULL) != 0)
+			return (4);
+			pthread_mutex_destroy(&mutex);
+	}
+	return (0);
+}
 
-	pthread_mutex_init(&mutex, NULL);
-	if (pthread_create(&thread1, NULL, &function, NULL) != 0)
-		return (1);
-	if (pthread_create(&thread2, NULL, &function, NULL) != 0)
-		return (2);
-	if (pthread_join(thread1, NULL) != 0)
-		return (3);
-	if (pthread_join(thread2, NULL) != 0)
-		return (4);
-	pthread_mutex_destroy(&mutex);
+int	main(int ac, char **av)
+{
+	t_p	p;
+
+	if (valid_args(ac, av) == 0)
+		return (0);
+	thread_maker(ac, av, &t_p);
 	return (0);
 }

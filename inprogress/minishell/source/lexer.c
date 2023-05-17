@@ -17,6 +17,7 @@
     and execution based on the input string, providing
     feedback or return values accordingly.
 */
+
 void command(const char *input)
 {
     char *str1;
@@ -45,3 +46,4 @@ void command(const char *input)
             printf("%s: command not found\n", input);
     }
 }
+

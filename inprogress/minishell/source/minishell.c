@@ -12,25 +12,6 @@
 
 #include "../minishell.h"
 
-void handle_interrupt(int signal)
-{
-    if (signal == SIGINT)
-    {
-        printf("\n");           // Print a newline to start a new line after the prompt
-        rl_replace_line("", 0); // Clear the current input line
-        rl_on_new_line();       // Move to a new line
-        rl_redisplay();         // Redisplay the prompt
-    }
-}
-
-void    set_signals(void)
-{
-    // Set up signal handlers
-    signal(SIGINT, handle_interrupt);   // Handle Ctrl+C
-    signal(SIGQUIT, SIG_IGN);           // Ignore Ctrl+"\"
-    signal(SIGTSTP, SIG_IGN);           // Ignore Ctrl+Z
-}
-
 int	main(int ac, char **av, char **envp)
 {
     (void)ac;
@@ -64,7 +45,6 @@ int	main(int ac, char **av, char **envp)
         tok.s_arr = get_tokens(str, tok);
         
         // Save the command history to a file
-        //write_history("minishell_history.txt");
         free(str);
 	}
 	return (0);
