@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/05/16 22:35:13 by alexfern         ###   ########.fr       */
+/*   Updated: 2023/05/18 22:14:14 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,32 @@
 /*
     change directory to path given in input string
     > format: "cd <path>"
-    > status: not working
+    > status: working for the most part
 */
 
-void cd(const char *input)
+void cd(t_attr attr)
 {
     char *current_path;
+    char *destiny_path;
 
+    if (attr.nb_tokens > 2)
+    {
+        ft_putstr_fd("minishell: cd: too many arguments\n", 1);
+        return ;
+    }
+    destiny_path = attr.s_arr[1];
+    if (!destiny_path)
+        destiny_path = getenv("HOME");
     current_path = getcwd(NULL, 0);
     if (!current_path)
-        return;
+        return ;
+    
 
-    printf("%s\n", current_path);
+    printf("current path: %s\n", current_path);
 
-    if (strncmp(input, "cd ", 3) == 0)
-    {
-        const char *path = input + 3; // Skip "cd " prefix in input string (3 chars)
-        if (chdir(ft_strjoin(current_path, path)) != 0) // Change directory to path given in input
-        {
-            printf("Failed to change directory.\n");
-        }
-        else
-        {
-            printf("Directory changed to: %s\n", path);
-        }
-    }
-
+    if (chdir(destiny_path)) // Change directory to path given in input
+        printf("minishell: cd: %s: No such file or directory\n", attr.s_arr[1]);
+    else
+        printf("Directory changed to: %s\n", getcwd(NULL, 0));
     free(current_path);
 }

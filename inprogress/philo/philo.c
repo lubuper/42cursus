@@ -50,6 +50,6 @@ int	main(int ac, char **av)
 
 	if (valid_args(ac, av) == 0)
 		return (0);
-	thread_maker(ac, av, &t_p);
+	thread_maker(ac, av, &p);
 	return (0);
 }

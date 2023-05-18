@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utilities.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:51:22 by alexfern          #+#    #+#             */
-/*   Updated: 2023/05/16 19:27:21 by alexfern         ###   ########.fr       */
+/*   Updated: 2023/05/18 22:48:15 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,69 @@ char    *white_sp_rm(const char *str)
     }
         output[3] = 0;
     return (output);
+}
+
+int	ft_strcmp(const char *str1, const char *str2)
+{
+	int	i;
+	
+	i = 0;
+	while (str1[i] || str2[i])
+	{
+		if (str1[i] == str2[i])
+			i++;
+		else if (str1[i] > str2[i])
+			return (1);
+		else if (str2[i] > str1[i])
+			return (-1);
+	}
+	return (0);
+}
+
+int		flag_counter(char *str, char c)
+{
+	int		i;
+	int		result;
+	
+	i = 0;
+	result = 0;
+	while (str[i])
+	{
+		if (str[i] == c)
+			result++;
+		i++;
+	}
+	return (result);
+}
+
+char	*dequoter(char *str)
+{
+	int		i;
+	int		flagdouble;
+	int		flagsimple;
+	char	*arranged;
+
+	arranged = malloc(sizeof(char) * ft_strlen(str) + 1);// malloc esta mal feito - pensar noutra forma de determinar o tamanho, dependendo se as quotes sao double ou nao	
+	flagdouble = flag_counter(str, 34); //nao ha double quotes (em ascii 34), se == IMPAR ha quotes abertas; se == PAR, quotes fechadas, se flagsimple > 0 ENTAO  == 0;.
+	flagsimple = flag_counter(str, 39); // nao ha simple quotes (em ascii 39)
+	if (flagdouble % 2 == 1 || flagsimple % 2 == 1)
+		return (NULL);
+	i = 0;
+	while (str[i])
+	{
+		if (flagdouble > 0 && str[i] == 34)
+			{
+				flagsimple = 0;
+				i++;
+			}
+		if (flagsimple > 0 && str[i] == 39)
+		{
+			flagdouble = 0;
+			i++;
+		}
+		arranged[i] = str[i];
+		i++;
+	}
+	printf(arranged);
+	return (arranged); //nao esquecer de dar free!!!
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/05/16 19:31:52 by alexfern         ###   ########.fr       */
+/*   Updated: 2023/05/18 150:00 by alexfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,9 @@
 int	main(int ac, char **av, char **envp)
 {
     (void)ac;
-	(void)av; 
-	(void)envp;
-	char	*str;
-    t_attr  tok;
-
-	str = av[1];
+	(void)av;
+    t_attr  attr;
+    char    *str;
 
 	rl_clear_history();
     // Load the command history from a file
@@ -35,16 +32,20 @@ int	main(int ac, char **av, char **envp)
 			rl_clear_history();
             break;
         }
-		command(str);
         // Add the command to the history
         add_history(str);
         
-        // Check if the comsmand is "exit"
+        attr.s_arr = get_tokens(str, &attr);
+
+		command(str, attr, envp);
+        
+        // Check if the command is "exit"
         if (strcmp(str, "exit") == 0)
             break;
-        tok.s_arr = get_tokens(str, tok);
         
         // Save the command history to a file
+        free_tokens(attr.s_arr, attr);
+        free(attr.s_arr);
         free(str);
 	}
 	return (0);

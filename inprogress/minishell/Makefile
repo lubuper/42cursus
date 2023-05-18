@@ -6,13 +6,13 @@
 #    By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/12 15:15:58 by alexandre         #+#    #+#              #
-#    Updated: 2023/05/16 21:59:18 by alexfern         ###   ########.fr        #
+#    Updated: 2023/05/18 16:52:50 by alexfern         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # BASIC
 CC = cc -g
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -g -Wall -Wextra -Werror
 RLFLAG = -lreadline
 RM = rm -rf
 
@@ -34,7 +34,7 @@ NAME = minishell
 SRC =	commands/cd.c \
 		commands/echo.c \
 		commands/env.c \
-		commands/exit.c \
+		commands/ft_exit.c \
 		commands/export.c \
 		commands/pwd.c \
 		commands/unset.c \
@@ -53,6 +53,7 @@ $(NAME): $(OBJ)
 	$(MAKE) -C ./libft
 	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(RLFLAG) -o $(NAME)
 	echo "Everything Done!"
+
 
 $(OBJSDIR)/%.o: %.c
 	mkdir -p $(@D)
