@@ -14,39 +14,37 @@
 
 int	main(int ac, char **av, char **envp)
 {
-    (void)ac;
+	(void)ac;
 	(void)av;
-    t_attr  attr;
-    char    *str;
+	t_attr attr;
+	char *str;
 
 	rl_clear_history();
-    // Load the command history from a file
-    set_signals();
-    //read_history("minishell_history.txt");
+	set_signals();
+	init_paths(&attr);
+	init_attributes(&attr);
+	start_env(envp, &attr);
 	while (1)
 	{
-		// Read the command from the user
-        str = readline("\033[0;32mminishell$\033[0m ");
-        if (str == NULL)
-        {
+		double_myenv(&attr);
+		str = readline("\033[0;31mminihell$\033[0m ");
+		if (str == NULL)
+		{
 			rl_clear_history();
-            break;
-        }
-        // Add the command to the history
-        add_history(str);
-        
-        attr.s_arr = get_tokens(str, &attr);
+			break ;
+		}
+		init_attributes(&attr);
+		if (str)
+		{	
+			add_history(str);
+			attr.tok_arr = get_tokens(str, &attr);
+		
+			command(&attr);
 
-		command(str, attr, envp);
-        
-        // Check if the command is "exit"
-        if (strcmp(str, "exit") == 0)
-            break;
-        
-        // Save the command history to a file
-        free_tokens(attr.s_arr, attr);
-        free(attr.s_arr);
-        free(str);
+			free_tokens(attr.tok_arr, attr);
+			free(attr.tok_arr);
+			free(str);
+		}
 	}
 	return (0);
 }

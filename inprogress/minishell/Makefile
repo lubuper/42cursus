@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+         #
+#    By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/12 15:15:58 by alexandre         #+#    #+#              #
-#    Updated: 2023/05/18 16:52:50 by alexfern         ###   ########.fr        #
+#    Updated: 2023/05/25 16:27:20 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # BASIC
 CC = cc -g
-CFLAGS = -g -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 RLFLAG = -lreadline
 RM = rm -rf
 
@@ -42,9 +42,12 @@ SRC =	commands/cd.c \
 		source/lexer.c \
 		source/minishell.c \
 		source/signals.c \
+		source/execute.c \
+		source/pipes_test.c \
 		utilities/utilities.c \
 
-OBJ = $(SRC:.c=.o)
+OBJSDIR = objects
+OBJ = $(addprefix $(OBJSDIR)/, $(SRC:.c=.o))
 
 # MAKE RULES
 all: $(NAME)
@@ -53,7 +56,6 @@ $(NAME): $(OBJ)
 	$(MAKE) -C ./libft
 	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(RLFLAG) -o $(NAME)
 	echo "Everything Done!"
-
 
 $(OBJSDIR)/%.o: %.c
 	mkdir -p $(@D)
@@ -64,8 +66,8 @@ clean:
 	$(MAKE)	clean -C ./libft
 
 fclean: clean
-	$(RM) $(NAME) $(OBJ)
-	$(MAKE) fclean -C ./libft 
+	$(RM) $(NAME) $(OBJSDIR)
+	$(MAKE) fclean -C ./libft
 	echo "Everything Deleted..."
 
 re: fclean all
