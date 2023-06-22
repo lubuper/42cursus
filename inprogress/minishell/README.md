@@ -36,11 +36,14 @@
 | :--- | :--- |
 | `make -n`                         | Display the compilation information without actually compiling the code.       |
 | `echo $?`                         | Display the exit status of the last executed command.                          |
-| `nm -g ./minishell \| grep " U "` | `nm` Display the symbols. `-g` Global symbols. `grep " U "` Undefined symbols. |
+| `nm -g ./minishell \| grep " U "` | Check for forbidden functions. |
 | `norminette`                      | Checks the code for compliance with the coding style and guidelines.           |
+| `-R CheckForbiddenSourceHeader`   | |
 | `cc -g -Wall -Wextra -Werror`     | |
 | `-fsanitize=address`              | |
 | `-lreadline`                      | Link against the readline library.                                             |
+| `ps -e` or `ps -A`                | See all processes currently running on your computer.                          |
+| `ps -a`                           | While tweaking your functions, see if you're creating any dead children.       |
 
 | Valgrind Flags                                      | Description                                      |
 | :-------------------------------------------------- | :----------------------------------------------- |
@@ -262,6 +265,7 @@
 | 🟢 | `echo .`                                                             |
 | 🟢 | `echo ~`                                                             |
 | 🟢 | `echo echo ~`                                                        |
+| 🟡 | `"echo test"`                                                        |
 | 🟡 | `echo "~"`                                                           |
 | 🟡 | `echo '~'`                                                           |
 | 🟡 | `echo ~123`                                                          |

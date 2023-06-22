@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/31 20:51:53 by alexfern         ###   ########.fr       */
+/*   Updated: 2023/06/21 15:09:12 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,50 @@
 
 # include "macros.h"
 
-typedef struct s_dirdoc
+typedef struct s_pars
 {
-	int single_right;	// count: >
-	int double_right;	// count: >>
-	int	single_left;	// count: <
-	int	double_left;	// count: <<
-}		t_dirdoc;
+	char	**pars_arr;
+	int		nb_tokenst;
+}			t_pars;
 
 typedef struct s_attr
 {
-	int nb_tokens;         // number of tokens
-	int nb_pipes;          // number of pipes
-	int index;             // index of the token
-	int len_d_env;         // length of d_env
-	int len_g_env;         // length of my_env
-	char **tok_arr;        // array of tokens
-	char **g_env;          // global environment
-	char *last_path;       // last path
-	char **d_env;          // duplicate environment
-	char **exp_env;        //27 maio
-	int len_exp_env;       //27 maio
-	char **d_exp_env;      //27 maio
-	int len_d_exp_env;     //27 maio
-	int	n;
-	t_dirdoc dirdoc;	   //struct para count redirection / heredocs
+	int		i;
+	char	**beforet;
+	char	**aftert;
+	int		o_dquotes;
+	int		o_quotes;
+	int		tok_arr_i;
+	int		nb_tokens;
+	int		pipeindex;
+	int		rediindex;
+	int		appendindex;
+	int		index;
+	int		len_d_env;
+	int		len_g_env;
+	char	**tok_arr;
+	char	**g_env;
+	char	*last_path;
+	char	**d_env;
+	char	**exp_env;
+	int		len_exp_env;
+	char	**d_exp_env;
+	int		len_d_exp_env;
+	char	**commands_arr;
+	int		write_to_pipe;
+	int		read_from_pipe;
+	int		read_from_file;
+	int		redir;
+	int		create_file;
+	int		heredoc;
+	int		skip;
+	int		number_of_pipes;
+	int		number_of_redir;
+	int		number_of_append;
+	int		**pipesfd;
+	int		redir_fd;
+	int		out_fd;
+	t_pars	pars_data;
 }			t_attr;
 
 typedef struct s_exec
