@@ -3,60 +3,66 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/18 20:36:45 by jotavare         ###   ########.fr       */
+/*   Created: 2023/05/12 15:57:28 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/06/30 23:19:41 by alexfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-extern int	g_last_return_value;
+int	exit_print_err(const char *arg)
+{
+	printf("minishell: exit: %s: numeric argument required\n", arg);
+	return (g_value = 2);
+}
 
-int	exit_two(t_attr attr)
+int	ft_exit_args(t_attr att)
 {
 	int			i;
 	int			is_num;
 	const char	*arg;
 
 	i = 0;
-	arg = attr.tok_arr[1];
+	arg = att.tok_arr[1];
 	is_num = 1;
+	if (arg[0] == '#' || arg[0] == '-' || arg[0] == '+')
+		i++;
 	while (arg[i])
 	{
-		if (!isdigit(arg[i++]))
+		if (!ft_isdigit(arg[i++]))
 		{
 			is_num = 0;
 			break ;
 		}
 	}
 	if (is_num)
-		g_last_return_value = ft_atoi(arg);
+		g_value = ft_atoi(arg);
 	else
-	{
-		printf("minishell: exit: %s: numeric argument required\n", arg);
-		g_last_return_value = 2;
-	}
-	return (g_last_return_value);
+		exit_print_err(arg);
+	return (g_value);
 }
 
-void	ft_exit(t_attr *attr)
+void	ft_exit(t_attr *att)
 {
-	free_g_env(attr);
-	free_exp_env(attr);
-	free_arr(attr->commands_arr);
-	g_last_return_value = 0;
+	g_value = 0;
 	printf("exit\n");
-	if (attr->nb_tokens == 1)
-		g_last_return_value = 0;
-	else if (attr->nb_tokens == 2)
-		g_last_return_value = exit_two(*attr);
+	if (att->nb_tokens == 1)
+		g_value = 0;
+	else if (att->nb_tokens == 2)
+		g_value = ft_exit_args(*att);
 	else
 	{
+		if (ft_isdigit(att->tok_arr[1][0]))
+		{
+			ft_putstr_fd("minishell: exit: too many arguments\n", 2);
+			g_value = 1;
+			return ;
+		}
 		ft_putstr_fd("minishell: exit: too many arguments\n", 2);
-		g_last_return_value = 1;
+		g_value = 1;
 	}
-	exit_free(attr);
-	exit(g_last_return_value);
+	exit_free(att);
+	exit(g_value);
 }

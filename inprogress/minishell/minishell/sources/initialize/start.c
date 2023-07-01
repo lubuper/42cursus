@@ -3,24 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   start.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/25 15:38:30 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/20 06:44:30 by jotavare         ###   ########.fr       */
+/*   Created: 2023/06/24 01:30:53 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/06/30 23:17:37 by alexfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void	start_args(t_exec *args, t_attr *att)
+int	start_args(t_exec *args, t_attr *att)
 {
 	args->i = 0;
 	args->command = att->tok_arr[0];
 	args->path_srt = get_str_paths(att, args->path_srt);
+	if (args->path_srt == NULL)
+		return (-1);
 	args->path_srt += 5;
 	args->nb_of_paths = count_paths(args->path_srt);
 	args->all_paths = ft_split(args->path_srt, ':');
 	args->path_command = NULL;
+	return (0);
 }
 
 void	start_env(char **envp, t_attr *att)

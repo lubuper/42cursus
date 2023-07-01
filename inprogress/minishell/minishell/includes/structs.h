@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/21 15:09:12 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/30 23:51:29 by alexfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ typedef struct s_attr
 	int		tok_arr_i;
 	int		nb_tokens;
 	int		pipeindex;
-	int		rediindex;
-	int		appendindex;
 	int		index;
 	int		len_d_env;
 	int		len_g_env;
@@ -50,14 +48,19 @@ typedef struct s_attr
 	int		read_from_file;
 	int		redir;
 	int		create_file;
+	int		only_create;
 	int		heredoc;
 	int		skip;
+	int		inside_single_quotes;
 	int		number_of_pipes;
 	int		number_of_redir;
+	int		number_of_read;
 	int		number_of_append;
 	int		**pipesfd;
 	int		redir_fd;
-	int		out_fd;
+	int		first_flag;
+	int		already_dealt;
+	int		has_path;
 	t_pars	pars_data;
 }			t_attr;
 
@@ -73,5 +76,54 @@ typedef struct s_exec
 	int		ret;
 	pid_t	pid;
 }			t_exec;
+
+typedef struct s_exp
+{
+	char	*var_name;
+	char	*value;
+	size_t	expanded_length;
+	size_t	token_length;
+	char	*expanded_token;
+	int		j;
+	int		i;
+	int		has_quote;
+	int		has_space;
+	int		x;
+	int		y;
+	char	*correct;
+	int		len;
+	int		full;
+}			t_exp;
+
+typedef struct s_toki
+{
+	char	*token;
+	int		flag;
+	int		gt_flag;
+	int		gt_quotes;
+	char	*gt_result;
+	int		pos;
+	int		j;
+	int		i;
+	int		endmalloc;
+}			t_toki;
+
+typedef struct s_err
+{
+	int		i;
+	int		is_open;
+}				t_err;
+
+typedef struct s_hdoc
+{
+	char	*line;
+	int		fd;
+	char	**delims;
+	int		i;
+	char	**temp;
+	int		count;
+	char	*line2;
+	int		redir_fd;
+}			t_hdoc;
 
 #endif

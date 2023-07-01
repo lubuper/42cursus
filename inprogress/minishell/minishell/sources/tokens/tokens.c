@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   tokens.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/20 11:08:11 by alexandre        ###   ########.fr       */
+/*   Updated: 2023/06/30 23:10:43 by alexfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void	create_array(char *s, t_attr *att)
+void	create_array(char *s, t_attr *att, t_toki *tok)
 {
 	int	count;
 
@@ -26,7 +26,7 @@ void	create_array(char *s, t_attr *att)
 	{
 		while (*s == ' ')
 			s++;
-		att->beforet[count] = get_token(s, att);
+		att->beforet[count] = get_token(s, att, tok);
 		if (att->beforet[count] == 0 && count < att->nb_tokens)
 		{
 			s = NULL;
@@ -35,43 +35,45 @@ void	create_array(char *s, t_attr *att)
 		s += att->tok_arr_i;
 		count++;
 	}
-	//null_token_handle(att);
 }
 
-char	**get_tokens(char *str, t_attr *att)
+char	**get_tokens(char *str, t_attr *att, t_toki *tok)
 {
 	if (!str)
 		return (NULL);
 	count_tokens(str, att);
-	create_array(str, att);
+	create_array(str, att, tok);
 	return (att->beforet);
 }
 
-void	null_token_handle(t_attr *att)
+int	count_true_chars(char *str, t_toki *tok)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	i = 0;
-	while (i < att->nb_tokens)
+	while (str[tok->i])
 	{
-		if (att->beforet[i] == 0)
-			att->nb_tokens--;
-		else
-			i++;
-	}
-	free(att->aftert);
-	i = 0;
-	j = 0;
-	att->aftert = malloc(sizeof(char *) * (att->nb_tokens + 1));
-	while (i < att->nb_tokens)
-	{
-		if (att->beforet[i])
+		if (str[tok->i] == 34)
 		{
-			att->aftert[j] = att->beforet[i];
-			j++;
+			tok->i++;
+			dif_from_c(str, 34, tok);
 		}
-		i++;
+		else if (str[tok->i] == ' ')
+			break ;
+		else if (str[tok->i] == 39)
+		{
+			tok->i++;
+			dif_from_c(str, 39, tok);
+		}
+		if (str[tok->i] != 34 && str[tok->i] != 39)
+			tok->endmalloc++;
+		tok->i++;
+	}
+	return (tok->endmalloc);
+}
+
+void	dif_from_c(char *str, char c, t_toki *tok)
+{
+	while (str[tok->i] != c)
+	{
+		tok->endmalloc++;
+		tok->i++;
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/08 01:45:17 by jotavare         ###   ########.fr       */
+/*   Created: 2023/05/12 23:16:20 by alexfern          #+#    #+#             */
+/*   Updated: 2023/06/30 23:16:35 by alexfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,52 @@
     handle_interrupt is a signal handler for Ctrl+C
     (SIGINT) that clears the current input line and
     starts a new line with a new prompt.
+	SIGINT - CTRL C
+	SIGQUIT - CTRL BACKSLSH
+	SIGTSTP - CTRL Z
 */
 
-void	handle_interrupt(int signal)
+void	handle_interrupt(int sig)
 {
-	if (signal == SIGINT)
+	if (sig == SIGINT)
 	{
 		printf("\n");
 		rl_replace_line("", 0);
 		rl_on_new_line();
 		rl_redisplay();
 	}
+	g_value = 130;
 }
 
-/*
-    set up signal handlers for:
-    Ctrl+C, Ctrl+Z, and Ctrl+"\".
-*/
+void	handler_exec(int sig)
+{
+	if (sig == SIGQUIT)
+		write (1, "Quit (core dumped)", 18);
+	write(1, "\n", 1);
+}
 
 void	set_signals(void)
 {
 	signal(SIGINT, handle_interrupt);
 	signal(SIGQUIT, SIG_IGN);
-	signal(SIGTSTP, SIG_IGN);
+}
+
+void	set_signals2(void)
+{
+	signal(SIGINT, handler_exec);
+	signal(SIGQUIT, handler_exec);
+}
+
+void	heredoc_handler(int sig)
+{
+	if (sig == SIGINT)
+	{
+		unlink(".heredoc");
+		exit(130);
+	}
+	else if (sig == SIGQUIT)
+	{
+		unlink(".heredoc");
+		exit(131);
+	}
 }

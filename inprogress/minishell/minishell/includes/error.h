@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/20 11:38:30 by alexandre        ###   ########.fr       */
+/*   Updated: 2023/06/30 23:25:07 by alexfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 // error messages
 # define ERROR_CD "minishell: cd: %s: No such file or directory\n"
 # define ERROR_EXPORT "minishell: export: '%s': not a valid identifier\n"
-# define ERROR_NEWLINE "minishell: syntax error near unexpected token 'newline'\n"
+# define ERROR_NLINE "minishell: syntax error near unexpected token 'newline'\n"
 # define ERROR_SIMPLE_2 "minishell: parse error near '%c%c'\n"
 # define ERROR_SIMPLE_1 "minishell: parse error near '%c'\n"
 # define ERROR_PIPE2 "minishel: syntax error near unexpected token '||'\n"
@@ -32,7 +32,6 @@ int	error_last(char *str, char c);
 int	error_simple(char *str, char c);
 int	especialcase(char *str, int i);
 int	especialcase_two(char *str, int i);
-int	error_onepipe(char *str);
 
 // error_2.c
 int	error_pipes(char *str);
@@ -47,5 +46,13 @@ int	double_quote(char *str, char c);
 int	single_quote(char *str, char c);
 int	error_quotes(char *str);
 int	verify_readline(char *str);
+int	unclosed_quotes(char *str, t_err *error);
+
+// error_4.c
+int	print_error_pipe(char *str, int i);
+int	error_onepipe(char *str);
+int	print_mixed_error(char *str, char r, int i);
+int	error_mixed(char *str, char c, char r);
+int	start_args_error(t_attr *att, t_exec *args, int *g_value);
 
 #endif

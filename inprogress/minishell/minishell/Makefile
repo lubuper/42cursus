@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jotavare <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/05/12 15:15:58 by alexandre         #+#    #+#              #
-#    Updated: 2023/06/20 06:59:02 by jotavare         ###   ########.fr        #
+#    Created: 2023/05/12 15:15:58 by lde-sous          #+#    #+#              #
+#    Updated: 2023/06/30 23:25:06 by alexfern         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,28 +43,38 @@ SRC =	sources/minishell.c \
 		sources/error/error_1.c \
 		sources/error/error_2.c \
 		sources/error/error_3.c \
+		sources/error/error_4.c \
     	sources/executer/executer.c \
+		sources/executer/execve.c \
+		sources/executer/heredocs.c \
 		sources/executer/paths.c \
 		sources/executer/pipes.c \
 		sources/executer/redirects.c \
-    	sources/parser/expander.c \
-    	sources/parser/lexer.c \
-		sources/parser/parser.c \
-		sources/sanitize/signals.c \
-    	sources/sanitize/free_1.c \
-		sources/sanitize/free_2.c \
-    	sources/tokens/count_tokens.c \
-    	sources/tokens/get_tokens.c \
-    	sources/tokens/tokens.c \
-		sources/initialize/check.c \
     	sources/initialize/init.c \
 		sources/initialize/refresh.c \
     	sources/initialize/start.c \
+		sources/parser/check.c \
+		sources/parser/expander.c \
+		sources/parser/expander_utils.c \
+    	sources/parser/lexer.c \
+		sources/parser/parser.c \
+		sources/parser/signals.c \
+    	sources/sanitize/free_1.c \
+		sources/sanitize/free_2.c \
+    	sources/tokens/count_tokens.c \
+    	sources/tokens/get_tokens_1.c \
+		sources/tokens/get_tokens_2.c \
+		sources/tokens/tokens_utils_1.c \
+		sources/tokens/tokens_utils_2.c \
+		sources/tokens/tokens_utils_3.c \
+		sources/tokens/tokens_utils_4.c \
+		sources/tokens/tokens_utils_5.c \
+		sources/tokens/tokens.c \
 		sources/utilities/debugg.c \
+		sources/utilities/minishell_utils.c \
     	sources/utilities/prompt.c \
     	sources/utilities/utils_1.c \
 		sources/utilities/utils_2.c \
-		sources/tokens/get_tokens2.c \
 
 OBJSDIR = objects
 OBJ = $(addprefix $(OBJSDIR)/, $(SRC:.c=.o))

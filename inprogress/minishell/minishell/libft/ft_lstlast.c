@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/16 12:24:44 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/11/16 12:32:18 by lde-sous         ###   ########.fr       */
+/*   Created: 2022/11/04 15:25:40 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/06/30 06:08:24 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_list	*ft_lstlast(t_list *lst)
 	if (lst)
 	{
 		while (lst->next != NULL)
-		lst = lst->next;
+			lst = lst->next;
 	}
 	return (lst);
 }

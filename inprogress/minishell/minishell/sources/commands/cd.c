@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/20 05:42:36 by jotavare         ###   ########.fr       */
+/*   Created: 2023/05/12 15:57:28 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/06/30 23:20:09 by alexfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-extern int	g_last_return_value;
 
 char	*search_var_in_g_env(t_attr *att, char *s)
 {
@@ -45,7 +43,7 @@ void	cd_rm_add_path(t_attr *att, char *to_remove, char *s)
 	refresh_add_exp(att, s);
 }
 
-void	cd(t_attr *att)
+int	cd(t_attr *att)
 {
 	char	*destiny_path;
 	char	*current_path;
@@ -55,43 +53,36 @@ void	cd(t_attr *att)
 	if (att->nb_tokens > 2)
 	{
 		ft_putstr_fd("minishell: cd: too many arguments\n", 1);
-		g_last_return_value = 1;
-		return ;
+		free(current_path);
+		return (1);
 	}
 	if (!destiny_path || !ft_strcmp(destiny_path, "~"))
 		destiny_path = search_var_in_g_env(att, "HOME");
 	else if (!ft_strcmp(att->tok_arr[1], "-"))
-		destiny_path = att->last_path;
-	if (!current_path)
-		return ;
-	if (chdir(destiny_path))
+		cd_previous_path(att, &destiny_path);
+	if (!current_path || chdir(destiny_path))
 	{
 		printf(ERROR_CD, att->tok_arr[1]);
-		g_last_return_value = 1;
+		free(current_path);
+		return (1);
 	}
 	update_oldpwd(att, current_path);
 	update_pwd(att);
 	free(current_path);
+	return (0);
 }
 
-void	update_oldpwd(t_attr *att, const char *current_path)
+void	cd_previous_path(t_attr *att, char **destiny_path)
 {
-	char	*str_pwd;
-
-	str_pwd = ft_strjoin("OLDPWD=", current_path);
-	cd_rm_add_path(att, "OLDPWD", str_pwd);
-	free(str_pwd);
-	att->last_path = search_var_in_g_env(att, "OLDPWD");
-}
-
-void	update_pwd(t_attr *att)
-{
-	char	*current_path;
-	char	*str_pwd;
-
-	current_path = getcwd(NULL, 0);
-	str_pwd = ft_strjoin("PWD=", current_path);
-	cd_rm_add_path(att, "PWD", str_pwd);
-	free(str_pwd);
-	free(current_path);
+	if (!att->first_flag)
+	{
+		*destiny_path = search_var_in_g_env(att, "PWD");
+		att->first_flag = 1;
+		printf("%s\n", *destiny_path);
+	}
+	else
+	{
+		*destiny_path = att->last_path;
+		printf("%s\n", *destiny_path);
+	}
 }

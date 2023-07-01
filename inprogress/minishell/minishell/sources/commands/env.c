@@ -3,16 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/20 05:14:29 by jotavare         ###   ########.fr       */
+/*   Created: 2023/05/12 15:57:28 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/06/30 23:19:52 by alexfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void	env(t_attr *att)
+int	env_print_err(t_attr *att, int i)
+{
+	printf("env: ‘%s’: No such file or directory\n", att->tok_arr[i]);
+	return (127);
+}
+
+int	env(t_attr *att)
 {
 	int	i;
 
@@ -20,10 +26,7 @@ void	env(t_attr *att)
 	while (att->tok_arr[i])
 	{
 		if (!check_equal(att->tok_arr[i]))
-		{
-			printf("env: ‘%s’: No such file or directory\n", att->tok_arr[i]);
-			return ;
-		}
+			return (env_print_err(att, i));
 		i++;
 	}
 	i = 0;
@@ -39,4 +42,5 @@ void	env(t_attr *att)
 			printf("%s\n", att->tok_arr[i]);
 		i++;
 	}
+	return (0);
 }
