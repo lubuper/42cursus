@@ -66,6 +66,7 @@ void	reinit_gt_var(t_attr *att, t_toki *tok);
 char	*give_token(char *s, t_attr *att, t_toki *tok);
 int		to_quote(char *s, t_attr *att, t_toki *tok);
 int		to_dquote(char *s, t_attr *att, t_toki *tok);
+void	advance(char *s, t_attr *att);
 
 void	deal_with_it(char *s, t_toki *tok);
 void	deal_aux(char *s, t_toki *tok);

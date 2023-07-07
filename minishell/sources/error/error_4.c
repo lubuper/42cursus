@@ -91,7 +91,7 @@ int	start_args_error(t_attr *att, t_exec *args, int *g_value)
 	if (start_args(args, att) == -1)
 	{
 		att->has_path = 0;
-		printf("Minishell: %s: No such file or directory\n", att->tok_arr[0]);
+		printf("Quack! %s: No such file or directory\n", att->tok_arr[0]);
 		return (*g_value);
 	}
 	return (-1);

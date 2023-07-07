@@ -59,3 +59,9 @@ int	to_dquote(char *s, t_attr *att, t_toki *tok)
 	}
 	return (0);
 }
+
+void	advance(char *s, t_attr *att)
+{
+	backup_in_quotes(s, '\'', att);
+	backup_in_quotes(s, '"', att);
+}

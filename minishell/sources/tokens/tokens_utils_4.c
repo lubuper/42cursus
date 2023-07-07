@@ -98,12 +98,15 @@ char	*process_multi_quote(char *s, t_attr *att, t_toki *tok)
 
 void	backup_in_quotes(char *s, char c, t_attr *att)
 {
-	if (s[att->l] == c)
+	if (att->l >= 0)
 	{
-		att->l--;
-		while (att->l >= 0 && s[att->l] != '"')
+		if (s[att->l] == c)
+		{
 			att->l--;
-		att->l--;
+			while (att->l >= 0 && s[att->l] != '"')
+				att->l--;
+			att->l--;
+		}
 	}
 }
 

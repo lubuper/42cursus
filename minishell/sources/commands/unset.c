@@ -97,7 +97,7 @@ int	unset(t_attr *att)
 	{
 		if (!check_alpha(att->tok_arr[j]))
 		{
-			printf("bash: unset: '%s': not a valid identifier\n",
+			printf("Quack! unset: '%s': not a valid identifier\n",
 				att->tok_arr[j]);
 			return (1);
 		}

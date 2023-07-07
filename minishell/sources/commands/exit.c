@@ -56,11 +56,11 @@ void	ft_exit(t_attr *att)
 	{
 		if (ft_isdigit(att->tok_arr[1][0]))
 		{
-			ft_putstr_fd("minishell: exit: too many arguments\n", 2);
+			ft_putstr_fd("Quack! exit: too many arguments\n", 2);
 			g_value = 1;
 			return ;
 		}
-		ft_putstr_fd("minishell: exit: too many arguments\n", 2);
+		ft_putstr_fd("Quack! exit: too many arguments\n", 2);
 		g_value = 1;
 	}
 	exit_free(att);

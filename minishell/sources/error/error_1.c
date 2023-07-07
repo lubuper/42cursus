@@ -19,14 +19,17 @@ int	error_last(char *str, char c)
 	len = ft_strlen(str);
 	if (len == 0)
 		return (0);
-	if (str[len - 1] == c)
+	if (str[len - 1] && str[len - 1] == c)
 	{
 		if (c != '|')
 			printf(ERROR_NLINE);
 		else
 		{
-			if (str[len - 2] == c)
-				printf(ERROR_PIPE2);
+			if (len >= 2)
+			{
+				if (str[len - 2] == c)
+					printf(ERROR_PIPE2);
+			}
 			else
 				printf(ERROR_PIPE1);
 		}

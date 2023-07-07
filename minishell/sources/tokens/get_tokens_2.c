@@ -19,23 +19,23 @@ int	count_tokens2(char *s, t_attr *att)
 	att->l = ft_strlen(s) - 1;
 	while (att->l >= 0)
 	{
-		if (att->pars_data.nb_tokenst == 0 || (s[att->l - 1] && (s[att->l + 1]
+		if (att->pars_data.nb_tokenst == 0 || (s[att->l + 1] && (s[att->l + 1]
 					== '|' || s[att->l + 1] == '<' || s[att->l + 1] == '>')))
 			att->pars_data.nb_tokenst++;
-		backup_in_quotes(s, '\'', att);
-		backup_in_quotes(s, '"', att);
-		if (s[att->l] != ' ' && s[att->l] != '|' && s[att->l] 
-			!= '<' && s[att->l] != '>' && s[att->l]
-			!= '"' && s[att->l] != '\'')
+		advance(s, att);
+		if (att->l >= 0 && (s[att->l] != ' ' && s[att->l] != '|' && s[att->l] 
+				!= '<' && s[att->l] != '>' && s[att->l] != '"'
+				&& s[att->l] != '\''))
 		{
-			while (att->l >= 0 && (s[att->l] != '|' && s[att->l]
-					!= '<' && s[att->l] != '>' && s[att->l]
+			while (att->l >= 0 && (s[att->l] != '|' && s[att->l] != '<' 
+					&& s[att->l] != '>' && s[att->l]
 					!= '"' && s[att->l] != '\''))
 				att->l--;
 		}
-		else if (s[att->l] == ' ')
+		else if (att->l >= 0 && s[att->l] == ' ')
 			att->l--;
-		else if (s[att->l] == '|' || s[att->l] == '<' || s[att->l] == '>')
+		else if (att->l >= 0 && (s[att->l] == '|' || s[att->l] == '<'
+				|| s[att->l] == '>'))
 			att->l = process_next_token(att, s);
 	}
 	return (++att->pars_data.nb_tokenst);

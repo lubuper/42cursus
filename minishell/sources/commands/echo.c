@@ -118,30 +118,3 @@ int	has_n(char *str, char n)
 	}
 	return (0);
 }
-
-/*int has_n(char *str, char n)
-{
-    int i = 0;
-    int length = ft_strlen(str);
-
-    if (length > 0 && str[i] == '-')
-    {
-        i++;
-        if (i < length)
-        {
-            while (i < length)
-            {
-                if (str[i] == n)
-                {
-                    while (str[i] == n && i < length)
-                        i++;
-                }
-                else if (str[i] != 0 && str[i] != n)
-                    return (0);
-                i++;
-            }
-            return (1);
-        }
-    }
-    return (0);
-}*/

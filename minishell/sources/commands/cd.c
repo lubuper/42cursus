@@ -45,7 +45,7 @@ void	cd_rm_add_path(t_attr *att, char *to_remove, char *s)
 
 int	print_free_return(char *curr_path)
 {
-	ft_putstr_fd("minishell: cd: too many arguments\n", 1);
+	ft_putstr_fd("Quack! cd: too many arguments\n", 1);
 	free(curr_path);
 	return (1);
 }

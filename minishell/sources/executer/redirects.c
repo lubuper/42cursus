@@ -78,7 +78,7 @@ int	read_from_file(t_attr *att, int index)
 	filefd = open(file_name, O_RDONLY);
 	if ((filefd) < 0)
 	{
-		perror("Minishell");
+		perror("Quack!");
 		free(file_name);
 		return (-1);
 	}
