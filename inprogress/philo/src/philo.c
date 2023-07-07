@@ -3,32 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 13:50:44 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/17 16:02:37 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/07/07 11:15:21 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../inc/philo.h"
 
 void	*function(void)
 {
 	pthread_mutex_lock(&mutex);
-
 	pthread_mutex_unlock(&mutex);
 }
 
-
-
-void	thread_maker(int ac, char **av, t_phil t_phil)
+void	thread_maker(char **av, t_phil t_phil)
 {
 	int		i;
 	pthread_t	thread[t_phil->t_args.num];
 	pthread_mutex_t mutex;
 	
 	i = 0;
-	while (av[i])
+	while (i < atoi(av[1]))
 	{
 		pthread_mutex_init(&mutex, NULL);
 		if (pthread_create(&thread1, NULL, &function, NULL) != 0)
@@ -50,6 +47,6 @@ int	main(int ac, char **av)
 
 	if (valid_args(ac, av) == 0)
 		return (0);
-	thread_maker(ac, av, &p);
+	thread_maker(av, &p);
 	return (0);
 }

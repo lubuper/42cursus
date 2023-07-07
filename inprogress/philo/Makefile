@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/11 13:35:09 by lde-sous          #+#    #+#              #
-#    Updated: 2023/05/11 13:47:24 by lde-sous         ###   ########.fr        #
+#    Updated: 2023/07/07 11:09:57 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=address
 SRC = src/philo.c
 
 OBJ = $(SRC:%.c=%.o)

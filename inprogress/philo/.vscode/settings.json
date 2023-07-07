@@ -1,0 +1,8 @@
+{
+	"42header.email": "lde-sous@student.42porto.com",
+	"42header.username": "lde-sous",
+	"files.associations": {
+		"stdlib.h": "c",
+		"time.h": "c"
+	}
+}

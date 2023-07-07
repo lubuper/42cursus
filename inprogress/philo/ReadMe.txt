@@ -77,7 +77,8 @@ is making when augmenting x.                                           |
 			return 0;
 		}
 		
-		OUTPUT: x = 1791003 when it should be 2000000.
+		OUTPUT: x = 1791003 when it should be 2000000. This is a Data Race as the functions
+		compete to get the result.
 -----------------------------------------------------------------------------------
 
 Mutexes are functions that lock the Threads to protect the results from Data Races.

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 13:27:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/17 16:22:27 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/07/07 11:52:40 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,19 @@
 # include <stdlib.h>
 # include <sys/time.h>
 # include <pthread.h>
+# include <stdint.h>
 
 typedef struct s_philo
 {
 	int		no;
-	pthread_t	thread_no;
-	pthread_t	thread_term;
-	pthread_mutex_t	left_fork;
-	pthread_mutex_t	*right_fork;
+	pthread_t	th_no;
+	pthread_t	th_term;
+	pthread_mutex_t	left_f;
+	pthread_mutex_t	*right_f;
 	long long	last_meal;
-	t_args		*t_args;
+	//t_args		*t_args;
 
-}			t_philo
+}			t_philo;
 
 typedef struct s_args
 {
@@ -49,7 +50,11 @@ typedef struct s_p
 	t_args		a;
 }			t_p;
 
-int	valid_args(int ac, char **av);
+//  time_fun.c
+long int	get_time(void);
+void	ft_usleep(long int miliseconds);
+
+int		valid_args(int ac, char **av);
 void	init_vars(int ac, char **av, t_p);
 
 #endif
