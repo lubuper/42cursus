@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 11:08:31 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/07/07 11:41:54 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/07/10 19:06:24 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_usleep(long int miliseconds)
 		usleep(miliseconds / 10);
 }
 
-int	main(void)
+/*int	main(void)
 {
 	uint64_t	start_t;
 	uint64_t	now;
@@ -52,4 +52,4 @@ int	main(void)
 	now = get_time();
 	printf("time passed sleeping = %ldms\n", now - start_t);
 	return (0);
-}
+}*/

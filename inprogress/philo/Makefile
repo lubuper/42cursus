@@ -6,30 +6,40 @@
 #    By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/11 13:35:09 by lde-sous          #+#    #+#              #
-#    Updated: 2023/07/07 11:09:57 by lde-sous         ###   ########.fr        #
+#    Updated: 2023/07/10 19:05:06 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 CC = cc
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=address
-SRC = src/philo.c
+CFLAGS = -Wall -Wextra -Werror -pthread #-fsanitize=address
+SRC =	src/philo.c \
+		src/p_utils.c \
+		src/time_fun.c \
 
-OBJ = $(SRC:%.c=%.o)
+OBJSDIR = obj
+OBJ = $(addprefix $(OBJSDIR)/, $(SRC:.c=.o))
 RM = rm -rf
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): $(OBJ)
 	@echo "Compiling..."
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 	@echo "Object Files READY"
+	
+$(OBJSDIR)/%.o: %.c
+	mkdir -p $(@D)
+	$(CC) $(CFLAGS) -c $< -o $@
+	
 clean:
 	@echo "Cleaning..."
 	$(RM) $(OBJ)
 	@echo "Done!"
+	
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(OBJSDIR)
+	
 re: fclean all
 
 .SILENT:
