@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 13:50:44 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/07/10 20:55:39 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/07/11 12:31:55 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,17 @@
 void	*job(void *voidling)
 {
 	int		m;
+	char *str;
+	
 	m = 0;
+	str = "is eating\n";
 	t_phil *pointer = (t_phil *)voidling;
 	while (1)
 	{
-		//printf("philo %d\n", pointer->ph->no);
-		pthread_mutex_lock(&pointer->arg.mutex);
-		printf("pointer time to eat = %d\n", pointer->arg.t_during_meal);
-		ft_usleep(pointer->arg.t_during_meal);
-		pthread_mutex_unlock(&pointer->arg.mutex);
+		pthread_mutex_lock(&pointer->arg.write_mutex);
+		print_changes(str, pointer);
+		pthread_mutex_unlock(&pointer->arg.write_mutex);
+		ft_usleep(pointer->arg.t_of_meal);
 		//printf("sleeping time");
 		m++;
 		if (pointer->arg.meals == m)
@@ -34,19 +36,17 @@ void	*job(void *voidling)
 void	thread_maker(t_phil *p)
 {
 	int		i;
-	pthread_t	*thread;
 
-	thread = malloc(sizeof(t_phil) * (p->arg.nb_phils));
 	i = 1;
 	while (i <= p->arg.nb_phils)
 	{
-		pthread_create(&thread[i], NULL, job, p);
+		pthread_create(&p->thread_no, NULL, job, p);
 		i++;		
 	}
 	i = 1;
 	while (i <= p->arg.nb_phils)
 	{
-		pthread_join(thread[i], NULL);
+		pthread_join(p->thread_no, NULL);
 		i++;		
 	}
 	return ;
@@ -56,9 +56,9 @@ int	main(int ac, char **av)
 {
 	t_phil	p;
 
-	if (valid_args(ac, av) == 1)
+	if (valid_args(ac, av, &p) == 1)
 		return (0);
-	init_vars(ac, av, &p);
+	//init_vars(ac, av, &p);
 	thread_maker(&p);
 	free_vars(&p);
 	return (0);
