@@ -3,6 +3,7 @@
 	"42header.username": "lde-sous",
 	"files.associations": {
 		"stdlib.h": "c",
-		"time.h": "c"
+		"time.h": "c",
+		"philo.h": "c"
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 13:27:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/07/13 20:53:10 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/07/14 18:24:56 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define SLEEPMSG "is sleeping\n"
 # define THINKMSG "is thinking\n"
 # define DEADMSG "died\n"
+# define ENDMSG "has finished the meals\n"
 
 typedef struct s_args
 {
@@ -47,7 +48,7 @@ typedef struct s_phil
 	pthread_t		thread_no;
 	pthread_mutex_t	l_fork;
 	pthread_mutex_t	*r_fork;
-	long long		last_meal;
+	long int		last_meal;
 	t_args			*arg;
 }					t_phil;
 
@@ -68,6 +69,7 @@ void	get_args(int ac, char **av, t_data *p);
 void	free_vars(t_data *p);
 int		ph_atoi(char *str);
 void	print_changes(char *str, t_phil *p);
+void	philo_args(t_data *p);
 
 // philo.c
 void	*job(void *voidling);
@@ -76,5 +78,9 @@ int		main(int ac, char **av);
 void	printmsg(char *str, t_phil *pointer);
 int		get_l_fork(t_phil *pointer);
 void	put_down_forks(t_phil *pointer);
+
+// death.c
+int		check_death(t_phil *ph);
+void	is_dead(t_phil *ph);
 
 #endif

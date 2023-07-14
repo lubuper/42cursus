@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 13:49:01 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/07/13 20:24:59 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/07/14 18:38:34 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,13 @@ void	free_vars(t_data *p)
 	i = 0;
 	pthread_mutex_destroy(&p->arg.write_mutex);
 	while (i < p->arg.nb_phils)
+	{
 		pthread_mutex_destroy(&p->ph[i++].l_fork);
+	}
 	free(p->ph);
 }
 
-void	args_t_arg(t_data *p)
+void	philo_args(t_data *p)
 {
 	int		i;
 
@@ -54,10 +56,16 @@ void	args_t_arg(t_data *p)
 	while (i < p->arg.nb_phils)
 	{
 		p->ph[i].no = i + 1;
-		p->ph[i].last_meal = 0;
+		p->ph[i].last_meal = get_time() - p->arg.t_start;
+		p->ph[i].r_fork = NULL;
 		p->ph[i].arg = &p->arg;
 		pthread_mutex_init(&p->ph[i].l_fork, NULL);
-		//pthread_mutex_init(&p->ph[i].r_fork, NULL);
+		if (p->arg.nb_phils == 1)
+			break ;
+		if (i + 1 == p->arg.nb_phils)
+			p->ph[i].r_fork =  &p->ph[0].l_fork;
+		else
+			p->ph[i].r_fork =  &p->ph[i + 1].l_fork;
 		i++;
 	}
 }
@@ -65,24 +73,16 @@ void	args_t_arg(t_data *p)
 void	get_args(int ac, char **av, t_data *p)
 {
 	p->arg.nb_phils = ph_atoi(av[1]);
-	printf("nb phils %d\n", p->arg.nb_phils);
-	
 	p->arg.t_until_death = ph_atoi(av[2]);
-	printf("time to die %d\n", p->arg.t_until_death);
-
 	p->arg.t_of_meal = ph_atoi(av[3]);
-	printf("time to eat %d\n", p->arg.t_of_meal);
-
 	p->arg.t_sleep = ph_atoi(av[4]);
-	printf("time to sleep %d\n", p->arg.t_sleep);
-	
 	pthread_mutex_init(&p->arg.write_mutex, NULL);
 	if (ac == 6)
 		p->arg.meals = ph_atoi(av[5]);
 	else if (ac == 5)
 		p->arg.meals = -1;
 	p->arg.t_start = get_time();
-	args_t_arg(p);
+	philo_args(p);
 }
 
 int	valid_args(int ac, char **av, t_data *p)

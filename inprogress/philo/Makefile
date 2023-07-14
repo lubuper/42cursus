@@ -6,16 +6,18 @@
 #    By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/11 13:35:09 by lde-sous          #+#    #+#              #
-#    Updated: 2023/07/11 11:27:28 by lde-sous         ###   ########.fr        #
+#    Updated: 2023/07/14 19:10:04 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
-CC = cc
-CFLAGS = -Wall -Wextra -Werror -pthread -g #-fsanitize=address
+CC = cc -g
+CSANI = cc -fsanitize=thread
+CFLAGS = -Wall -Wextra -Werror -pthread
 SRC =	src/philo.c \
 		src/p_utils.c \
 		src/time_fun.c \
+		src/death.c \
 
 OBJSDIR = obj
 OBJ = $(addprefix $(OBJSDIR)/, $(SRC:.c=.o))
@@ -36,6 +38,10 @@ clean:
 	@echo "Cleaning..."
 	$(RM) $(OBJ)
 	@echo "Done!"
+
+fsani: re $(OBJ)
+	$(CSANI) $(CFLAGS) $(OBJ) -o $(NAME)
+	@echo "fsanitize=address ON!"
 	
 fclean: clean
 	$(RM) $(NAME) $(OBJSDIR)
