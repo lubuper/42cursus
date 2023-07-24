@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 13:49:01 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/07/14 18:38:34 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/07/20 08:53:14 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void	free_vars(t_data *p)
 
 	i = 0;
 	pthread_mutex_destroy(&p->arg.write_mutex);
+	pthread_mutex_destroy(&p->arg.last_mutex);
+	pthread_mutex_destroy(&p->arg.end_mutex);
 	while (i < p->arg.nb_phils)
 	{
 		pthread_mutex_destroy(&p->ph[i++].l_fork);
@@ -76,7 +78,10 @@ void	get_args(int ac, char **av, t_data *p)
 	p->arg.t_until_death = ph_atoi(av[2]);
 	p->arg.t_of_meal = ph_atoi(av[3]);
 	p->arg.t_sleep = ph_atoi(av[4]);
+	p->arg.is_dead = 0;
 	pthread_mutex_init(&p->arg.write_mutex, NULL);
+	pthread_mutex_init(&p->arg.last_mutex, NULL);
+	pthread_mutex_init(&p->arg.end_mutex, NULL);
 	if (ac == 6)
 		p->arg.meals = ph_atoi(av[5]);
 	else if (ac == 5)

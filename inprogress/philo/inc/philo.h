@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 13:27:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/07/14 18:24:56 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/07/19 16:06:50 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,18 @@ typedef struct s_args
 	int				t_of_meal;
 	int				t_sleep;
 	int				meals;
-	int				forks;
+	int				is_dead;
 	long int		t_start;
-
+	pthread_mutex_t	last_mutex;
 	pthread_mutex_t	write_mutex;
+	pthread_mutex_t	end_mutex;
 
 }			t_args;
 
 typedef struct s_phil
 {
 	int				no;
+	pthread_t		death;
 	pthread_t		thread_no;
 	pthread_mutex_t	l_fork;
 	pthread_mutex_t	*r_fork;
@@ -77,10 +79,12 @@ void	thread_maker(t_data *p);
 int		main(int ac, char **av);
 void	printmsg(char *str, t_phil *pointer);
 int		get_l_fork(t_phil *pointer);
+int		get_r_fork(t_phil *pointer);
 void	put_down_forks(t_phil *pointer);
+void	lets_eat(t_phil *pointer);
 
 // death.c
-int		check_death(t_phil *ph);
+void	*check_death(void *ph);
 void	is_dead(t_phil *ph);
 
 #endif
