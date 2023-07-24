@@ -6,13 +6,13 @@
 #    By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/11 13:35:09 by lde-sous          #+#    #+#              #
-#    Updated: 2023/07/14 19:10:04 by lde-sous         ###   ########.fr        #
+#    Updated: 2023/07/24 18:43:57 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 CC = cc -g
-CSANI = cc -fsanitize=thread
+CSANI = cc -fsanitize=address
 CFLAGS = -Wall -Wextra -Werror -pthread
 SRC =	src/philo.c \
 		src/p_utils.c \

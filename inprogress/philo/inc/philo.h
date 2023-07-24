@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 13:27:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/07/19 16:06:50 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/07/24 18:32:49 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ typedef struct s_args
 	pthread_mutex_t	last_mutex;
 	pthread_mutex_t	write_mutex;
 	pthread_mutex_t	end_mutex;
+	pthread_t		death;
 
 }			t_args;
 
 typedef struct s_phil
 {
 	int				no;
-	pthread_t		death;
 	pthread_t		thread_no;
 	pthread_mutex_t	l_fork;
 	pthread_mutex_t	*r_fork;
@@ -72,6 +72,7 @@ void	free_vars(t_data *p);
 int		ph_atoi(char *str);
 void	print_changes(char *str, t_phil *p);
 void	philo_args(t_data *p);
+void	*ft_exit(t_data	*dp);
 
 // philo.c
 void	*job(void *voidling);

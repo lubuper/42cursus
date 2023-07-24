@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 13:50:44 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/07/20 09:49:52 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/07/24 18:48:07 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 void	printmsg(char *str, t_phil *pointer)
 {
 	pthread_mutex_lock(&pointer->arg->write_mutex);
-	print_changes(str, pointer);
+	if (pointer->arg->is_dead == 0)
+		print_changes(str, pointer);
 	pthread_mutex_unlock(&pointer->arg->write_mutex);
 }
 
@@ -52,16 +53,14 @@ void	lets_eat(t_phil *pointer)
 			pthread_mutex_unlock(&pointer->l_fork);
 			return ;
 		}
-		//while (get_r_fork(pointer) == 0)
-		//	ft_usleep(1);
 		if (get_r_fork(pointer))
 		{
 			printmsg(FORKMSG, pointer);
 			printmsg(EATMSG, pointer);
-			ft_usleep(pointer->arg->t_of_meal);
-			pthread_mutex_lock(&pointer->arg->last_mutex);
+			//pthread_mutex_lock(&pointer->arg->last_mutex);
 			pointer->last_meal = get_time();
-			pthread_mutex_unlock(&pointer->arg->last_mutex);
+			//pthread_mutex_unlock(&pointer->arg->last_mutex);
+			ft_usleep(pointer->arg->t_of_meal);
 		}
 	}
 }
@@ -73,14 +72,10 @@ void	*job(void *voidling)
 	
 	m = 0;
 	pointer = (t_phil *)voidling;
-	if (pointer->arg->nb_phils % 2 == 1)
-	{
 		if(pointer->no % 2 == 1)
 			ft_usleep(10);
-	}
 	while (1)
 	{
-	
 		lets_eat(pointer);
 		put_down_forks(pointer);
 		m++;
@@ -106,6 +101,8 @@ void	thread_maker(t_data *p)
 		i++;
 	}
 	i = 0;
+	pthread_create(&p->arg.death, NULL, check_death, p);
+	pthread_detach(p->arg.death);
 	while (i < p->arg.nb_phils)
 	{
 		pthread_join(p->ph[i].thread_no, NULL);
