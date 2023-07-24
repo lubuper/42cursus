@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 13:49:01 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/07/24 18:33:23 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/07/24 21:04:49 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ph_atoi(char *str)
 	if (!str)
 		return (0);
 	if (str[i] == '+')
-			i++;
+		i++;
 	while (str[i])
 	{
 		if (str[i] >= 48 && str[i] <= 57)
@@ -39,13 +39,12 @@ void	free_vars(t_data *p)
 	int	i;
 
 	i = 0;
-	pthread_mutex_destroy(&p->arg.write_mutex);
-	pthread_mutex_destroy(&p->arg.last_mutex);
-	pthread_mutex_destroy(&p->arg.end_mutex);
 	while (i < p->arg.nb_phils)
 	{
 		pthread_mutex_destroy(&p->ph[i++].l_fork);
 	}
+	pthread_mutex_destroy(&p->arg.write_mutex);
+	//pthread_mutex_destroy(&p->arg.last_mutex);
 	free(p->ph);
 }
 
@@ -65,9 +64,9 @@ void	philo_args(t_data *p)
 		if (p->arg.nb_phils == 1)
 			break ;
 		if (i + 1 == p->arg.nb_phils)
-			p->ph[i].r_fork =  &p->ph[0].l_fork;
+			p->ph[i].r_fork = &p->ph[0].l_fork;
 		else
-			p->ph[i].r_fork =  &p->ph[i + 1].l_fork;
+			p->ph[i].r_fork = &p->ph[i + 1].l_fork;
 		i++;
 	}
 }
@@ -106,24 +105,23 @@ int	valid_args(int ac, char **av, t_data *p)
 				printf("Think in numbers you can count\n");
 				return (1);
 			}
-			j++;	
+			j++;
 		}
 		i++;
 	}
 	if (ac < 5 || ac > 6)
 	{
-		printf("Think about how many parameters you need\n");		
+		printf("Think about how many parameters you need\n");
 		return (1);
 	}
 	get_args(ac, av, p);
-	printf("everything valid!\n");
-	return (0);	
+	return (0);
 }
 
 void	print_changes(char *str, t_phil *p)
 {
 	long int	time_now;
-	
+
 	time_now = get_time() - p->arg->t_start;
 	printf("%ld ", time_now);
 	printf("%d %s", p->no, str);

@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 13:50:44 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/07/24 18:48:07 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/07/24 20:55:39 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	lets_eat(t_phil *pointer)
 		printmsg(FORKMSG, pointer);
 		if (pointer->r_fork == 0)
 		{
-			ft_usleep(pointer->arg->t_until_death  * 2);
+			ft_usleep(pointer->arg->t_until_death * 2);
 			pthread_mutex_unlock(&pointer->l_fork);
 			return ;
 		}
@@ -57,25 +57,25 @@ void	lets_eat(t_phil *pointer)
 		{
 			printmsg(FORKMSG, pointer);
 			printmsg(EATMSG, pointer);
-			//pthread_mutex_lock(&pointer->arg->last_mutex);
 			pointer->last_meal = get_time();
-			//pthread_mutex_unlock(&pointer->arg->last_mutex);
 			ft_usleep(pointer->arg->t_of_meal);
 		}
 	}
 }
-	
+
 void	*job(void *voidling)
 {
 	int		m;
-	t_phil *pointer;
-	
+	t_phil	*pointer;
+
 	m = 0;
 	pointer = (t_phil *)voidling;
-		if(pointer->no % 2 == 1)
-			ft_usleep(10);
+	if (pointer->no % 2 == 1)
+		ft_usleep(10);
 	while (1)
 	{
+		if (pointer->arg->is_dead)
+			return (NULL);
 		lets_eat(pointer);
 		put_down_forks(pointer);
 		m++;
@@ -106,7 +106,7 @@ void	thread_maker(t_data *p)
 	while (i < p->arg.nb_phils)
 	{
 		pthread_join(p->ph[i].thread_no, NULL);
-		i++;		
+		i++;
 	}
 	return ;
 }
@@ -117,7 +117,6 @@ int	main(int ac, char **av)
 
 	if (valid_args(ac, av, &p) == 1)
 		return (0);
-	//init_vars(ac, av, &p);
 	if (p.arg.meals == 0)
 		return (0);
 	thread_maker(&p);

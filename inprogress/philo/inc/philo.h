@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 13:27:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/07/24 18:32:49 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/07/24 20:57:52 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,38 +54,37 @@ typedef struct s_phil
 	t_args			*arg;
 }					t_phil;
 
- typedef struct s_data
+typedef struct	s_data
 {
 	t_phil	*ph;
 	t_args	arg;
-
 }			t_data;
 
 //  time_fun.c
 long int	get_time(void);
-void	ft_usleep(long int miliseconds);
+void		ft_usleep(long int miliseconds);
 
 // philo_utils.c
-int		valid_args(int ac, char **av, t_data *p);
-void	get_args(int ac, char **av, t_data *p);
-void	free_vars(t_data *p);
-int		ph_atoi(char *str);
-void	print_changes(char *str, t_phil *p);
-void	philo_args(t_data *p);
-void	*ft_exit(t_data	*dp);
+int			valid_args(int ac, char **av, t_data *p);
+void		get_args(int ac, char **av, t_data *p);
+void		free_vars(t_data *p);
+int			ph_atoi(char *str);
+void		print_changes(char *str, t_phil *p);
+void		philo_args(t_data *p);
+void		*ft_exit(t_data	*dp);
 
 // philo.c
-void	*job(void *voidling);
-void	thread_maker(t_data *p);
-int		main(int ac, char **av);
-void	printmsg(char *str, t_phil *pointer);
-int		get_l_fork(t_phil *pointer);
-int		get_r_fork(t_phil *pointer);
-void	put_down_forks(t_phil *pointer);
-void	lets_eat(t_phil *pointer);
+void		*job(void *voidling);
+void		thread_maker(t_data *p);
+int			main(int ac, char **av);
+void		printmsg(char *str, t_phil *pointer);
+int			get_l_fork(t_phil *pointer);
+int			get_r_fork(t_phil *pointer);
+void		put_down_forks(t_phil *pointer);
+void		lets_eat(t_phil *pointer);
 
 // death.c
-void	*check_death(void *ph);
-void	is_dead(t_phil *ph);
+void		*check_death(void *ph);
+void		is_dead(t_phil *ph);
 
 #endif
