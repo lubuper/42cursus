@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 13:27:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/07/24 20:57:52 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/07/25 16:10:32 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef struct s_phil
 	t_args			*arg;
 }					t_phil;
 
-typedef struct	s_data
+typedef struct s_data
 {
 	t_phil	*ph;
 	t_args	arg;

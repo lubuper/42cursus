@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 17:40:11 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/07/24 20:53:05 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/07/25 16:18:43 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,17 @@ void	*check_death(void *data)
 		i++;
 	}
 	return (NULL);
+}
+
+void	free_vars(t_data *p)
+{
+	int	i;
+
+	i = 0;
+	while (i < p->arg.nb_phils)
+	{
+		pthread_mutex_destroy(&p->ph[i++].l_fork);
+	}
+	pthread_mutex_destroy(&p->arg.write_mutex);
+	free(p->ph);
 }

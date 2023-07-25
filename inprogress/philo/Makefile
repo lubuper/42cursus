@@ -6,7 +6,7 @@
 #    By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/11 13:35:09 by lde-sous          #+#    #+#              #
-#    Updated: 2023/07/24 20:07:42 by lde-sous         ###   ########.fr        #
+#    Updated: 2023/07/25 16:14:31 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ CSANI = cc -fsanitize=thread
 CFLAGS = -Wall -Wextra -Werror -pthread
 SRC =	src/philo.c \
 		src/p_utils.c \
+		src/eat.c \
 		src/time_fun.c \
 		src/death.c \
 
@@ -41,7 +42,7 @@ clean:
 
 fsani: re $(OBJ)
 	$(CSANI) $(CFLAGS) $(OBJ) -o $(NAME)
-	@echo "fsanitize=address ON!"
+	@echo "fsanitize ON!"
 	
 fclean: clean
 	$(RM) $(NAME) $(OBJSDIR)

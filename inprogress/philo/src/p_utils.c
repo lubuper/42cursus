@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 13:49:01 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/07/24 21:04:49 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/07/25 16:18:25 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,6 @@ int	ph_atoi(char *str)
 		i++;
 	}
 	return (result);
-}
-
-void	free_vars(t_data *p)
-{
-	int	i;
-
-	i = 0;
-	while (i < p->arg.nb_phils)
-	{
-		pthread_mutex_destroy(&p->ph[i++].l_fork);
-	}
-	pthread_mutex_destroy(&p->arg.write_mutex);
-	//pthread_mutex_destroy(&p->arg.last_mutex);
-	free(p->ph);
 }
 
 void	philo_args(t_data *p)
