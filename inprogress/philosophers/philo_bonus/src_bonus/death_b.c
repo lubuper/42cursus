@@ -1,43 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   death.c                                            :+:      :+:    :+:   */
+/*   death_b.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 17:40:11 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/07/25 16:18:43 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/07/26 17:05:16 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/philo.h"
+#include "../inc_bonus/philo_bonus.h"
 
-void	*check_death(void *data)
+void	check_death(t_data *p)
 {
-	t_data	*dp;
 	int		i;
 
 	i = 0;
-	dp = (t_data *)data;
-	ft_usleep(dp->arg.t_until_death);
-	while (i < dp->arg.nb_phils)
+	ft_usleep(p->arg.t_until_death);
+	while (i < p->arg.nb_phils)
 	{
-		pthread_mutex_lock(&dp->arg.last_mutex);
-		if ((get_time() - dp->ph[i].last_meal)
-			>= (long int)dp->arg.t_until_death)
+		sem_wait(&p->arg.final_sem);
+		if ((get_time() - p->ph[i].last_meal)
+			>= (long int)p->arg.t_until_death)
 		{
-			pthread_mutex_unlock(&dp->arg.last_mutex);
-			printmsg(DEADMSG, &dp->ph[i]);
-			pthread_mutex_lock(&dp->arg.end_mutex);
-			dp->arg.is_dead = 1;
-			pthread_mutex_unlock(&dp->arg.end_mutex);
-			return (NULL);
+			sem_post(&p->arg.final_sem);
+			printmsg(DEADMSG, p);
+			sem_wait(&p->arg.final_sem);
+			p->arg.is_dead = 1;
+			sem_post(&p->arg.final_sem);
+			return ;
 		}
 		else
-			pthread_mutex_unlock(&dp->arg.last_mutex);
+			sem_post(&p->arg.final_sem);
 		i++;
 	}
-	return (NULL);
+	return ;
 }
 
 void	free_vars(t_data *p)
@@ -45,10 +43,8 @@ void	free_vars(t_data *p)
 	int	i;
 
 	i = 0;
-	while (i < p->arg.nb_phils)
-	{
-		pthread_mutex_destroy(&p->ph[i++].l_fork);
-	}
-	pthread_mutex_destroy(&p->arg.write_mutex);
+	sem_destroy(&p->arg.final_sem);
+	sem_destroy(&p->arg.forks);
+	sem_destroy(&p->arg.write_sem);
 	free(p->ph);
 }

@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 13:27:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/07/25 16:10:32 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/07/26 15:42:51 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ void		free_vars(t_data *p);
 int			ph_atoi(char *str);
 void		print_changes(char *str, t_phil *p);
 void		philo_args(t_data *p);
-void		*ft_exit(t_data	*dp);
 
 // philo.c
 void		*job(void *voidling);

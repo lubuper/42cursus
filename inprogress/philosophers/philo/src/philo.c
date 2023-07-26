@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 13:50:44 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/07/25 16:16:37 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/07/26 15:43:54 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	*job(void *voidling)
 
 	m = 0;
 	pointer = (t_phil *)voidling;
-	if (pointer->no % 2 == 1)
+	if (pointer->no % 2 == 0)
 		ft_usleep(10);
 	while (1)
 	{
