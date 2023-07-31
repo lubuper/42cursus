@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 13:27:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/07/26 16:58:57 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/07/31 19:00:28 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 # include <sys/time.h>
 # include <stdint.h>
 # include <semaphore.h>
+# include <sys/wait.h>
+# include <pthread.h>
+# include <signal.h>
 
 # define FORKMSG "has taken a fork\n"
 # define EATMSG "is eating\n"
@@ -37,16 +40,17 @@ typedef struct s_args
 	int			meals;
 	int			is_dead;
 	long int	t_start;
+	sem_t		death;
 	sem_t		write_sem;
 	sem_t		final_sem;
 	sem_t		forks;
-
-}			t_args;
+	pthread_t	watcher;
+}				t_args;
 
 typedef struct s_phil
 {
 	int			no;
-	int			pid;
+	pid_t		pid;
 	long int	last_meal;
 	t_args		*arg;
 }				t_phil;
@@ -70,7 +74,7 @@ void		print_changes(char *str, t_data *p);
 void		philo_args(t_data *p);
 
 // philo.c
-void		job(t_data	*p);
+void		job(t_data	*p, int p_nb);
 void		processes_start(t_data *p);
 int			main(int ac, char **av);
 void		printmsg(char *str, t_data *p);
@@ -80,6 +84,6 @@ void		put_down_forks(t_data *p);
 void		lets_eat(t_data *p);
 
 // death.c
-void		check_death(t_data *p);
+void		*check_death(void *data);
 
 #endif

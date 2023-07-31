@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 13:49:01 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/07/26 17:03:41 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/07/31 18:57:32 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ void	philo_args(t_data *p)
 	while (i < p->arg.nb_phils)
 	{
 		p->ph[i].no = i + 1;
-		p->ph[i].pid = getpid();
 		p->ph[i].last_meal = get_time() - p->arg.t_start;
 		p->ph[i].arg = &p->arg;
+		i++;
 	}
 }
 
@@ -58,6 +58,7 @@ void	get_args(int ac, char **av, t_data *p)
 	p->arg.is_dead = 0;
 	sem_init(&p->arg.write_sem, 1, 1);
 	sem_init(&p->arg.final_sem, 1, 1);
+	sem_init(&p->arg.death, 1, 0);
 	sem_init(&p->arg.forks, 1, p->arg.nb_phils);
 	if (ac == 6)
 		p->arg.meals = ph_atoi(av[5]);

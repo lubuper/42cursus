@@ -1,35 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   time_fun.c                                         :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/07 11:08:31 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/07/31 16:25:22 by lde-sous         ###   ########.fr       */
+/*   Created: 2023/07/31 16:03:23 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/07/31 16:15:50 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc_bonus/philo_bonus.h"
 
-long int	get_time(void)
+void	processes_start(t_data *p)
 {
-	struct timeval	ftime;
-	long int		time;
+	int		i;
+	int		status;
+	
+	i = 0;
+	while (i < p->arg.nb_phils)
+	{
+		if ((p->ph[i].pid = fork()) < 0)
+		{
+	    	perror("fork");
+	    	abort();
+		}
+		else if (p->ph[i].pid == 0)
+		{
+	    	job(p);
+	    	exit(0);
+		}
+	}
 
-	time = 0;
-	if (gettimeofday(&ftime, NULL))
-		return (-1);
-	time = (ftime.tv_sec * 1000) + (ftime.tv_usec / 1000);
-	return (time);
-}
-
-void	ft_usleep(long int miliseconds)
-{
-	long int	start;
-
-	start = 0;
-	start = get_time();
-	while (get_time() - start < miliseconds)
-		usleep(miliseconds / 10);
+	i = 0;
+	while (i < p->arg.nb_phils)
+	{
+		p->ph[i].pid = wait(&status);
+		printf("Child with PID %ld exited with status 0x%x.\n", (long)p->ph[i].pid, status);
+		i++;
+	}
 }

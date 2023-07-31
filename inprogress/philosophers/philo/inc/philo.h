@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 13:27:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/07/26 15:42:51 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/07/31 18:38:40 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,7 @@ typedef struct s_args
 	pthread_mutex_t	write_mutex;
 	pthread_mutex_t	end_mutex;
 	pthread_t		death;
-
-}			t_args;
+}					t_args;
 
 typedef struct s_phil
 {

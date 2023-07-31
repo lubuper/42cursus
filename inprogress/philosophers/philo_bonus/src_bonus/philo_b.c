@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 13:50:44 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/07/26 17:02:57 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/07/31 20:22:58 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,23 @@
 
 void	printmsg(char *str, t_data *p)
 {
-	sem_wait(&p->arg.write_sem);
-	if (p->arg.is_dead == 0)
+	sem_wait(&p->arg.final_sem);
+	if (!p->arg.is_dead)
+	{
+		sem_wait(&p->arg.write_sem);
 		print_changes(str, p);
-	sem_post(&p->arg.write_sem);
+		sem_post(&p->arg.write_sem);
+	}
+	sem_post(&p->arg.final_sem);
 }
 
-void	job(t_data *p)
+void	job(t_data *p, int nb)
 {
 	int		m;
 
 	m = 0;
-	if (p->ph->no % 2 == 1)
+	p->ph->no = nb;
+	if (nb % 2 == 1)
 		ft_usleep(10);
 	while (1)
 	{
@@ -48,27 +53,50 @@ void	job(t_data *p)
 void	processes_start(t_data *p)
 {
 	int		i;
+	int		status;
+	pid_t	pid;
+	
+	i = 0;
+	while (i < p->arg.nb_phils)
+	{
+		pid = fork();
+		if (pid == 0)
+		{
+			pthread_create(&p->arg.watcher, NULL, check_death, p);
+			pthread_detach(p->arg.watcher);
+	    	job(p, i + 1);
+	    	exit(0);
+		}
+		p->ph[i].pid = pid;
+		i++;
+	}
+		waitpid(-1, &status, 0);
+}
+
+/* void	processes_start(t_data *p)
+{
+	int		i;
 
 	i = 0;
 	while (i < p->arg.nb_phils)
 	{
 		p->ph[i].pid = fork();
-		i++;
+	 	i++;
 	}
 	if (p->ph[i].pid == 0)
 	{
 		job(p);
+		return ;
 	}
 	i = 0;
-	//pthread_create(&p->arg.death, NULL, check_death, p);
-	//thread_detach(p->arg.death);
-	/* while (i < p->arg.nb_phils)
+	fork();
+	while (i < p->arg.nb_phils)
 	{
 		pthread_join(p->ph[i].thread_no, NULL);
 		i++;
 	}
-	return ; */
-}
+	return ;
+} */
 
 int	main(int ac, char **av)
 {
