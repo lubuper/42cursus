@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 13:50:44 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/07/31 20:22:58 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/08/01 18:37:36 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,17 @@
 
 void	printmsg(char *str, t_data *p)
 {
-	sem_wait(&p->arg.final_sem);
-	if (!p->arg.is_dead)
+	if (p->arg.is_dead == 1)
 	{
-		sem_wait(&p->arg.write_sem);
-		print_changes(str, p);
-		sem_post(&p->arg.write_sem);
+		return ;
 	}
-	sem_post(&p->arg.final_sem);
+	else
+	{
+		sem_wait(p->arg.write_sem);
+		print_changes(str, p);
+		sem_post(p->arg.write_sem);
+	}
+
 }
 
 void	job(t_data *p, int nb)
@@ -29,20 +32,22 @@ void	job(t_data *p, int nb)
 	int		m;
 
 	m = 0;
-	p->ph->no = nb;
+	p->ph.no = nb;
 	if (nb % 2 == 1)
 		ft_usleep(10);
 	while (1)
 	{
 		if (p->arg.is_dead)
-			return ;
+			exit(0);
 		lets_eat(p);
 		put_down_forks(p);
+		ft_usleep(10);
 		m++;
 		if (p->arg.meals == m)
 		{
 			printmsg(ENDMSG, p);
-			return ;
+			ft_usleep(p->arg.t_sleep);
+			exit(1);
 		}
 		printmsg(SLEEPMSG, p);
 		ft_usleep(p->arg.t_sleep);
@@ -55,7 +60,7 @@ void	processes_start(t_data *p)
 	int		i;
 	int		status;
 	pid_t	pid;
-	
+
 	i = 0;
 	while (i < p->arg.nb_phils)
 	{
@@ -65,38 +70,16 @@ void	processes_start(t_data *p)
 			pthread_create(&p->arg.watcher, NULL, check_death, p);
 			pthread_detach(p->arg.watcher);
 	    	job(p, i + 1);
-	    	exit(0);
+	    	//exit(0);
 		}
-		p->ph[i].pid = pid;
+		// if (pid != 0)
+			p->arg.pid[i] = pid;
 		i++;
 	}
-		waitpid(-1, &status, 0);
+	i = 0;
+	waitpid(-1, &status, 0);
+	free_vars(p);
 }
-
-/* void	processes_start(t_data *p)
-{
-	int		i;
-
-	i = 0;
-	while (i < p->arg.nb_phils)
-	{
-		p->ph[i].pid = fork();
-	 	i++;
-	}
-	if (p->ph[i].pid == 0)
-	{
-		job(p);
-		return ;
-	}
-	i = 0;
-	fork();
-	while (i < p->arg.nb_phils)
-	{
-		pthread_join(p->ph[i].thread_no, NULL);
-		i++;
-	}
-	return ;
-} */
 
 int	main(int ac, char **av)
 {
@@ -107,6 +90,6 @@ int	main(int ac, char **av)
 	if (p.arg.meals == 0)
 		return (0);
 	processes_start(&p);
-	free_vars(&p);
+	//free_vars(&p);
 	return (0);
 }

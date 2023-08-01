@@ -6,30 +6,33 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 13:27:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/07/31 19:00:28 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/08/01 18:23:19 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_BONUS_H
 # define PHILO_BONUS_H
 
-# include <unistd.h>
-# include <stdio.h>
-# include <string.h>
-# include <stdlib.h>
-# include <sys/time.h>
-# include <stdint.h>
-# include <semaphore.h>
-# include <sys/wait.h>
+# include <fcntl.h>
 # include <pthread.h>
+# include <semaphore.h>
 # include <signal.h>
+# include <stdatomic.h>
+# include <stdio.h>
+# include <stdint.h>
+# include <stdlib.h>
+# include <string.h>
+# include <sys/time.h>
+# include <sys/wait.h>
+# include <sys/stat.h>
+# include <unistd.h>
 
-# define FORKMSG "has taken a fork\n"
-# define EATMSG "is eating\n"
-# define SLEEPMSG "is sleeping\n"
-# define THINKMSG "is thinking\n"
-# define DEADMSG "died\n"
-# define ENDMSG "has finished the meals\n"
+# define FORKMSG "\e[0;37mhas taken a fork\e[0m\n"
+# define EATMSG "\e[0;33mis eating\e[0m\n"
+# define SLEEPMSG "\e[0;34mis sleeping\e[0m\n"
+# define THINKMSG "\e[0;35mis thinking\e[0m\n"
+# define DEADMSG "\e[0;31mdied\e[0m\n"
+# define ENDMSG "\e[0;32mhas finished the meals\e[0m\n"
 
 typedef struct s_args
 {
@@ -38,26 +41,25 @@ typedef struct s_args
 	int			t_of_meal;
 	int			t_sleep;
 	int			meals;
-	int			is_dead;
+	atomic_int			is_dead;
 	long int	t_start;
-	sem_t		death;
-	sem_t		write_sem;
-	sem_t		final_sem;
-	sem_t		forks;
+	sem_t		*verif;
+	sem_t		*write_sem;
+	sem_t		*forks;
 	pthread_t	watcher;
+	int			*pid;
 }				t_args;
 
 typedef struct s_phil
 {
-	int			no;
-	pid_t		pid;
-	long int	last_meal;
-	t_args		*arg;
-}				t_phil;
+	int					no;
+	_Atomic long int	last_meal;
+	t_args				*arg;
+}						t_phil;
 
 typedef struct s_data
 {
-	t_phil	*ph;
+	t_phil	ph;
 	t_args	arg;
 }			t_data;
 
@@ -78,8 +80,6 @@ void		job(t_data	*p, int p_nb);
 void		processes_start(t_data *p);
 int			main(int ac, char **av);
 void		printmsg(char *str, t_data *p);
-int			get_l_fork(t_data *p);
-int			get_r_fork(t_data *p);
 void		put_down_forks(t_data *p);
 void		lets_eat(t_data *p);
 

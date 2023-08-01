@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 13:27:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/07/31 18:38:40 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/08/01 13:06:59 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@
 # include <pthread.h>
 # include <stdint.h>
 
-# define FORKMSG "has taken a fork\n"
-# define EATMSG "is eating\n"
-# define SLEEPMSG "is sleeping\n"
-# define THINKMSG "is thinking\n"
-# define DEADMSG "died\n"
-# define ENDMSG "has finished the meals\n"
+# define FORKMSG "\e[0;37mhas taken a fork\e[0m\n"
+# define EATMSG "\e[0;33mis eating\e[0m\n"
+# define SLEEPMSG "\e[0;34mis sleeping\e[0m\n"
+# define THINKMSG "\e[0;35mis thinking\e[0m\n"
+# define DEADMSG "\e[0;31mdied\e[0m\n"
+# define ENDMSG "\e[0;32mhas finished the meals\e[0m\n"
 
 typedef struct s_args
 {

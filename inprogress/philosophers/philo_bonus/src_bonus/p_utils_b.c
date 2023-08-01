@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 13:49:01 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/07/31 18:57:32 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/08/01 18:24:02 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,6 @@ int	ph_atoi(char *str)
 	return (result);
 }
 
-void	philo_args(t_data *p)
-{
-	int		i;
-
-	i = 0;
-	p->ph = malloc(sizeof(t_phil) * p->arg.nb_phils);
-	while (i < p->arg.nb_phils)
-	{
-		p->ph[i].no = i + 1;
-		p->ph[i].last_meal = get_time() - p->arg.t_start;
-		p->ph[i].arg = &p->arg;
-		i++;
-	}
-}
-
 void	get_args(int ac, char **av, t_data *p)
 {
 	p->arg.nb_phils = ph_atoi(av[1]);
@@ -56,16 +41,19 @@ void	get_args(int ac, char **av, t_data *p)
 	p->arg.t_of_meal = ph_atoi(av[3]);
 	p->arg.t_sleep = ph_atoi(av[4]);
 	p->arg.is_dead = 0;
-	sem_init(&p->arg.write_sem, 1, 1);
-	sem_init(&p->arg.final_sem, 1, 1);
-	sem_init(&p->arg.death, 1, 0);
-	sem_init(&p->arg.forks, 1, p->arg.nb_phils);
+	sem_unlink("write_sem");
+	sem_unlink("verif");
+	sem_unlink("death");
+	sem_unlink("forks");
+	p->arg.verif = sem_open("verif", O_CREAT, 0644, 1);
+	p->arg.write_sem = sem_open("write_sem", O_CREAT, 0644, 1);
+	p->arg.forks = sem_open("forks", O_CREAT, 0644, p->arg.nb_phils);
+	p->arg.pid = malloc(sizeof(int) * p->arg.nb_phils);
 	if (ac == 6)
 		p->arg.meals = ph_atoi(av[5]);
 	else if (ac == 5)
 		p->arg.meals = -1;
 	p->arg.t_start = get_time();
-	philo_args(p);
 }
 
 int	valid_args(int ac, char **av, t_data *p)
@@ -103,5 +91,5 @@ void	print_changes(char *str, t_data *p)
 
 	time_now = get_time() - p->arg.t_start;
 	printf("%ld ", time_now);
-	printf("%d %s", p->ph->no, str);
+	printf("%d %s", p->ph.no, str);
 }
