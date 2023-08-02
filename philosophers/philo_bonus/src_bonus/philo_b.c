@@ -38,7 +38,6 @@ void	job(t_data *p, int nb)
 			exit(0);
 		lets_eat(p);
 		put_down_forks(p);
-		ft_usleep(10);
 		m++;
 		if (p->arg.meals == m)
 		{
