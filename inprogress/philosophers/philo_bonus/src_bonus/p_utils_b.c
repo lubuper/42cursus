@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 13:49:01 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/08/01 18:24:02 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/08/02 18:17:07 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ void	get_args(int ac, char **av, t_data *p)
 	else if (ac == 5)
 		p->arg.meals = -1;
 	p->arg.t_start = get_time();
+	p->arg.finished_meals = 0;
+	p->ph.last_meal = 1;
 }
 
 int	valid_args(int ac, char **av, t_data *p)

@@ -6,13 +6,13 @@
 #    By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/11 13:35:09 by lde-sous          #+#    #+#              #
-#    Updated: 2023/07/26 14:31:01 by lde-sous         ###   ########.fr        #
+#    Updated: 2023/08/02 18:24:47 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo_bonus
 CC = cc -g
-CSANI = cc -fsanitize=thread
+CSANI = cc -fsanitize=leak
 CFLAGS = -Wall -Wextra -Werror -pthread
 SRC =	src_bonus/philo_b.c \
 		src_bonus/p_utils_b.c \

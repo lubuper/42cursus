@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 13:50:44 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/08/01 18:37:36 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/08/02 18:19:29 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,13 @@
 void	printmsg(char *str, t_data *p)
 {
 	if (p->arg.is_dead == 1)
-	{
 		return ;
-	}
 	else
 	{
 		sem_wait(p->arg.write_sem);
 		print_changes(str, p);
 		sem_post(p->arg.write_sem);
 	}
-
 }
 
 void	job(t_data *p, int nb)
@@ -45,6 +42,7 @@ void	job(t_data *p, int nb)
 		m++;
 		if (p->arg.meals == m)
 		{
+			p->arg.finished_meals = 1;
 			printmsg(ENDMSG, p);
 			ft_usleep(p->arg.t_sleep);
 			exit(1);
@@ -69,16 +67,13 @@ void	processes_start(t_data *p)
 		{
 			pthread_create(&p->arg.watcher, NULL, check_death, p);
 			pthread_detach(p->arg.watcher);
-	    	job(p, i + 1);
-	    	//exit(0);
+			job(p, i + 1);
 		}
-		// if (pid != 0)
-			p->arg.pid[i] = pid;
+		p->arg.pid[i] = pid;
 		i++;
 	}
 	i = 0;
 	waitpid(-1, &status, 0);
-	free_vars(p);
 }
 
 int	main(int ac, char **av)
@@ -90,6 +85,6 @@ int	main(int ac, char **av)
 	if (p.arg.meals == 0)
 		return (0);
 	processes_start(&p);
-	//free_vars(&p);
+	free_vars(&p);
 	return (0);
 }

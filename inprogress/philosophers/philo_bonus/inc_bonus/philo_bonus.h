@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 13:27:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/08/01 18:23:19 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/08/02 18:17:04 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,20 @@
 
 typedef struct s_args
 {
-	int			nb_phils;
-	int			t_until_death;
-	int			t_of_meal;
-	int			t_sleep;
-	int			meals;
+	int					finished_meals;
+	int					nb_phils;
+	int					t_until_death;
+	int					t_of_meal;
+	int					t_sleep;
+	int					meals;
 	atomic_int			is_dead;
-	long int	t_start;
-	sem_t		*verif;
-	sem_t		*write_sem;
-	sem_t		*forks;
-	pthread_t	watcher;
-	int			*pid;
-}				t_args;
+	long int			t_start;
+	sem_t				*verif;
+	sem_t				*write_sem;
+	sem_t				*forks;
+	pthread_t			watcher;
+	int					*pid;
+}						t_args;
 
 typedef struct s_phil
 {
