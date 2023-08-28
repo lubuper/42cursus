@@ -6,31 +6,18 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 14:42:51 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/08/10 17:17:07 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/08/16 17:18:00 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-int	loads(t_data *d)
+void	init_struct(t_data	*d, int ac, char **av)
 {
-	
-	return (1);
-}
-
-void	init_struct(t_data	*d)
-{
-	d->mlx = 0;
-	d->win = 0;
-	d->map = 0;
-	d->mapdup = 0;
-	d->lines = 0;
-	d->cols = 0;
-	d->x = 0;
-	d->y = 0;
-	d->px = 0;
-	d->py = 0;
-	d->ex = 0;
-	d->ey = 0;
+	ft_memset(d, 0, sizeof(*d));
 	d->d = 'N';
+	valid_file(ac, av);
+	handle_file(d, av);
+	treat_map(d);
+	verify_values(d);
 }

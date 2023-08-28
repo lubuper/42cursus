@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 19:21:04 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/08/10 17:18:34 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/08/28 13:00:34 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,25 +21,79 @@ int	valid_first_walls(t_data *d)
 		else
 			return (0);
 	}
-	while (d->map[0][d->x])
+	while (d->x < (int)ft_strlen(d->map[0]))
 	{
 		if (d->map[0][d->x] == '1' || d->map[d->y][0] == ' ')
 			d->x++;
 		else
 			return (0);
 	}
-		while (d->map[d->lines][d->x])
+	d->x = 0;
+	while (d->x < (int)ft_strlen(d->map[d->lines - 1]))
 	{
-		if (d->map[d->lines][d->x] == '1' || d->map[d->y][0] == ' ')
+		if (d->map[d->lines - 1][d->x] == '1' || d->map[d->y][0] == ' ')
 			d->x++;
+		else
+			return (0);
+	}
+	if (!valid_remain_walls(d))
+		return (0);
+	return (1);
+}
+
+int	valid_remain_walls(t_data *d)
+{
+	d->y = 0;
+	while (d->y < d->lines - 1)
+	{
+		if (d->map[d->y][(int)ft_strlen(d->map[d->y])] != '1')
+			d->y++;
+		else
+			return (0);
+	}
+	d->y = 1;
+	d->x = 1;
+	while (d->y < d->lines - 1)
+	{
+		if (verify_conditions(d))
+			d->y++;
 		else
 			return (0);
 	}
 	return (1);
 }
 
-int	valid_walls(t_data *d)
+void	treat_map(t_data *d)
 {
+	if (!valid_first_walls(d))
+	{
+		printf("Error!\nInvalid wall placement!\n");
+		frees(d);
+	}
+	if (d->end_flag)
+	{
+		printf("Error\nInvalid path to .xpm texture\n");
+		frees(d);
+		exit(1);
+	}
+}
+
+int	verify_conditions(t_data *d)
+{
+	while (d->x < (int)ft_strlen(d->map[d->y]))
+	{
+		if (d->map[d->y][d->x] == '0' && (d->map[d->y][d->x - 1] == ' '
+			|| d->map[d->y][d->x + 1] == ' '))
+			return (0);
+		if ((d->map[d->y][d->x] == '0') && ((d->map[d->y + 1][d->x]
+			&& d->map[d->y + 1][d->x] == ' ') || (d->map[d->y - 1][d->x]
+			&& d->map[d->y - 1][d->x] == ' ')))
+			return (0);
+		if (d->map[d->y][d->x] != '1' && d->map[d->y][d->x] != d->d 
+			&& d->map[d->y][d->x] != '0' && d->map[d->y][d->x])
+			return (0);
+		d->x++;
+	}
 	return (1);
 }
 
@@ -70,4 +124,3 @@ int	valid_walls(t_data *d)
 	else
 		return (0);
 }*/
-
