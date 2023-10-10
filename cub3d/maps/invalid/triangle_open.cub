@@ -1,0 +1,13 @@
+NO ./textures/NW.xpm
+SO ./textures/SW.xpm
+WE ./textures/WW.xpm
+EA ./textures/EW.xpm
+
+F 164,169,20
+C 153,204,255
+
+    11
+   1001
+  100000
+ 1000N001
+1111111111

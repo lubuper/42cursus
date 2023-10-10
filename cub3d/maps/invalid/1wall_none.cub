@@ -1,0 +1,21 @@
+NO ./textures/NW.xpm
+SO ./textures/SW.xpm
+WE ./textures/WW.xpm
+EA ./textures/EW.xpm
+
+F 20,20,20
+C 200,200,200
+
+00000
+00000
+00S00
+00000
+00000
+00000
+00000
+00000
+00000
+00000
+00000
+00000
+00000
