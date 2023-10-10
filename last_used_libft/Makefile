@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: lubu <lubu@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/07 13:59:19 by lde-sous          #+#    #+#              #
-#    Updated: 2023/02/15 17:04:45 by lde-sous         ###   ########.fr        #
+#    Updated: 2023/09/15 13:58:56 by lubu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,5 +95,7 @@ fclean: clean
 	@$(RM) $(NAME)
 
 re: fclean all
+
+.SILENT:
 
 .PHONY: all clean fclean re

@@ -93,7 +93,6 @@ char	*readnsave(int fd, char *str);
 char	*save_rest(char *str);
 char	*ft_gline(char *str);
 size_t	ft_cstrlen(char *s);
-void	*ft_calloc(size_t nmemb, size_t size);
 char	*str_join_mod(char *str1, char *str2);
 char	*ft_strchr_mod(char *str, int c);
 

@@ -51,7 +51,7 @@ int	ft_printf(const char *format, ...)
 			count += ft_printcore(format[i++ + 1], arguments);
 		else if (format[i] == '%' && format[i + 1] != ft_chck(format[i + 1]))
 		{
-			write(1, "Spec Error", 16);
+			write(1, "Spec Error", 11);
 			count = 16;
 			return (count);
 		}

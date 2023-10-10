@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 17:02:57 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/02/15 18:03:50 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/09/12 15:43:34 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,37 +67,3 @@ char	*str_join_mod(char *str1, char *str2)
 	free(str1);
 	return (jointstr);
 }
-
-void	*ft_calloc(size_t nmemb, size_t size)
-{
-	char			*nulled_str;
-	size_t			i;
-	unsigned int	total;
-
-	total = nmemb * size;
-	i = 0;
-	nulled_str = malloc(total);
-	if (!nulled_str)
-		return (NULL);
-	while (total > 0)
-	{
-		nulled_str[i] = 0;
-		total--;
-		i++;
-	}
-	return ((void *)nulled_str);
-}
-
-/* main para testar str_join_mod
-int	main(void)
-{
-	char	s1[] = "This is ";
-	char	s2[] = "A TESSTTT!!!!!";
-	printf("%s", "s1 = ");
-	printf("%s\n", s1);
-	printf("%s", "s2 = ");
-	printf("%s\n\n", s2);
-	printf("%s", "str_join_mod = ");
-	printf("%s\n", str_join_mod(s1, s2));
-	return (0);
-}*/

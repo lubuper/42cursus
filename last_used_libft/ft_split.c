@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:55:06 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/12/30 18:12:18 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/10/02 21:42:27 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ char	**ft_split(char const *s, char c)
 	}
 	result[o] = 0;
 	return (result);
-}	
+}
 /*
 int	main(void)
 {
