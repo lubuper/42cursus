@@ -3,25 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lubu <lubu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 19:19:32 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/10/12 19:34:35 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/10/14 01:06:41 by lubu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
-# include "main.hpp"
+# include "Contact.hpp"
 
 class PhoneBook
 {
-private:
-	/* Contact contacts[9]; */
 public:
+	Contact list[8];
 	PhoneBook();
 	~PhoneBook();
+	void	startup_func(void);
+	void	displayindex_func(void);
+	void	search_func(void);
 };
 
 
