@@ -3,35 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lubu <lubu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:58:19 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/10/14 01:07:31 by lubu             ###   ########.fr       */
+/*   Updated: 2023/10/16 20:06:50 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/main.hpp"
-
-void	add_func(void)
-{
-	std::string _input;
-	std::cout << "First Name: ";
-	std::cin >> _input;
-	std::cout << std::endl;
-	std::cout << "Last Name: ";
-	std::cin >> _input;
-	std::cout << std::endl;
-	std::cout << "Nickname: ";
-	std::cin >> _input;
-	std::cout << std::endl;
-	std::cout << "Phone Number: ";
-	std::cin >> _input;
-	std::cout << std::endl;
-	std::cout << "darkest secret: ";
-	std::cin >> _input;
-	std::cout << std::endl;
-	std::cout << "Contact successfully added" << std::endl;
-}
 
 int	main(void)
 {
@@ -47,12 +26,14 @@ int	main(void)
 		std::cin >> option;
 		if (option == "ADD")
 		{
-			add_func();
+			pbook.add_func();
 			pbook.startup_func();
 		}
 		if (option == "SEARCH")
 		{
 			pbook.search_func();
+			system("clear");
+			std::cout << "Returning..." << std::endl;
 			pbook.startup_func();
 		}
 		else if (option != "ADD" && option != "SEARCH" && option != "EXIT")

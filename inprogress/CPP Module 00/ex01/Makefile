@@ -6,13 +6,13 @@
 #    By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/12 10:34:42 by lde-sous          #+#    #+#              #
-#    Updated: 2023/10/12 19:45:54 by lde-sous         ###   ########.fr        #
+#    Updated: 2023/10/16 19:59:13 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # FLAGS AND VARIABLES
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 RM = rm -rf
 
 # PROJECT NAME && FOLDERS

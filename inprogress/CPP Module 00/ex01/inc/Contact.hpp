@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lubu <lubu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 17:59:12 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/10/16 08:28:43 by lubu             ###   ########.fr       */
+/*   Updated: 2023/10/16 19:41:45 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@
 
 class Contact
 {
-private:
+public:
 	std::string	firstname;
 	std::string	lastname;
 	std::string	nickname;
 	std::string	phonenumber;
 	std::string	darkest_secret;
-public:
+	bool	exists;
 	Contact();
 	~Contact();
 };
