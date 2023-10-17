@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:58:19 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/10/16 20:06:50 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/10/17 16:48:32 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,11 @@ int	main(void)
 	Contact		list;
 	std::string option;
 
+	system("clear");
 	pbook.startup_func();
 	while (option != "EXIT")
 	{
-		std::cout << "> ";
+		std::cout << "> " << std::flush;
 		std::cin.clear();
 		std::cin >> option;
 		if (option == "ADD")
