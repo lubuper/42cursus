@@ -6,11 +6,11 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:58:19 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/10/17 16:56:10 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/10/18 18:01:39 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/main.hpp"
+#include "main.hpp"
 
 PhoneBook::PhoneBook(void)
 {
@@ -19,7 +19,8 @@ PhoneBook::PhoneBook(void)
 
 PhoneBook::~PhoneBook(void)
 {
-	std::cout << "Good bye!" << std::endl;
+	system("clear");
+	std::cout << "\033[93mGood bye! \033[0m" << std::endl;
 	return;
 }
 
@@ -33,26 +34,28 @@ std::string PhoneBook::truncate(std::string str)
 
 void	PhoneBook::parser(std::string _input, int attribute_no, Contact *list)
 {
-	static int	i = 0;
-	if (i >= 8)
+	static int	i;
+	static int	real_i;
+	real_i = i % 8;
+	if (i == 8)
 	{
 		i = 0;
-		list[i].exists = false;
 	}
-	if (list[i].exists == false && i <= 7)
+	if (i <= 7)
 	{
 		if (attribute_no == 1)
-			list[i].firstname = _input;
+			list[i].set_firstname(_input);
 		else if (attribute_no == 2)
-			list[i].lastname = _input;
+			list[i].set_lastname(_input);
 		else if (attribute_no == 3)
-			list[i].nickname = _input;
+			list[i].set_nickname(_input);
 		else if (attribute_no == 4)
-			list[i].phonenumber = _input;
+			list[i].set_pnumber(_input);
 		else if (attribute_no == 5)
 		{
-			list[i].darkest_secret = _input;
+			list[i].set_secret(_input);
 			list[i].exists = true;
+			i++;
 		}
 	}
 	else
@@ -64,42 +67,33 @@ void	PhoneBook::add_func(void)
 	std::string _input;
 	
 	system("clear");
-	std::cout << "First Name: ";
-	std::cin >> _input;
-	while (_input.size() < 10)
-		_input.append(" ");
-	std::cout << std::endl;
+	std::cout << "\033[37mFirst Name: \033[0m";
+	std::getline(std::cin, _input);
 	parser(_input, 1, list);
-	std::cout << "Last Name: ";
-	std::cin >> _input;
-	while (_input.size() < 10)
-		_input.append(" ");
-	std::cout << std::endl;
+	std::cout << "\033[37mLast Name: \033[0m";
+	std::getline(std::cin, _input);
 	parser(_input, 2, list);
-	std::cout << "Nickname: ";
-	std::cin >> _input;
-	while (_input.size() < 10)
-		_input.append(" ");
-	std::cout << std::endl;
+	std::cout << "\033[37mNickname: \033[0m";
+	std::getline(std::cin, _input);
 	parser(_input, 3, list);
-	std::cout << "Phone Number: ";
-	std::cin >> _input;
-	std::cout << std::endl;
+	std::cout << "\033[37mPhone Number: \033[0m";
+	std::getline(std::cin, _input);
 	parser(_input, 4, list);
-	std::cout << "darkest secret: ";
-	std::cin >> _input;
-	std::cout << std::endl;
+	std::cout << "\033[37mDarkest secret: \033[0m";
+	std::getline(std::cin, _input);
 	parser(_input, 5, list);
-	std::cout << "Contact successfully added" << std::endl;
+	system("clear");
+	std::cout << "\033[92mContact successfully added!\033[0m" << std::endl;
 }
 
-void	PhoneBook::startup_func(void)
+void	PhoneBook::startup_func(std::string user)
 {
 	std::cout << ".----------------------------------." << std::endl;
-	std::cout << "|        ___   ______      ____    |" << std::endl;
-	std::cout << "| Enter |ADD| |SEARCH| or |EXIT|:  |" << std::endl;
-	std::cout << "|       '---' '------'    '----'   |" << std::endl;
+	std::cout << "| \033[93mAuto-Login: \033[92m" << user << "\033[0m             |" << std::endl;
 	std::cout << "|                                  |" << std::endl;
+	std::cout << "|        ___   ______      ____    |" << std::endl;
+	std::cout << "| Enter |\033[5;37mADD\033[0m| |\033[5;37mSEARCH\033[0m| or |\033[5;37mEXIT\033[0m|:  |" << std::endl;
+	std::cout << "|       '---' '------'    '----'   |" << std::endl;
 	std::cout << "|                                  |" << std::endl;
 	std::cout << "|                                  |" << std::endl;
 	std::cout << "'----------------------------------'" << std::endl;
@@ -110,19 +104,18 @@ void	PhoneBook::displayindex_func(void)
 	std::cout << ".-------------------------------------------." << std::endl;
 	std::cout << "|     INDEX|FIRST NAME| LAST NAME|  NICKNAME|" << std::endl;
 	std::cout << "|----------|----------|----------|----------|" << std::endl;
-	std::cout << "|          |          |          |          |" << std::endl;
-	std::cout << "|          |          |          |          |" << std::endl;
-	std::cout << "|          |          |          |          |" << std::endl;
-	std::cout << "|          |          |          |          |" << std::endl;
-	std::cout << "|          |          |          |          |" << std::endl;
-	std::cout << "|          |          |          |          |" << std::endl;
-	std::cout << "|          |          |          |          |" << std::endl;
-	std::cout << "|          |          |          |          |" << std::endl;
+	for (int i = 0; i < 8; i++)
+	{
+		if (list[i].exists == true)
+		{
+			std::cout << "|" << std::right << std::setw(10) << i + 1;
+			std::cout << "|" << std::right << std::setw(10) << truncate(list[i].getfirstname()) << "|";
+			std::cout << std::right << std::setw(10) << truncate(list[i].getlastname()) << "|";
+			std::cout << std::right << std::setw(10) << truncate(list[i].getnickname()) << "|" << std::endl;
+			std::cout << "|          |          |          |          |" << std::endl;
+		}
+	}
 	std::cout << ".-------------------------------------------." << std::endl;
-/* 	std::cout << 0 << std::endl;
-	std::cout << truncate(list[0].firstname) << std::endl;
-	std::cout << truncate(list[0].lastname) << std::endl;
-	std::cout << truncate(list[0].nickname) << std::endl; */
 }
 
 void	PhoneBook::search_func(void)
@@ -135,10 +128,11 @@ void	PhoneBook::search_func(void)
 	while (1)
 	{
 		std::cout << "Please specify a valid INDEX" << std::endl;
-		std::cout << "Type 0 to go back" << std::endl;
+		std::cout << "\n\033[5;37mType 0 to go back\033[0m" << std::endl;
 		std::cout << "> " << std::flush;
-		std::cin.clear();
-		std::cin >> index;
+		std::getline(std::cin, index);
+		if (std::cin.eof())
+			return ;
 		if (index.length() == 1 && isdigit(index[0]))
 		{
 			if (index[0] == '0')
@@ -147,18 +141,20 @@ void	PhoneBook::search_func(void)
 			if (i >= 0 && i <= 7)
 			{
 				system("clear");
-				std::cout << i << std::endl;
-				std::cout << list[i].firstname << std::endl;
-				std::cout << list[i].lastname << std::endl;
-				std::cout << list[i].nickname << std::endl;
-				std::cout << list[i].phonenumber << std::endl;
-				std::cout << list[i].darkest_secret << std::endl;
-				std::cout << "Type 0 to go back" << std::endl;
+				std::cout << (i + 1) << "." << std::endl;
+				std::cout << "First name: " << list[i].getfirstname() << std::endl;
+				std::cout << "Last name: " << list[i].getlastname() << std::endl;
+				std::cout << "Nickname: " << list[i].getnickname() << std::endl;
+				std::cout << "Phone number: " << list[i].getphonenum() << std::endl;
+				std::cout << "Darkest Secret: " << list[i].getsecret() << std::endl;
+				std::cout << "\n\033[5;37mType 0 to go back\033[0m" << std::endl;
 				std::cout << "> " << std::flush;
-				std::cin.clear();
+				index.clear();
 				while (1)
 				{
-					std::cin >> index;
+					std::getline(std::cin, index);
+					if (std::cin.eof())
+						return ;
 					if (index.length() == 1 && index[0] == '0')
 					{
 						system("clear");
@@ -168,7 +164,6 @@ void	PhoneBook::search_func(void)
 				}
 			}
 		}
-		std::cin.clear();
-		std::cin.ignore();
+		index.clear();
 	}
 }

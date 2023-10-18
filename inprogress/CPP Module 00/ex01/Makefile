@@ -16,10 +16,10 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 RM = rm -rf
 
 # PROJECT NAME && FOLDERS
-NAME = MyVeryFirstPhoBo
-SRC =	src/PhoneBook.cpp \
-		src/Contact.cpp \
-		src/main.cpp
+NAME = myVeryFirstPhoBo
+SRC =	PhoneBook.cpp \
+	Contact.cpp \
+	main.cpp
 	
 OBJ_D = bin
 OBJ = $(addprefix $(OBJ_D)/, $(SRC:.cpp=.o))
