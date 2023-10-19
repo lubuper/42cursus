@@ -35,8 +35,6 @@ std::string PhoneBook::truncate(std::string str)
 void	PhoneBook::parser(std::string _input, int attribute_no, Contact *list)
 {
 	static int	i;
-	static int	real_i;
-	real_i = i % 8;
 	if (i == 8)
 	{
 		i = 0;
