@@ -6,7 +6,7 @@
 #    By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/12 10:34:42 by lde-sous          #+#    #+#              #
-#    Updated: 2023/10/16 19:59:13 by lde-sous         ###   ########.fr        #
+#    Updated: 2023/10/23 15:43:23 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,5 @@ fclean:
 	@echo "Uninstall successful!"
 
 re: fclean all
-
-.SILENT:
 
 .PHONY: all clean fclean re
