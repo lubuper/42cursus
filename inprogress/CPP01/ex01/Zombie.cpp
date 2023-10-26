@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 16:37:34 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/10/20 21:22:09 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/10/26 17:32:59 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ std::string	Zombie::name_getter(void)
 	return(this->name);
 }
 
-std::string	Zombie::name_setter(std::string str)
+void	Zombie::name_setter(std::string str)
 {
 	this->name = str;
-	return (this->name);
+	return ;
 }
 
 void	Zombie::announce(void)
