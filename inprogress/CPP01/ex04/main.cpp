@@ -5,32 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/26 15:41:36 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/10/27 15:44:18 by lde-sous         ###   ########.fr       */
+/*   Created: 2023/10/27 16:10:40 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/10/27 17:40:31 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanA.hpp"
-#include "HumanB.hpp"
-#include "Weapon.hpp"
+#include <iostream>
+#include <istream>
+#include <string>
 
-int	main(void)
+int	main(int ac, char **av)
 {
+	if (ac != 4)
+		std::cout << "Invalid number of arguments" << std::endl;
+	else
 	{
-		Weapon	club = Weapon("rusty nails club");
-		HumanA	bob("Bob", club);
-		bob.attack();
-		club.setType("bloody bent nails club");
-		bob.attack();
+		std::string filename = av[1];
+		std::string s1 = av[2];
+		std::string s1 = av[3];
+		if (filename)
 	}
-	{
-		Weapon	club = Weapon("crude spiked club");
-		HumanB	jim("Jim");
-		jim.setWeapon(club);
-		jim.attack();
-		club.setType("broken club");
-		jim.attack();
-	}
-
-	return 0;
 }
