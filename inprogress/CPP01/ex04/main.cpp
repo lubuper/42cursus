@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 16:10:40 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/10/31 17:47:28 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/02 15:03:26 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ std::string	seekAndDest(std::string line, const std::string s1, const std::strin
 			break ;
 		line.erase(index, s1.size());
 		line.insert(index, s2);
+		index += s2.size();
 	}
 	return (line);
 }
@@ -40,11 +41,10 @@ int	main(int ac, char **av)
 		std::fstream outFile;
 		const std::string s1 = av[2];
 		const std::string s2 = av[3];
-		std::string	line;
-		int	i = 0;
+		std::string	line = std::string(av[1]) + ".replace";
 
 		inFile.open(av[1], std::ios::in);
-		outFile.open(std::string(av[1]) + ".replace", std::ios::out);
+		outFile.open(line.c_str(), std::ios::out);
 		if (!inFile || !outFile)
 			return (std::cout << "Error: cannot open file" << std::endl, 1);
 		while (getline(inFile, line))
@@ -57,4 +57,3 @@ int	main(int ac, char **av)
 	}
 	return (0);
 }
-c_str

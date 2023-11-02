@@ -5,19 +5,20 @@
 #                                                     +:+ +:+         +:+      #
 #    By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/10/27 16:08:30 by lde-sous          #+#    #+#              #
-#    Updated: 2023/11/02 18:18:43 by lde-sous         ###   ########.fr        #
+#    Created: 2023/11/02 18:01:50 by lde-sous          #+#    #+#              #
+#    Updated: 2023/11/02 20:58:32 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # FLAGS && VARIABLES
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
 # PROJECT NAME && FOLDERS
-NAME = sed
-SRC = main.cpp
+NAME = harlFilter
+SRC =	main.cpp \
+		Harl.cpp
 
 OBJ_D = bin
 OBJ = $(addprefix $(OBJ_D)/, $(SRC:.cpp=.o))
@@ -28,20 +29,20 @@ all: $(NAME)
 $(NAME): $(OBJ)
 		@echo "Installing..."
 		$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
-		@echo "Instalation complete!"
-		@echo "Type ./sed <file_to_open> <search_string> <replace_string"
+		@echo "Instalation complete"
+		@echo "type ./harlFilter <filter>"
 
 $(OBJ_D)/%.o: %.cpp
 		mkdir -p $(@D)
 		$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-		@echo "Cleaning..."
+		@echo "Cleaning"
 		$(RM) $(OBJ)
-		@echo "Cleaning successful!"
+		@echo "Cleaning successful"
 
 fclean:
-		@echo "Uninstalling..."
+		@echo "Uninstalling"
 		$(RM) $(OBJ) $(NAME) $(OBJ_D)
 		@echo "Uninstall successful"
 
