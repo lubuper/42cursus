@@ -6,7 +6,7 @@
 #    By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/03 16:15:16 by lde-sous          #+#    #+#              #
-#    Updated: 2023/11/03 17:54:15 by lde-sous         ###   ########.fr        #
+#    Updated: 2023/11/06 13:00:37 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ clean:
 		@echo "Cleaning successeful!"
 
 fclean:
-		@echo "Uninstalling"
+		@echo "Uninstalling..."
 		$(RM) $(OBJ) $(NAME) $(OBJ_D)
 		@echo "Uninstall successeful!"
 		

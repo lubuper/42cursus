@@ -5,17 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 18:13:37 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/06 13:04:25 by lde-sous         ###   ########.fr       */
+/*   Created: 2023/11/06 16:20:30 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/11/06 20:18:55 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FIXED_HPP
 # define FIXED_HPP
 
-# include <string>
 # include <iostream>
 # include <istream>
+# include <string>
 # include <cmath>
 
 class Fixed
@@ -29,7 +29,25 @@ public:
 	Fixed(const int intInput);
 	Fixed(const float floatInput);
 	~Fixed();
-	Fixed &operator= (const Fixed &base);
+	Fixed	&operator=(const Fixed &received);
+	bool	operator<=(Fixed received) const;
+	bool	operator<(Fixed received) const;
+	bool	operator>=(Fixed received) const;
+	bool	operator>(Fixed received) const;
+	bool	operator==(Fixed received) const;
+	bool	operator!=(Fixed received) const;
+	float	operator+(Fixed received) const;
+	float	operator-(Fixed received) const;
+	float	operator*(Fixed received) const;
+	float	operator/(Fixed received) const;
+	Fixed	operator++(void);
+	Fixed	operator--(void);
+	Fixed	operator++(int);
+	Fixed	operator--(int);
+	static Fixed	&min(Fixed &fixed1, Fixed &fixed2);
+	static Fixed	&max(Fixed &fixed1, Fixed &fixed2);
+	static const Fixed	&min(const Fixed &fixed1, const Fixed &fixed2);
+	static const Fixed	&max(const Fixed &fixed1, const Fixed &fixed2);
 	int		getRawBits(void) const;
 	void	setRawBits(int const raw);
 	int		toInt(void) const;

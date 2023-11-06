@@ -6,7 +6,77 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 18:13:42 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/03 18:13:43 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/06 13:04:08 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Fixed.hpp"
+
+Fixed::Fixed() : _fixedPointValue(0)
+{
+	std::cout << "Default constructor called" << std::endl;
+	return ;	
+}
+
+Fixed::Fixed(const Fixed &copy)
+{
+	std::cout << "Copy constructor called" << std::endl;
+	this->_fixedPointValue = copy.getRawBits();
+	return ;
+}
+
+Fixed::Fixed(const int intInput)
+{
+	std::cout << "Int constructor called" << std::endl;
+	this->_fixedPointValue = intInput << this->_fracBits;
+	return ;
+}
+
+Fixed::Fixed(const float floatInput)
+{
+	std::cout << "Float constructor called" << std::endl;
+	this->_fixedPointValue = roundf(floatInput * (1 << this->_fracBits));
+	return ;
+}
+
+Fixed::~Fixed()
+{
+	std::cout << "Destructor called" << std::endl;
+	return ;
+}
+
+
+int		Fixed::getRawBits(void) const
+{
+	return (this->_fixedPointValue);	
+}
+
+void	Fixed::setRawBits(int const raw)
+{
+	this->_fixedPointValue = raw;
+	return ;
+}
+
+int		Fixed::toInt(void) const
+{
+	return (this->_fixedPointValue >> this->_fracBits);
+}
+
+float	Fixed::toFloat(void) const
+{
+	return ((float)this->_fixedPointValue / (float)(1 << this->_fracBits));
+}
+
+Fixed &Fixed::operator=(const Fixed &base)
+{
+	std::cout << "Copy assignment operator called" << std::endl;
+	if (this != &base)
+		this->_fixedPointValue = base.getRawBits();
+	return (*this);
+}
+
+std::ostream	&operator<<(std::ostream &COUT, Fixed const &fixed)
+{
+	COUT << fixed.toFloat();
+	return (COUT);	
+}
