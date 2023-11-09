@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 13:54:29 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/08 12:17:15 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/08 21:56:30 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,12 @@
 
 ClapTrap::ClapTrap()
 {
-	std::cout << "Default constructor called" << std::endl;
+	std::cout << "Default constructor" << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string name) : _name(name)
+ClapTrap::ClapTrap(std::string name) : _name(name), _damage(30), \
+	_energypoints(100), _hitpoints(100)
 {
-	this->setDamagePoints(0);
-	this->setEnergyPoints(10);
-	this->setHitPoints(10);
 	std::cout << "ClapTrap " << this->_name << " ONline" << std::endl;
 	return ;
 }
