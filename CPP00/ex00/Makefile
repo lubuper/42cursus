@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-# FLAGS AND VARIABLES
+# FLAGS && VARIABLES
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
@@ -18,8 +18,9 @@ RM = rm -rf
 # PROJECT NAME && FOLDERS
 NAME = megaphone
 SRC = megaphone.cpp
-	
-OBJ = $(SRC:.cpp=.o)
+
+OBJ_D = bin
+OBJ = $(addprefix $(OBJ_D)/, $(SRC:.cpp=.o))
 
 # RULES
 all: $(NAME)
@@ -35,8 +36,7 @@ clean:
 	$(RM) $(OBJ)
 
 fclean:
-	$(RM) $(OBJ)
-	$(RM) $(NAME)
+	$(RM) $(OBJ) $(NAME) $(OBJ_D)
 
 re: fclean all
 

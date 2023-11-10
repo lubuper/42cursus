@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.hpp                                       :+:      :+:    :+:   */
+/*   Point.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 21:25:21 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/10 16:33:55 by lde-sous         ###   ########.fr       */
+/*   Created: 2023/11/10 18:59:36 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/11/10 19:02:17 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRAGTRAP_HPP
-# define FRAGTRAP_HPP
+#ifndef POINT_HPP
+# define POINT_HPP
 
-# include "ClapTrap.hpp"
+# include "Fixed.hpp"
 
-class	FragTrap: public virtual ClapTrap
+class	Point
 {
+private:
+	Fixed const	x;
+	Fixed const	y;
 public:
-	FragTrap();
-	FragTrap(std::string name);
-	~FragTrap();
-	FragTrap(FragTrap const &base);
-	FragTrap	&operator=(FragTrap const &base);
-	void	highFivesGuys(void);
-	void	attack(const std::string &target);
-	void	sysCheck();
+	Point();
+	Point(Fixed const x, Fixed const y);
+	Point(Point	const &base)
+	~Point();
 };
 
 #endif

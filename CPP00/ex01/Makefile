@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-# FLAGS AND VARIABLES
+# FLAGS && VARIABLES
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 RM = rm -rf
@@ -43,10 +43,12 @@ clean:
 
 fclean:
 	@echo "Uninstalling..."
-	$(RM) $(OBJ)
-	$(RM) $(NAME) $(OBJ_D)
+	$(RM) $(OBJ) $(NAME) $(OBJ_D)
 	@echo "Uninstall successful!"
 
 re: fclean all
 
+.SILENT:
+
 .PHONY: all clean fclean re
+

@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 18:13:42 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/06 13:04:08 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/10 18:47:55 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ Fixed::Fixed() : _fixedPointValue(0)
 	return ;	
 }
 
-Fixed::Fixed(const Fixed &copy)
+Fixed::Fixed(const Fixed &base)
 {
 	std::cout << "Copy constructor called" << std::endl;
-	this->_fixedPointValue = copy.getRawBits();
+	this->_fixedPointValue = base.getRawBits();
 	return ;
 }
 

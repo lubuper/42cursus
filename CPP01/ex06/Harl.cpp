@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:12:04 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/02 20:57:49 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/10 16:47:12 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,33 +71,34 @@ void	Harl::filter(std::string av)
 		{
 			std::cout << "[ DEBUG ]" << std::endl;
 			this->complain("debug");
+			std::cout << "[ INFO ]" << std::endl;
+			this->complain("info");
+			std::cout << "[ WARNING ]" << std::endl;
+			this->complain("warning");
+			std::cout << "[ ERROR ]" << std::endl;
+			this->complain("error");
 			break ;
 		}
 		case 1:
-		{	std::cout << "[ DEBUG ]" << std::endl;
-			this->complain("debug");
+		{	
 			std::cout << "[ INFO ]" << std::endl;
 			this->complain("info");
+			std::cout << "[ WARNING ]" << std::endl;
+			this->complain("warning");
+			std::cout << "[ ERROR ]" << std::endl;
+			this->complain("error");
 			break ;
 		}
 		case 2:
 		{
-			std::cout << "[ DEBUG ]" << std::endl;
-			this->complain("debug");
-			std::cout << "[ INFO ]" << std::endl;
-			this->complain("info");
 			std::cout << "[ WARNING ]" << std::endl;
 			this->complain("warning");
+			std::cout << "[ ERROR ]" << std::endl;
+			this->complain("error");
 			break ;
 		}
 		case 3:
 		{
-			std::cout << "[ DEBUG ]" << std::endl;
-			this->complain("debug");
-			std::cout << "[ INFO ]" << std::endl;
-			this->complain("info");
-			std::cout << "[ WARNING ]" << std::endl;
-			this->complain("warning");
 			std::cout << "[ ERROR ]" << std::endl;
 			this->complain("error");
 			break ;

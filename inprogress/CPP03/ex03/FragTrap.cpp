@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 21:24:25 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/08 21:58:53 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/10 16:34:07 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,18 @@
 
 FragTrap::FragTrap()
 {
+	this->_damage = 30;
+	this->_energypoints = 100;
+	this->_hitpoints = 100;
 	std::cout << "FragTrap default constructor called" << std::endl;
 	return ;
 }
 
 FragTrap::FragTrap(std::string name): ClapTrap (name)
 {
+	this->_damage = 30;
+	this->_energypoints = 100;
+	this->_hitpoints = 100;
 	std::cout << "FragTrap " << this->_name << " has arrived!" << std::endl;
 	return ;
 }
@@ -68,4 +74,12 @@ void	FragTrap::attack(const std::string &target)
 	else if (this->getEnergyPoints() == 0)
 		std::cout << "FragTrap " << this->getName() << " has no energy!" << std::endl;
 	return ;
+}
+
+void	FragTrap::sysCheck()
+{
+	std::cout << "FragTrap " << this->getName() << " has:" << std::endl;
+	std::cout << this->getHitPoints() << " hitpoints" << std::endl;
+	std::cout << this->getEnergyPoints() << " energy points" << std::endl;
+	std::cout << "and he does " << this->getDamagePoints() << " points of damage" << std::endl;
 }

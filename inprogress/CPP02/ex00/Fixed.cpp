@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 16:41:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/03 18:11:30 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/10 18:47:32 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 Fixed::Fixed() : _fixedPointValue(0)
 {
 	std::cout << "Default constructor called" << std::endl;
-	
 	return ;	
 }
 
@@ -25,18 +24,18 @@ Fixed::~Fixed()
 	return ;
 }
 
-Fixed::Fixed(Fixed const &copy)
+Fixed::Fixed(Fixed const &base)
 {
 	std::cout << "Copy constructor called" << std::endl;
-	this->_fixedPointValue = copy.getRawBits();
+	this->_fixedPointValue = base.getRawBits();
 	return ;
 }
 
-Fixed	&Fixed::operator= (const Fixed &copy)
+Fixed	&Fixed::operator= (const Fixed &base)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
-	if (this != &copy)
-		this->_fixedPointValue = copy.getRawBits();
+	if (this != &base)
+		this->_fixedPointValue = base.getRawBits();
 	return (*this);
 }
 

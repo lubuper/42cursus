@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 18:13:37 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/06 13:04:25 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/10 18:47:49 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ private:
 	static const int	_fracBits = 8;
 public:
 	Fixed();
-	Fixed(const Fixed &copy);
+	Fixed(const Fixed &base);
 	Fixed(const int intInput);
 	Fixed(const float floatInput);
 	~Fixed();

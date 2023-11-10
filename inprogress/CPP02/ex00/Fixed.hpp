@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 16:41:18 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/03 17:01:00 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/10 18:47:43 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ private:
 public:
 	Fixed();
 	~Fixed();
-	Fixed(Fixed const &copy);
-	Fixed &operator=(const Fixed &copy);
+	Fixed(Fixed const &base);
+	Fixed &operator=(const Fixed &base);
 	int	getRawBits(void) const;
 	void	setRawBits(int const raw);
 };

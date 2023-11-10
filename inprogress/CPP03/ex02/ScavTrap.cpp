@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 09:38:19 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/08 12:18:24 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/10 17:12:46 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ ScavTrap::ScavTrap()
 }
 ScavTrap::ScavTrap(std::string name) : ClapTrap (name)
 {
+	this->_damage = 20;
+	this->_energypoints = 50;
+	this->_hitpoints = 100;
 	std::cout << "ScavTrap " << this->_name << " ONline" << std::endl;
 	return ;
 }
@@ -31,9 +34,9 @@ ScavTrap::~ScavTrap()
 
 ScavTrap::ScavTrap(ScavTrap const &base) : ClapTrap(base.getName())
 {
-	this->_damage = base.getDamagePoints();
-	this->_energypoints = base.getEnergyPoints();
-	this->_hitpoints = base.getHitPoints();
+	this->_damage = 20;
+	this->_energypoints = 50;
+	this->_hitpoints = 100;
 	std::cout << "ScavTrap copy constructor" << std::endl;
 	return ;
 }

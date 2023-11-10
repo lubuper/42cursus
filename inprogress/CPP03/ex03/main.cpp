@@ -6,34 +6,34 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 13:55:50 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/08 22:05:48 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/10 16:56:29 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 #include "ClapTrap.hpp"
 #include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int	main(void)
 {
-/* 	ClapTrap	clappy("clappy"); */
+	std::cout << std::endl;
+	ClapTrap	clappy("clappy");
 	ScavTrap	scavvie("scavvie");
 	FragTrap	fraggy("fraggy");
+	DiamondTrap	didi("didi");
+
+	std::cout << "clappy name is " << clappy.getName() << std::endl;
+	std::cout << std::endl;
 	
-/* 	clappy.attack("trash bin");
-	clappy.takeDamage(2);
-	clappy.beRepaired(1); */
-
 	scavvie.sysCheck();
-	scavvie.attack("car");
-	scavvie.takeDamage(10);
-	scavvie.sysCheck();
-	scavvie.guardGate();
-
-	fraggy.highFivesGuys();
-	fraggy.attack("random pedestrian");
-	fraggy.highFivesGuys();
-	fraggy.takeDamage(30);
+	std::cout << std::endl;
+	
+	fraggy.sysCheck();
+	std::cout << std::endl;
+	
+	didi.sysCheck();
+	didi.whoAmI();
 	
 	return (0);
 }

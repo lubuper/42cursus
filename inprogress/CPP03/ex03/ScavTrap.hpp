@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 09:45:37 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/08 21:35:00 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/10 15:51:58 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "ClapTrap.hpp"
 
-class	ScavTrap: public ClapTrap
+class	ScavTrap: public virtual ClapTrap
 {
 public:
 	ScavTrap();
