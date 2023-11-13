@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Point.hpp                                          :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 18:59:36 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/13 13:08:32 by lde-sous         ###   ########.fr       */
+/*   Created: 2023/11/13 19:42:13 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/11/13 19:44:33 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef POINT_HPP
-# define POINT_HPP
+#ifndef WRONGANIMAL_HPP
+# define WRONGANIMAL_HPP
 
-# include "Fixed.hpp"
+# include <string>
+# include <iostream>
+# include <istream>
 
-class	Point
+class	WrongAnimal
 {
-private:
-	Fixed const	x;
-	Fixed const	y;
+protected:
+	std::string	type;
 public:
-	Point();
-	Point(Point	const &base);
-	Point	&operator=(const Point &base);
-	~Point();
-	Point(float const x, float const y);
-	Fixed	getX(void) const;
-	Fixed	getY(void) const;
+	WrongAnimal();
+	WrongAnimal(const WrongAnimal &base);
+	WrongAnimal	&operator=(const WrongAnimal &base);
+	~WrongAnimal();
+	std::string	getType(void) const;
+	void	makeSound(void) const;
+	
 };
-
-bool bsp( Point const a, Point const b, Point const c, Point const point);
 
 #endif

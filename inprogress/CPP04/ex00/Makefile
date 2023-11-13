@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/07 13:28:34 by lde-sous          #+#    #+#              #
-#    Updated: 2023/11/13 15:44:27 by lde-sous         ###   ########.fr        #
+#    Created: 2023/11/13 15:20:35 by lde-sous          #+#    #+#              #
+#    Updated: 2023/11/13 19:56:01 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,13 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
 # NAME && FOLDERS
-NAME = claptrap
+NAME = poly
 SRC =	main.cpp \
-		ClapTrap.cpp
+		Animal.cpp \
+		Dog.cpp \
+		Cat.cpp \
+		WrongAnimal.cpp \
+		WrongCat.cpp \
 
 OBJ_D = bin
 OBJ = $(addprefix $(OBJ_D)/, $(SRC:.cpp=.o))

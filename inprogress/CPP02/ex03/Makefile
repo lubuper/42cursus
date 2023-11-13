@@ -6,7 +6,7 @@
 #    By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/06 16:20:24 by lde-sous          #+#    #+#              #
-#    Updated: 2023/11/07 13:14:56 by lde-sous         ###   ########.fr        #
+#    Updated: 2023/11/13 12:53:55 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,9 @@ RM = rm -rf
 NAME = fixed03
 SRC =	main.cpp \
 		Fixed.cpp \
+		Point.cpp \
+		bsp.cpp \
+
 
 OBJ_D = bin
 OBJ = $(addprefix $(OBJ_D)/, $(SRC:.cpp=.o))

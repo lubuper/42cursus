@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Point.hpp                                          :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 18:59:36 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/13 13:08:32 by lde-sous         ###   ########.fr       */
+/*   Created: 2023/11/13 15:24:31 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/11/13 19:39:01 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef POINT_HPP
-# define POINT_HPP
+#ifndef ANIMAL_HPP
+# define ANIMAL_HPP
 
-# include "Fixed.hpp"
+# include <string>
+# include <iostream>
+# include <istream>
 
-class	Point
+class	Animal
 {
-private:
-	Fixed const	x;
-	Fixed const	y;
+protected:
+	std::string	type;
 public:
-	Point();
-	Point(Point	const &base);
-	Point	&operator=(const Point &base);
-	~Point();
-	Point(float const x, float const y);
-	Fixed	getX(void) const;
-	Fixed	getY(void) const;
+	Animal();
+	Animal(const Animal &base);
+	Animal	&operator=(const Animal &base);
+	virtual ~Animal();
+	virtual std::string	getType(void) const;
+	virtual void	makeSound(void) const;
 };
-
-bool bsp( Point const a, Point const b, Point const c, Point const point);
 
 #endif

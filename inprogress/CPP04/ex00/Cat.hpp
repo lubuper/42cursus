@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Point.hpp                                          :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 18:59:36 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/13 13:08:32 by lde-sous         ###   ########.fr       */
+/*   Created: 2023/11/13 18:50:06 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/11/13 19:34:18 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef POINT_HPP
-# define POINT_HPP
+#ifndef CAT_HPP
+# define CAT_HPP
 
-# include "Fixed.hpp"
+# include "Animal.hpp"
 
-class	Point
+class	Cat: public Animal
 {
 private:
-	Fixed const	x;
-	Fixed const	y;
+	std::string	type;
 public:
-	Point();
-	Point(Point	const &base);
-	Point	&operator=(const Point &base);
-	~Point();
-	Point(float const x, float const y);
-	Fixed	getX(void) const;
-	Fixed	getY(void) const;
+	Cat();
+	Cat(const Cat &base);
+	Cat	&operator=(const Cat &base);
+	~Cat();
+	void	makeSound(void) const;
+	std::string	getType(void) const;
 };
-
-bool bsp( Point const a, Point const b, Point const c, Point const point);
 
 #endif

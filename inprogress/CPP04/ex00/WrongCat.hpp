@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Point.hpp                                          :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 18:59:36 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/13 13:08:32 by lde-sous         ###   ########.fr       */
+/*   Created: 2023/11/13 19:45:17 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/11/13 19:45:57 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef POINT_HPP
-# define POINT_HPP
+#ifndef WRONGCAT_HPP
+# define WRONGCAT_HPP
 
-# include "Fixed.hpp"
+# include "WrongAnimal.hpp"
 
-class	Point
+class	WrongCat
 {
-private:
-	Fixed const	x;
-	Fixed const	y;
+protected:
+	std::string	type;
 public:
-	Point();
-	Point(Point	const &base);
-	Point	&operator=(const Point &base);
-	~Point();
-	Point(float const x, float const y);
-	Fixed	getX(void) const;
-	Fixed	getY(void) const;
+	WrongCat();
+	WrongCat(const WrongCat &base);
+	WrongCat	&operator=(const WrongCat &base);
+	~WrongCat();
+	std::string	getType(void) const;
+	void	makeSound(void) const;
+	
 };
-
-bool bsp( Point const a, Point const b, Point const c, Point const point);
 
 #endif
