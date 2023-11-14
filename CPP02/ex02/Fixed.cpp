@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 16:19:39 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/10 18:50:11 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/14 14:09:33 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,34 @@
 
 Fixed::Fixed() : _fixedPointValue(0)
 {
-	std::cout << "Default constructor called" << std::endl;
+	//std::cout << "Default constructor called" << std::endl;
 	return ;	
 }
 
 Fixed::Fixed(const Fixed &base)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	//std::cout << "Copy constructor called" << std::endl;
 	this->_fixedPointValue = base.getRawBits();
 	return ;
 }
 
 Fixed::Fixed(const int intInput)
 {
-	std::cout << "Int constructor called" << std::endl;
+	//std::cout << "Int constructor called" << std::endl;
 	this->_fixedPointValue = intInput << this->_fracBits;
 	return ;
 }
 
 Fixed::Fixed(const float floatInput)
 {
-	std::cout << "Float constructor called" << std::endl;
+	//std::cout << "Float constructor called" << std::endl;
 	this->_fixedPointValue = roundf(floatInput * (1 << this->_fracBits));
 	return ;
 }
 
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called" << std::endl;
+	//std::cout << "Destructor called" << std::endl;
 	return ;
 }
 
@@ -69,7 +69,7 @@ float	Fixed::toFloat(void) const
 
 Fixed &Fixed::operator=(const Fixed &received)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
+	//std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &received)
 		this->_fixedPointValue = received.getRawBits();
 	return (*this);
@@ -133,27 +133,27 @@ float	Fixed::operator/(Fixed received)const
 
 Fixed	Fixed::operator++(void)
 {
-	this->_fixedPointValue++;
+	(this->_fixedPointValue) += 1;
 	return (*this);
 }
 
 Fixed	Fixed::operator--(void)
 {
-	this->_fixedPointValue--;
+	(this->_fixedPointValue) -= 1;
 	return (*this);
 }
 
 Fixed	Fixed::operator++(int)
 {
 	Fixed	tempPrevious = *this;
-	this->_fixedPointValue++;
+	(this->_fixedPointValue) += 1;
 	return (tempPrevious);
 }
 
 Fixed	Fixed::operator--(int)
 {
 	Fixed	tempPrevious = *this;
-	this->_fixedPointValue--;
+	(this->_fixedPointValue) -= 1;
 	return (tempPrevious);
 }
 

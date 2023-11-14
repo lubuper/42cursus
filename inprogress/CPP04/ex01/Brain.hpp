@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongCat.hpp                                       :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/13 19:45:17 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/14 10:50:45 by lde-sous         ###   ########.fr       */
+/*   Created: 2023/11/14 11:09:51 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/11/14 12:40:32 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGCAT_HPP
-# define WRONGCAT_HPP
+#ifndef BRAIN_HPP
+# define BRAIN_HPP
 
-# include "WrongAnimal.hpp"
+# include <istream>
+# include <iostream>
+# include <string>
 
-class	WrongCat : public WrongAnimal
+class	Brain
 {
-protected:
-	std::string	type;
+private:
+	std::string	ideas[100];
 public:
-	WrongCat();
-	WrongCat(const WrongCat &base);
-	WrongCat	&operator=(const WrongCat &base);
-	~WrongCat();
-	std::string	getType(void) const;
-	void	makeSound(void) const;
-	
+	Brain();
+	~Brain();
+	Brain(const Brain &base);
+	Brain &operator=(const Brain &base);
+
 };
 
 #endif

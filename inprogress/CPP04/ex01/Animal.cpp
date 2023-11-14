@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:24:25 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/14 13:38:06 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/14 11:42:00 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ Animal::Animal(const Animal &base) : type(base.type)
 
 Animal	&Animal::operator=(const Animal &base)
 {
-	std::cout << "Animal assignment operator" << std::endl;
 	if (this != &base)
 		this->type = base.type;
+	std::cout << "Animal assignment operator" << std::endl;
 	return (*this);
 }
 

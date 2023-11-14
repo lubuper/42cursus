@@ -6,13 +6,13 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 19:41:36 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/14 11:27:50 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/14 11:30:30 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WrongAnimal.hpp"
 
-WrongAnimal::WrongAnimal() : type("not an animal?")
+WrongAnimal::WrongAnimal() : type("Default type from WrongAnimal")
 {
 	std::cout << "Default WrongAnimal constructor" << std::endl;
 	return ;
