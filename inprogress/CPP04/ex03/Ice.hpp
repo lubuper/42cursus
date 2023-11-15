@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Ice.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/14 14:39:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/15 19:24:35 by lde-sous         ###   ########.fr       */
+/*   Created: 2023/11/15 15:28:54 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/11/15 18:28:04 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AMateria.hpp"
-#include "IMateriaSource.hpp"
+#ifndef ICE_HPP
+# define ICE_HPP
 
-int main()
+#include "AMateria.hpp"
+
+class	Ice : public AMateria
 {
-	IMateriaSource* src = new MateriaSource();
-	src->learnMateria(new Ice());
-	src->learnMateria(new Cure());
-	ICharacter* me = new Character("me");
-	AMateria* tmp;
-	tmp = src->createMateria("ice");
-	me->equip(tmp);
-	tmp = src->createMateria("cure");
-	me->equip(tmp);
-	ICharacter* bob = new Character("bob");
-	me->use(0, *bob);
-	me->use(1, *bob);
-	delete bob;
-	delete me;
-	delete src;
-}
+private:
+	std::string	_type;
+public:
+	Ice();
+	Ice(const Ice &base);
+	Ice &operator=(const Ice &base);
+	~Ice();
+	std::string const &getType() const;
+	Ice *clone() const;
+	void	use(ICharacter &target);
+};
+
+#endif

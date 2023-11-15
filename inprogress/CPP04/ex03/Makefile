@@ -6,7 +6,7 @@
 #    By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/14 14:39:33 by lde-sous          #+#    #+#              #
-#    Updated: 2023/11/14 15:08:16 by lde-sous         ###   ########.fr        #
+#    Updated: 2023/11/15 15:44:30 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,13 @@ CFLAGS = -Werror -Wextra -Wall -std=c++98
 RM = rm -rf
 
 # NAME && FOLDERS
-NAME = interface
+NAME =	interface
 SRC =	main.cpp \
 		AMateria.cpp \
+		IceMateria.cpp \
+		ICharacter.cpp \
+		Character.cpp \
+
 
 OBJ_D = bin
 OBJ = $(addprefix $(OBJ_D)/, $(SRC:.cpp=.o))
