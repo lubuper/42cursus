@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 15:47:16 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/15 17:21:24 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/17 17:11:50 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class	Character : public ICharacter
 {
 private:
 	AMateria*	(inventory[4]);
-	std::string const	_name;
+	std::string const	name_;
 public:
 	Character();
 	Character(std::string name);
@@ -30,6 +30,7 @@ public:
 	void	equip(AMateria* m);
 	void	unequip(int idx);
 	void	use(int idx, ICharacter& target);
+	AMateria	*getInventoryMateria(int idx);
 };
 
 #endif

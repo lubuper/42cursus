@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 18:49:28 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/14 13:27:35 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/17 17:08:02 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,12 @@ Dog::Dog() : type("Dog")
 {
 	std::cout << "Default Dog constructor" << std::endl;
 	this->_brain = new Brain();
-	return ;
 }
 
 Dog::Dog(const Dog &base) : type(base.type)
 {
 	std::cout << "Dog copy constructor" << std::endl;
 	this->_brain = new Brain(*base._brain);
-	return ;
 }
 
 Dog	&Dog::operator=(const Dog &base)
@@ -41,7 +39,6 @@ Dog::~Dog()
 {
 	delete this->_brain;
 	std::cout << "Dogstructor" << std::endl;
-	return ;
 }
 
 std::string	Dog::getType(void) const

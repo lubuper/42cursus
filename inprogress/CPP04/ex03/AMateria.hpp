@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 14:55:12 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/15 19:34:50 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/17 16:56:37 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ protected:
 public:
 	AMateria();
 	AMateria(const AMateria &base);
-	~AMateria();
+	virtual ~AMateria();
 	AMateria(std::string const &type);
 	std::string const &getType() const;
 	virtual AMateria *clone() const = 0;

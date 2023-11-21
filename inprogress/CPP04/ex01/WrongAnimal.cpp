@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 19:41:36 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/14 11:30:30 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/17 17:08:24 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,11 @@
 WrongAnimal::WrongAnimal() : type("Default type from WrongAnimal")
 {
 	std::cout << "Default WrongAnimal constructor" << std::endl;
-	return ;
 }
 
 WrongAnimal::WrongAnimal(const WrongAnimal &base) : type(base.type)
 {
 	std::cout << "WrongAnimal copy constructor" << std::endl;
-	return ;
 }
 
 WrongAnimal	&WrongAnimal::operator=(const WrongAnimal &base)
@@ -35,7 +33,6 @@ WrongAnimal	&WrongAnimal::operator=(const WrongAnimal &base)
 WrongAnimal::~WrongAnimal()
 {
 	std::cout << "WrongAnimal class destructor" << std::endl;
-	return ;
 }
 
 std::string	WrongAnimal::getType(void) const

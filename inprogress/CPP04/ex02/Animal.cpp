@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:24:25 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/14 11:42:00 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/17 17:08:56 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,11 @@
 Animal::Animal() : type("")
 {
 	std::cout << "Default Animal constructor" << std::endl;
-	return ;
 }
 
 Animal::Animal(const Animal &base) : type(base.type)
 {
 	std::cout << "Animal copy constructor" << std::endl;
-	return ;
 }
 
 Animal	&Animal::operator=(const Animal &base)
@@ -35,7 +33,6 @@ Animal	&Animal::operator=(const Animal &base)
 Animal::~Animal()
 {
 	std::cout << "Animal class destructor" << std::endl;
-	return ;
 }
 
 std::string	Animal::getType(void) const

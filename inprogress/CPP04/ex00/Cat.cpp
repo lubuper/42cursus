@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 18:49:38 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/14 13:38:21 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/17 17:41:25 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,11 @@
 Cat::Cat() : type("Cat")
 {
 	std::cout << "Default Cat constructor" << std::endl;
-	return ;
 }
 
-Cat::Cat(const Cat &base) : type(base.type)
+Cat::Cat(const Cat &base) : Animal(), type(base.type)
 {
 	std::cout << "Cat copy constructor" << std::endl;
-	return ;
 }
 
 Cat	&Cat::operator=(const Cat &base)
@@ -35,7 +33,6 @@ Cat	&Cat::operator=(const Cat &base)
 Cat::~Cat()
 {
 	std::cout << "Cat destructor" << std::endl;
-	return ;
 }
 
 std::string	Cat::getType(void) const
