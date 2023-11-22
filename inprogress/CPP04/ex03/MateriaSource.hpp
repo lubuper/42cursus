@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 17:43:42 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/15 19:12:30 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/22 10:55:29 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 
 # include "IMateriaSource.hpp"
 
-class	MateriaSource : IMateriaSource
+class	MateriaSource : public IMateriaSource
 {
+private:
+	AMateria	*inventory[4];
 public:
 	MateriaSource();
 	~MateriaSource();

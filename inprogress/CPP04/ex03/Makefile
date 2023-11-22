@@ -6,7 +6,7 @@
 #    By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/14 14:39:33 by lde-sous          #+#    #+#              #
-#    Updated: 2023/11/15 15:44:30 by lde-sous         ###   ########.fr        #
+#    Updated: 2023/11/22 09:32:22 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,10 @@ RM = rm -rf
 NAME =	interface
 SRC =	main.cpp \
 		AMateria.cpp \
-		IceMateria.cpp \
-		ICharacter.cpp \
+		Ice.cpp \
 		Character.cpp \
+		Cure.cpp \
+		MateriaSource.cpp
 
 
 OBJ_D = bin

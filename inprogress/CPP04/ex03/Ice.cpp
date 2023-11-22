@@ -6,29 +6,29 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 18:27:34 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/15 18:41:59 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/22 09:45:33 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Ice.hpp"
+#include "ICharacter.hpp"
+#include "IMateriaSource.hpp"
 
-Ice::Ice() : _type("ice")
+Ice::Ice() : type_("ice")
 {
-	std::cout << this->_type << " has been created" << std::endl;
-	return ;
+	std::cout << this->type_ << " has been created" << std::endl;
 }
 
-Ice::Ice(const Ice &base) : _type(base._type)
+Ice::Ice(const Ice &base) : AMateria(), type_(base.type_)
 {
-	std::cout << this->_type << " has been created from copy" << std::endl;
-	return ;	
+	std::cout << this->type_ << " has been created from copy" << std::endl;
 }
 
 Ice &Ice::operator=(const Ice &base)
 {
 	if (this != &base)
 	{
-		this->_type = base.getType();
+		this->type_ = base.getType();
 		std::cout << "A new ice Materia was assigned" << std::endl;
 	}
 	return (*this);
@@ -36,13 +36,13 @@ Ice &Ice::operator=(const Ice &base)
 
 Ice::~Ice()
 {
-	std::cout << this->_type << " has been destroyed" << std::endl;
-	return ;
+	std::cout << this->type_ << " has been destroyed" << std::endl;
+	
 }
 
 std::string const &Ice::getType() const
 {
-	return (this->_type);
+	return (this->type_);
 }
 
 Ice *Ice::clone() const
@@ -54,5 +54,5 @@ Ice *Ice::clone() const
 void	Ice::use(ICharacter &target)
 {
 	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
-	return ;
+	
 }

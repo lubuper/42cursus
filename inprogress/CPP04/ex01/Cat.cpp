@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 18:49:38 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/17 17:07:09 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/22 09:42:34 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 Cat::Cat() : type("Cat")
 {
 	std::cout << "Default Cat constructor" << std::endl;
-	this->_brain = new Brain();
+	this->brain_ = new Brain();
 }
 
 Cat::Cat(const Cat &base) : type(base.type)
 {
 	std::cout << "Cat copy constructor" << std::endl;
-	this->_brain = new Brain(*base._brain);
+	this->brain_ = new Brain(*base.brain_);
 }
 
 Cat	&Cat::operator=(const Cat &base)
@@ -30,14 +30,14 @@ Cat	&Cat::operator=(const Cat &base)
 	if (this != &base)
 	{
 		this->type = base.type;
-		this->_brain = new Brain(*base._brain);
+		this->brain_ = new Brain(*base.brain_);
 	}
 	return (*this);
 }
 
 Cat::~Cat()
 {
-	delete this->_brain;
+	delete this->brain_;
 	std::cout << "Cat destructor" << std::endl;
 }
 

@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 15:28:54 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/15 18:24:18 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/22 09:41:58 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class	Cure : public AMateria
 {
 private:
-	std::string	_type;
+	std::string	type_;
 public:
 	Cure();
 	Cure(const Cure &base);

@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 18:50:06 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/14 11:15:04 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/22 09:42:34 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class	Cat: public Animal
 {
 private:
 	std::string	type;
-	Brain	*_brain;
+	Brain	*brain_;
 public:
 	Cat();
 	Cat(const Cat &base);

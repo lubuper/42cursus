@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 14:55:12 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/17 16:56:37 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/22 10:37:12 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@
 # include <iostream>
 # include "ICharacter.hpp"
 
+class ICharacter;
+
 class	AMateria
 {
 protected:
-	const std::string	_type;
+	const std::string	type_;
 public:
 	AMateria();
 	AMateria(const AMateria &base);

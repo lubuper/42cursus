@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 15:02:27 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/20 19:05:05 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/22 12:12:28 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,11 @@ void	Bureaucrat::decrementGrade()
 		this->grade_++;
 	else
 		throw(Bureaucrat::GradeTooLowException());
+}
+
+void	Bureaucrat::signForm()
+{
+	
 }
 
 std::ostream	&operator<<(std::ostream &COUT, Bureaucrat const &bureau)

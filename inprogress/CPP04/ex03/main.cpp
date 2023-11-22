@@ -6,12 +6,18 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 14:39:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/15 19:24:35 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/22 09:29:51 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
 #include "IMateriaSource.hpp"
+#include "ICharacter.hpp"
+#include "Ice.hpp"
+#include "Cure.hpp"
+#include "Character.hpp"
+#include "MateriaSource.hpp"
+
 
 int main()
 {

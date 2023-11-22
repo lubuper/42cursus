@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 14:40:07 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/15 17:57:01 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/22 09:41:58 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,35 +15,35 @@
 AMateria::AMateria()
 {
 	std::cout << "Abstract Materia was constructed." << std::endl;
-	return ;
+	
 }
 
-AMateria::AMateria(const AMateria &base) : _type(base._type)
+AMateria::AMateria(const AMateria &base) : type_(base.type_)
 {
 	std::cout << "Abstract Materia was copied." << std::endl;
-	return ;
+	
 }
 
 AMateria::~AMateria()
 {
 	std::cout << "Abstract Materia was destructed" << std::endl;
-	return ;
+	
 }
 
-AMateria::AMateria(std::string const &type) : _type(type)
+AMateria::AMateria(std::string const &type) : type_(type)
 {
 	std::cout << "Abstract Materia from the type " << this->getType();
 	std::cout << " was constructed." << std::endl;
-	return ;
+	
 }
 
 std::string const &AMateria::getType() const
 {
-	return (this->_type);
+	return (this->type_);
 }
 
 void	AMateria::use(ICharacter &target)
 {
 	std::cout << "*ABSTRACT MATERIA POINTING TO " << target.getName() << " *" << std::endl;
-	return ;
+	
 }
