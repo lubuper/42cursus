@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 19:14:11 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/23 15:58:21 by lde-sous         ###   ########.fr       */
+/*   Created: 2023/11/23 16:59:30 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/11/23 17:13:58 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_HPP
-# define FORM_HPP
+#ifndef ROBOTOMYREQUESTFORM_HPP
+# define ROBOTOMYREQUESTFORM_HPP
 
-# include "Bureaucrat.hpp"
+# include "AForm.hpp"
 
 class	Bureaucrat;
 
-class	Form
+class	RobotomyRequestForm
 {
 private:
 	std::string const	name_;
@@ -25,11 +25,11 @@ private:
 	unsigned int const	req_sign_grade_;
 	unsigned int const	req_execution_grade;	
 public:
-	Form();
-	Form(std::string name, unsigned int sign, unsigned int execute);
-	~Form();
-	Form(Form const &base);
-	Form &operator=(Form const &base);
+	RobotomyRequestForm();
+	RobotomyRequestForm(std::string name, unsigned int sign, unsigned int execute);
+	~RobotomyRequestForm();
+	RobotomyRequestForm(RobotomyRequestForm const &base);
+	RobotomyRequestForm &operator=(RobotomyRequestForm const &base);
 	void	beSigned(Bureaucrat &b);
 	std::string	getName() const;
 	bool	getSignStatus() const;
@@ -62,6 +62,6 @@ public:
 	};
 };
 
-std::ostream	&operator<<(std::ostream &COUT, Form const &base);
+std::ostream	&operator<<(std::ostream &COUT, RobotomyRequestForm const &base);
 
 #endif

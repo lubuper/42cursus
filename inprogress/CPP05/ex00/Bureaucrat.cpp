@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 15:02:27 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/20 19:05:05 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/23 15:03:08 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Bureaucrat::Bureaucrat(std::string name, unsigned int grade) : name_(name), grad
 	else
 	{
 		std::cout << "Bureaucrat " << this->getName() << " with a grade of ";
-		std::cout << this->getGrade() << " has entered!" << std::endl;
+		std::cout << this->getGrade() << " has arrived!" << std::endl;
 	}
 }
 

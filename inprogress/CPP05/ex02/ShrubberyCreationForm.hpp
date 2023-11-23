@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 19:14:11 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/23 15:58:21 by lde-sous         ###   ########.fr       */
+/*   Created: 2023/11/23 16:59:04 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/11/23 17:14:22 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_HPP
-# define FORM_HPP
+#ifndef SHRUBBERYCREATIONFORM_HPP
+# define SHRUBBERYCREATIONFORM_HPP
 
-# include "Bureaucrat.hpp"
+# include "AForm.hpp"
 
 class	Bureaucrat;
 
-class	Form
+class	ShrubberyCreationForm
 {
 private:
 	std::string const	name_;
@@ -25,11 +25,11 @@ private:
 	unsigned int const	req_sign_grade_;
 	unsigned int const	req_execution_grade;	
 public:
-	Form();
-	Form(std::string name, unsigned int sign, unsigned int execute);
-	~Form();
-	Form(Form const &base);
-	Form &operator=(Form const &base);
+	ShrubberyCreationForm();
+	ShrubberyCreationForm(std::string name, unsigned int sign, unsigned int execute);
+	~ShrubberyCreationForm();
+	ShrubberyCreationForm(ShrubberyCreationForm const &base);
+	ShrubberyCreationForm &operator=(ShrubberyCreationForm const &base);
 	void	beSigned(Bureaucrat &b);
 	std::string	getName() const;
 	bool	getSignStatus() const;
@@ -62,6 +62,6 @@ public:
 	};
 };
 
-std::ostream	&operator<<(std::ostream &COUT, Form const &base);
+std::ostream	&operator<<(std::ostream &COUT, ShrubberyCreationForm const &base);
 
 #endif

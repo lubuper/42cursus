@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 19:14:11 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/23 15:58:21 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/23 16:56:47 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 class	Bureaucrat;
 
-class	Form
+class	AForm
 {
 private:
 	std::string const	name_;
@@ -25,12 +25,12 @@ private:
 	unsigned int const	req_sign_grade_;
 	unsigned int const	req_execution_grade;	
 public:
-	Form();
-	Form(std::string name, unsigned int sign, unsigned int execute);
-	~Form();
-	Form(Form const &base);
-	Form &operator=(Form const &base);
-	void	beSigned(Bureaucrat &b);
+	AForm();
+	AForm(std::string name, unsigned int sign, unsigned int execute);
+	virtual ~AForm();
+	AForm(AForm const &base);
+	AForm &operator=(AForm const &base);
+	virtual void	beSigned(Bureaucrat &b) = 0;
 	std::string	getName() const;
 	bool	getSignStatus() const;
 	unsigned int	getSignGrade() const;
@@ -62,6 +62,6 @@ public:
 	};
 };
 
-std::ostream	&operator<<(std::ostream &COUT, Form const &base);
+std::ostream	&operator<<(std::ostream &COUT, AForm const &base);
 
 #endif
