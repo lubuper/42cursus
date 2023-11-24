@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:24:06 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/14 13:53:05 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/14 13:36:13 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 int main()
 {
-	//Animal	test;
 	std::cout << "\n\033[32m------Creating \033[33mNew\033[0m Cat:" << std::endl;
 	const Cat* originalA = new Cat();
 	std::cout << "\n\033[32m------Copying a \033[33mNew\033[0m Cat from the original:" << std::endl;
@@ -43,4 +42,22 @@ int main()
 	delete originalA;
 	std::cout << "\n\033[32m------\033[31mDeleting \033[0m Dog original:" << std::endl;
 	delete doggy;
+	std::cout << std::endl;
+	Animal	*stock[10];
+	
+	for (int i = 0; i < 5; i++)
+	{
+		stock[i] = new Dog;
+		std::cout << std::endl;
+	}
+	for (int i = 5; i < 10; i++)
+	{
+		stock[i] = new Cat;
+		std::cout << std::endl;
+	}
+	for (int i = 0; i < 10; i++)
+	{
+		delete stock[i];
+		std::cout << std::endl;
+	}
 }

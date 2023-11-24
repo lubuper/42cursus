@@ -1,58 +1,59 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.cpp                                            :+:      :+:    :+:   */
+/*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/15 18:27:34 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/22 09:45:33 by lde-sous         ###   ########.fr       */
+/*   Created: 2023/11/15 17:57:25 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/11/24 15:01:20 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Ice.hpp"
+#include "Cure.hpp"
 #include "ICharacter.hpp"
 #include "IMateriaSource.hpp"
 
-Ice::Ice() : type_("ice")
+Cure::Cure() : type_("cure")
 {
 	std::cout << this->type_ << " has been created" << std::endl;
 }
 
-Ice::Ice(const Ice &base) : AMateria(), type_(base.type_)
+Cure::Cure(const Cure &base) : AMateria(), type_(base.type_)
 {
 	std::cout << this->type_ << " has been created from copy" << std::endl;
+	
 }
 
-Ice &Ice::operator=(const Ice &base)
+Cure &Cure::operator=(const Cure &base)
 {
 	if (this != &base)
 	{
 		this->type_ = base.getType();
-		std::cout << "A new ice Materia was assigned" << std::endl;
+		std::cout << "A new cure Materia was assigned" << std::endl;
 	}
 	return (*this);
 }
 
-Ice::~Ice()
+Cure::~Cure()
 {
 	std::cout << this->type_ << " has been destroyed" << std::endl;
 	
 }
 
-std::string const &Ice::getType() const
+std::string const &Cure::getType() const
 {
 	return (this->type_);
 }
 
-Ice *Ice::clone() const
+Cure *Cure::clone() const
 {
-	Ice	*dolly = new Ice;
+	Cure	*dolly = new Cure;
 	return (dolly);
 }
 
-void	Ice::use(ICharacter &target)
+void	Cure::use(ICharacter &target)
 {
-	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+	std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
 	
 }

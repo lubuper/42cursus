@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cure.hpp                                           :+:      :+:    :+:   */
+/*   Ice.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 15:28:54 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/22 09:41:58 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/24 15:01:01 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CURE_HPP
-# define CURE_HPP
+#ifndef ICE_HPP
+# define ICE_HPP
 
 #include "AMateria.hpp"
 
-class	Cure : public AMateria
+class	Ice : public AMateria
 {
 private:
 	std::string	type_;
 public:
-	Cure();
-	Cure(const Cure &base);
-	Cure &operator=(const Cure &base);
-	~Cure();
+	Ice();
+	Ice(const Ice &base);
+	Ice &operator=(const Ice &base);
+	~Ice();
 	std::string const &getType() const;
-	Cure *clone() const;
+	Ice *clone() const;
 	void	use(ICharacter &target);
 };
 

@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.hpp                                            :+:      :+:    :+:   */
+/*   ICharacter.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/15 15:28:54 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/22 09:41:58 by lde-sous         ###   ########.fr       */
+/*   Created: 2023/11/15 15:37:54 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/11/24 15:04:15 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ICE_HPP
-# define ICE_HPP
+#ifndef ICHARACTER_HPP
+# define ICHARACTER_HPP
 
-#include "AMateria.hpp"
+# include "AMateria.hpp"
+# include <string>
+# include <istream>
+# include <iostream>
 
-class	Ice : public AMateria
+class	AMateria;
+
+class	ICharacter
 {
-private:
-	std::string	type_;
+protected:
+	const	std::string	name_;
 public:
-	Ice();
-	Ice(const Ice &base);
-	Ice &operator=(const Ice &base);
-	~Ice();
-	std::string const &getType() const;
-	Ice *clone() const;
-	void	use(ICharacter &target);
+	virtual	~ICharacter() {}
+	virtual std::string const	&getName() const = 0;
+	virtual void	equip(AMateria* m) = 0;
+	virtual void	unequip(int idx) = 0;
+	virtual void	use(int idx, ICharacter& target) = 0;
 };
 
 #endif

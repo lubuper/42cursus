@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:24:06 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/14 13:36:13 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/24 17:50:45 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 
 int main()
 {
+	//Animal	test;
+	
 	std::cout << "\n\033[32m------Creating \033[33mNew\033[0m Cat:" << std::endl;
 	const Cat* originalA = new Cat();
 	std::cout << "\n\033[32m------Copying a \033[33mNew\033[0m Cat from the original:" << std::endl;

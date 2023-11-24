@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 17:02:41 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/22 11:10:35 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/24 15:35:13 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,8 @@ void	Character::equip(AMateria* m)
 {
 	int	i = 0;
 	if (!m)
-	{
 		std::cout << "no materia to equip" << std::endl;
-	}
+
 	while (i < 4 && this->inventory[i])
 		i++;
 	if (i >= 4)
@@ -108,7 +107,7 @@ void	Character::use(int idx, ICharacter& target)
 	}
 	if (!this->inventory[idx])
 	{
-		std::cout << "There is no materia in slot " << idx << std::endl;
+		std::cout << "There is no materia in slot " << idx + 1 << std::endl;
 		return ;
 	}
 	this->inventory[idx]->use(target);
