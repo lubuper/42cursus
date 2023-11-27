@@ -38,22 +38,25 @@ int main()
 	tmp4 = chest->createMateria("Ice Blast");
 	tmp5 = chest->createMateria("IceMageddon");
 	std::cout << "\033[32m---------------------------\033[0m" << std::endl;
+	//std::cout << "Feclaw:" << std::endl;
 	me->equip(tmp);
 	me->equip(tmp2);
+	std::cout << "Feclaw:" << std::endl;
 	me->use(0, *bob);
 	me->use(1, *bob);
+	me->unequip(1);
+	std::cout << "Bob:" << std::endl;
+	bob->equip(tmp2);
+	bob->use(0, *bob);
+	std::cout << "Feclaw:" << std::endl;
 	me->use(2, *bob);
 	me->use(3, *bob);
 	me->use(1, *me);
+	me->use(0, *bob);
 	std::cout << "\033[32m---------------------------\033[0m" << std::endl;
-	delete bob;
-	delete me;
 	delete river;
 	delete chest;
-	
-/* 	Ice	i = Ice();
-
-	std::cout << i.getType() << std::endl; */
-	
+	delete me;
+	delete bob;
 	
 }

@@ -28,6 +28,7 @@ public:
 	AMateria();
 	AMateria(const AMateria &base);
 	virtual ~AMateria();
+	virtual AMateria &operator=(const &base);
 	AMateria(std::string const &type);
 	virtual std::string const &getType() const;
 	virtual AMateria *clone() const = 0;

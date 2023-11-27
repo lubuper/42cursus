@@ -15,26 +15,22 @@
 AMateria::AMateria()
 {
 	std::cout << "Abstract Materia was constructed." << std::endl;
-	
 }
 
 AMateria::AMateria(const AMateria &base) : type_(base.type_)
 {
 	std::cout << "Abstract Materia was copied." << std::endl;
-	
 }
 
 AMateria::~AMateria()
 {
 	std::cout << "Abstract Materia was destructed" << std::endl;
-	
 }
 
 AMateria::AMateria(std::string const &type) : type_(type)
 {
 	std::cout << "Abstract Materia from the type " << this->getType();
 	std::cout << " was constructed." << std::endl;
-	
 }
 
 std::string const &AMateria::getType() const
@@ -45,5 +41,4 @@ std::string const &AMateria::getType() const
 void	AMateria::use(ICharacter &target)
 {
 	std::cout << "*ABSTRACT MATERIA POINTING TO " << target.getName() << " *" << std::endl;
-	
 }
