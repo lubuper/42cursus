@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 16:59:30 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/27 10:21:31 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/28 16:45:14 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,5 @@ public:
 	std::string	getTarget() const;
 	void	execute(Bureaucrat const &executor) const;
 };
-
-std::ostream	&operator<<(std::ostream &COUT, RobotomyRequestForm const &base);
 
 #endif

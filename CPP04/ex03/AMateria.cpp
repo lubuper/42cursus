@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 14:40:07 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/22 09:41:58 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/28 14:19:35 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,16 @@ AMateria::AMateria(std::string const &type) : type_(type)
 std::string const &AMateria::getType() const
 {
 	return (this->type_);
+}
+
+AMateria &AMateria::operator=(const AMateria &base)
+{
+	if (this != &base)
+	{
+		this->type_ = base.type_;
+		std::cout << "Abstract Materia copied through assignment" << std::endl;
+	}
+	return (*this);
 }
 
 void	AMateria::use(ICharacter &target)

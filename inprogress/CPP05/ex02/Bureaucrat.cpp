@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 15:02:27 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/23 15:52:59 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:57:35 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	Bureaucrat::decrementGrade()
 		throw(Bureaucrat::GradeTooLowException());
 }
 
-void	Bureaucrat::signForm(Form &some_form)
+void	Bureaucrat::signForm(AForm &some_form)
 {
 	try
 	{
@@ -87,6 +87,16 @@ void	Bureaucrat::signForm(Form &some_form)
 	{
 		std::cout << this->name_ << " \033[31mcouldn't sign\033[0m " << some_form.getName() << " because " << e.what() <<std::endl;
 	}
+}
+
+void	Bureaucrat::executeForm(AForm const &form)
+{
+	if (form.getSignStatus() == false)
+		throw(AForm::UnsignedException());
+	else if (this->getGrade() > form.getExecutionGrade())
+		throw(Bureaucrat::GradeTooLowException());
+	else
+		std::cout << this->getName() << " executed " << form.getName() << std::endl;
 }
 
 std::ostream	&operator<<(std::ostream &COUT, Bureaucrat const &bureau)

@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 16:59:04 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/27 10:21:40 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/28 16:45:09 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ public:
 	void	execute(Bureaucrat const &executor) const;
 };
 
-std::ostream	&operator<<(std::ostream &COUT, ShrubberyCreationForm const &base);
+
 
 #endif

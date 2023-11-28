@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 19:14:11 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/23 16:56:47 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:56:04 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,12 @@ public:
 	virtual ~AForm();
 	AForm(AForm const &base);
 	AForm &operator=(AForm const &base);
-	virtual void	beSigned(Bureaucrat &b) = 0;
+	virtual void	beSigned(Bureaucrat &b);
 	std::string	getName() const;
 	bool	getSignStatus() const;
 	unsigned int	getSignGrade() const;
 	unsigned int	getExecutionGrade() const;
+	virtual void	execute(Bureaucrat const &executor) const = 0;
 
 	class	GradeTooHighException : public std::exception
 	{
@@ -58,6 +59,14 @@ public:
 			virtual const char* what() const throw()
 			{
 				return ("the form is \033[34malready signed\033[0m");
+			}
+	};
+	class	UnsignedException : public std::exception
+	{
+		public:
+			virtual const char* what() const throw()
+			{
+				return ("the form has \033[34mNO signature\033[0m");
 			}
 	};
 };

@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 14:55:12 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/24 15:01:09 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/28 14:19:21 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ class ICharacter;
 class	AMateria
 {
 protected:
-	const std::string	type_;
+	std::string	type_;
 public:
 	AMateria();
 	AMateria(const AMateria &base);
 	virtual ~AMateria();
-	virtual AMateria &operator=(const &base);
+	virtual AMateria &operator=(const AMateria &base);
 	AMateria(std::string const &type);
 	virtual std::string const &getType() const;
 	virtual AMateria *clone() const = 0;

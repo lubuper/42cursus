@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 15:02:36 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/23 15:44:38 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:58:53 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,12 @@
 # include <string>
 # include <istream>
 # include <iostream>
-# include "Form.hpp"
+# include <fstream>
+# include <ctime>
+# include <cstdlib>
+# include "AForm.hpp"
 
-class Form;
+class AForm;
 
 class	Bureaucrat
 {
@@ -41,7 +44,7 @@ public:
 		public:
 			virtual const char* what() const throw()
 			{
-				return ("Exception: The grade which you're trying to pass cannot be < 1\n");
+				return ("Exception: The grade can't be < 1\n");
 			}
 	};
 	class	GradeTooLowException : public std::exception
@@ -49,10 +52,11 @@ public:
 		public:
 			virtual const char* what() const throw()
 			{
-				return ("Exception: The grade which you're trying to pass cannot be > 150\n");
+				return ("Exception: The grade can't be > 150\n");
 			}
 	};
-	void	signForm(Form &some_form);
+	void	signForm(AForm &some_form);
+	void	executeForm(AForm const &form);
 };
 
 std::ostream	&operator<<(std::ostream &COUT, Bureaucrat const &bureau);

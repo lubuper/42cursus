@@ -6,7 +6,7 @@
 #    By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/20 14:51:34 by lde-sous          #+#    #+#              #
-#    Updated: 2023/11/23 16:11:51 by lde-sous         ###   ########.fr        #
+#    Updated: 2023/11/28 17:38:46 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,10 @@ RM = rm -rf
 NAME = 28b
 SRC =	main.cpp \
 		Bureaucrat.cpp \
-		Form.cpp
+		AForm.cpp \
+		PresidentialPardon.cpp \
+		RobotomyRequestForm.cpp \
+		ShrubberyCreationForm.cpp
 
 OBJ_D = bin
 OBJ = $(addprefix $(OBJ_D)/, $(SRC:.cpp=.o))
