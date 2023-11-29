@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PresidentialPardon.cpp                             :+:      :+:    :+:   */
+/*   PresidentialPardonForm.cpp                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,30 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PresidentialPardon.hpp"
+#include "PresidentialPardonForm.hpp"
 
-PresidentialPardon::PresidentialPardon() : AForm("PPForm", 25, 5)
+PresidentialPardonForm::PresidentialPardonForm() : AForm("PPForm", 25, 5)
 {
 	this->target_ = "DESK";
 	std::cout << "Presidential constructor." << std::endl;
 }
 
-PresidentialPardon::PresidentialPardon(std::string target) : AForm("PPForm", 25, 5), target_(target)
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("PPForm", 25, 5), target_(target)
 {
 	std::cout << *this << "was made." << std::endl;
 }
 
-PresidentialPardon::~PresidentialPardon()
+PresidentialPardonForm::~PresidentialPardonForm()
 {
 	std::cout << "Presidential destructor." << std::endl;
 }
 
-PresidentialPardon::PresidentialPardon(PresidentialPardon const &base) : AForm("PPForm", 25, 5), target_(base.target_)
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &base) : AForm("PPForm", 25, 5), target_(base.target_)
 {
 	std::cout << AForm::getName() << " Presidencial Pardon copy was made for " << this->getTarget() << std::endl;
 }
 
-PresidentialPardon &PresidentialPardon::operator=(PresidentialPardon const &base)
+PresidentialPardonForm &PresidentialPardonForm::operator=(PresidentialPardonForm const &base)
 {
 	if (this != &base)
 	{
@@ -43,12 +43,17 @@ PresidentialPardon &PresidentialPardon::operator=(PresidentialPardon const &base
 	return (*this);
 }
 
-std::string	PresidentialPardon::getTarget() const
+std::string	PresidentialPardonForm::getTarget() const
 {
 	return (this->target_);
 }
 
-void	PresidentialPardon::execute(Bureaucrat const &executor) const
+void	PresidentialPardonForm::execute(Bureaucrat const &executor) const
 {
-	std::cout << executor.getName() << " has been pardoned by Zaphod Beeblebrox" << std::endl;
+	if (this->getSignStatus() == false)
+		throw(AForm::UnsignedException());
+	else if (executor.getGrade() > this->getExecutionGrade())
+		throw(AForm::GradeTooLowException());
+	else
+		std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox" << std::endl;
 }

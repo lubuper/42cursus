@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 15:02:27 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/23 15:52:59 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/29 15:12:58 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	Bureaucrat::signForm(Form &some_form)
 	}
 	catch (std::exception &e)
 	{
-		std::cout << this->name_ << " \033[31mcouldn't sign\033[0m " << some_form.getName() << " because " << e.what() <<std::endl;
+		std::cerr << this->name_ << " \033[31mcouldn't sign\033[0m " << some_form.getName() << " because " << e.what() <<std::endl;
 	}
 }
 
