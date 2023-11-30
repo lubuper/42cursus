@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 17:16:49 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/29 20:19:48 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/11/30 10:28:41 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,15 @@ AForm	*Intern::makeForm(std::string form_name, std::string target)
 {
 	try
 	{
+		AForm* (Intern::*possible_forms[3])(std::string) = {&Intern::PPForm, &Intern::RobReq, &Intern::Shrubb};
 		std::string possible_names[3] = {"PPForm", "RobReq", "Shrubb"};
 		int		rightone = -1;
+
 		for (int i = 0; i < 3; i++)
 			if (form_name == possible_names[i])
 				rightone = i;
-		HERE
+		if (rightone != -1)
+			return(this->*possible_forms[rightone])(target);
 	}
 	catch(std::exception &e)
 	{
