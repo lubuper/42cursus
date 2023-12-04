@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 11:40:53 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/11/30 12:06:54 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/12/04 16:56:16 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <climits>
 # include <cmath>
 # include <iostream>
+# include <limits>
 
 class	ScalarConverter
 {
@@ -27,7 +28,7 @@ private:
 	ScalarConverter &operator=(ScalarConverter const &base);
 public:
 	~ScalarConverter();
-	void	convert(std::string const input);
+	static void	convert(std::string const input);
 };
 
 #endif
