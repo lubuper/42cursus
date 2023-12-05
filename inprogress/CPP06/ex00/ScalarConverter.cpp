@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 11:40:38 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/12/04 18:29:20 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/12/05 13:11:37 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,25 +81,69 @@ int	findError(std::string const input)
 	return (0);
 }
 
+void	pseudos(std::string const input)
+{
+	if (input == "-inf")
+	{
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: -inff" << std::endl;
+		std::cout << "double: -inf" << std::endl;
+	}
+	else if (input == "+inf")
+	{
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: +inff" << std::endl;
+		std::cout << "double: +inf" << std::endl;
+	}
+	else if (input == "nan")
+	{
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: nanf" << std::endl;
+		std::cout << "double: nan" << std::endl;
+	}
+	else if (input == "-inff")
+	{
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: -inff" << std::endl;
+		std::cout << "double: -inf" << std::endl;
+	}
+	else if (input == "nanf")
+	{
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: nanf" << std::endl;
+		std::cout << "double: nan" << std::endl;
+	}
+}
+
 void	fromInt(std::string const input)
 {
 	if (findError(input) == 1)
 		return ;
-	long result = atol(input.c_str());
-	if (result > std::numeric_limits<int>::max() || result < std::numeric_limits<int>::min())
-	{
-		std::cout << "Invalid : the input has an out of bounds type" << std::endl;
-		return ;
-	}
+	char *endpointer;
+	double result = strtod(input.c_str(), &endpointer);
 	if ((result >= 0 && result < 32) || result == 127)
 		std::cout << "char: Non displayable" << std::endl;
 	else if (result < 0 || result > 127)
 		std::cout << "char: impossible" << std::endl;
 	else
 		std::cout << "char: '" << static_cast<char>(result) << "'" << std::endl;
-	std::cout << "int: " << result << std::endl;
-	std::cout << "float: " << static_cast<float>(result) << ".0f" << std::endl;
-	std::cout << "double: " << static_cast<double>(result) << ".0" << std::endl;
+	if (result > std::numeric_limits<int>::max() || result < std::numeric_limits<int>::min())
+		std::cout << "int: impossible" << std::endl;
+	else
+		std::cout << "int: " << result << std::endl;
+	if (result > std::numeric_limits<float>::max() || result < -std::numeric_limits<float>::min())
+			std::cout << "float: impossible" << std::endl;
+	else
+		std::cout << "float: " << static_cast<float>(result) << ".0f" << std::endl;
+	if (result > std::numeric_limits<double>::max() || result < -std::numeric_limits<double>::max())
+		std::cout << "double: impossible" << std::endl;
+	else
+		std::cout << "double: " << static_cast<double>(result) << ".0" << std::endl;
 }
 
 void	fromDouble(std::string const input)
@@ -108,20 +152,38 @@ void	fromDouble(std::string const input)
 		return ;
 	char *endpointer;
 	double result = strtod(input.c_str(), &endpointer);
-	if (result > std::numeric_limits<double>::max() || result < -std::numeric_limits<double>::max())
-	{
-		std::cout << "Invalid : the input has an out of bounds type" << std::endl;
-		return ;
-	}
 	if ((result >= 0 && result < 32) || result == 127 || static_cast<int>(result) != result)
 		std::cout << "char: Non displayable" << std::endl;
 	else if (result < 0 || result > 127)
 		std::cout << "char: impossible" << std::endl;
 	else
 		std::cout << "char: '" << static_cast<char>(result) << "'" << std::endl;
-	std::cout << "int: " << static_cast<int>(result) << std::endl;
-	std::cout << "float: " << static_cast<float>(result) << "f" << std::endl;
-	std::cout << "double: " << static_cast<double>(result) << std::endl;
+	if (result > std::numeric_limits<int>::max() || result < std::numeric_limits<int>::min())
+		std::cout << "int: impossible" << std::endl;
+	else
+		std::cout << "int: " << static_cast<int>(result) << std::endl;
+	if (result - static_cast<int>(result) == 0)
+	{
+		if (result > std::numeric_limits<float>::max() || result < -std::numeric_limits<float>::min())
+			std::cout << "float: impossible" << std::endl;
+		else
+			std::cout << "float: " << static_cast<float>(result) << ".0f" << std::endl;
+		if (result > std::numeric_limits<double>::max() || result < -std::numeric_limits<double>::max())
+			std::cout << "double: impossible" << std::endl;
+		else
+			std::cout << "double: " << static_cast<double>(result) << ".0" << std::endl;
+	}
+	else
+	{
+		if (result > std::numeric_limits<float>::max() || result < -std::numeric_limits<float>::min())
+			std::cout << "float: impossible" << std::endl;
+		else
+			std::cout << "float: " << static_cast<float>(result) << "f" << std::endl;
+		if (result > std::numeric_limits<double>::max() || result < -std::numeric_limits<double>::max())
+			std::cout << "double: impossible" << std::endl;
+		else
+			std::cout << "double: " << static_cast<double>(result) << std::endl;
+	}
 }
 
 void	fromFloat(std::string const input)
@@ -130,24 +192,44 @@ void	fromFloat(std::string const input)
 		return ;
 	char *endpointer;
 	double result = strtof(input.c_str(), &endpointer);
-	if (result > std::numeric_limits<float>::max() || result < -std::numeric_limits<float>::max())
-	{
-		std::cout << "Invalid : the input has an out of bounds type" << std::endl;
-		return ;
-	}
 	if ((result >= 0 && result < 32) || result == 127 || static_cast<int>(result) != result)
 		std::cout << "char: Non displayable" << std::endl;
 	else if (result < 0 || result > 127)
 		std::cout << "char: impossible" << std::endl;
 	else
 		std::cout << "char: '" << static_cast<char>(result) << "'" << std::endl;
-	std::cout << "int: " << static_cast<int>(result) << std::endl;
-	std::cout << "float: " << static_cast<float>(result) << "f" << std::endl;
-	std::cout << "double: " << static_cast<double>(result) << std::endl;
+	if (result > std::numeric_limits<int>::max() || result < std::numeric_limits<int>::min())
+		std::cout << "int: impossible" << std::endl;
+	else
+		std::cout << "int: " << static_cast<int>(result) << std::endl;
+	if (result - static_cast<int>(result) == 0)
+	{
+		if (result > std::numeric_limits<float>::max() || result < -std::numeric_limits<float>::max())
+			std::cout << "float: impossible" << std::endl;
+		else
+			std::cout << "float: " << static_cast<float>(result) << ".0f" << std::endl;
+		std::cout << "double: " << static_cast<double>(result) << ".0" << std::endl;
+	}
+	else
+	{
+		if (result > std::numeric_limits<float>::max() || result < -std::numeric_limits<float>::max())
+			std::cout << "float: impossible" << std::endl;
+		else
+			std::cout << "float: " << static_cast<float>(result) << "f" << std::endl;
+		if (result > std::numeric_limits<double>::max() || result < -std::numeric_limits<double>::max())
+			std::cout << "double: impossible" << std::endl;
+		else
+			std::cout << "double: " << static_cast<double>(result) << std::endl;
+	}
 }
 
 void	ScalarConverter::convert(std::string const input)
 {
+	if (input == "-inf" || input == "+inf" || input == "nan" || input == "-inff" || input == "+inff" || input == "nan")
+	{
+		pseudos(input);
+		return ;
+	}
 	if (isdigit(input[0]) || (input[0] == 45 && input.size() > 1))
 	{
 		if (input.find('.') != std::string::npos)
