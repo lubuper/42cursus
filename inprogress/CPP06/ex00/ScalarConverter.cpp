@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 11:40:38 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/12/05 13:11:37 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/12/05 15:03:07 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ void	fromInt(std::string const input)
 		std::cout << "int: impossible" << std::endl;
 	else
 		std::cout << "int: " << result << std::endl;
-	if (result > std::numeric_limits<float>::max() || result < -std::numeric_limits<float>::min())
+	if (result > std::numeric_limits<float>::max() || result < -std::numeric_limits<float>::max())
 			std::cout << "float: impossible" << std::endl;
 	else
 		std::cout << "float: " << static_cast<float>(result) << ".0f" << std::endl;
@@ -164,7 +164,7 @@ void	fromDouble(std::string const input)
 		std::cout << "int: " << static_cast<int>(result) << std::endl;
 	if (result - static_cast<int>(result) == 0)
 	{
-		if (result > std::numeric_limits<float>::max() || result < -std::numeric_limits<float>::min())
+		if (result > std::numeric_limits<float>::max() || result < -std::numeric_limits<float>::max())
 			std::cout << "float: impossible" << std::endl;
 		else
 			std::cout << "float: " << static_cast<float>(result) << ".0f" << std::endl;
@@ -175,7 +175,7 @@ void	fromDouble(std::string const input)
 	}
 	else
 	{
-		if (result > std::numeric_limits<float>::max() || result < -std::numeric_limits<float>::min())
+		if (result > std::numeric_limits<float>::max() || result < -std::numeric_limits<float>::max())
 			std::cout << "float: impossible" << std::endl;
 		else
 			std::cout << "float: " << static_cast<float>(result) << "f" << std::endl;
