@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   main.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/04 11:40:55 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/12/05 16:12:02 by lde-sous         ###   ########.fr       */
+/*   Created: 2023/12/07 15:11:17 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/12/07 15:28:11 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Serializer.hpp"
+#ifndef MAIN_HPP
+# define MAIN_HPP
 
-int	main(void)
+# include <string>
+# include <iostream>
+
+template	<typename var> void swap(var& x, var& y)
 {
-	Data	table;
-
-	table.clicks_ = 50;
-	table.name_ = "advertisement";
-	table.nick_ = "clickbait";
-	uintptr_t	pointer = Serializer::serialize(&table);
-	Data	*newtable = Serializer::deserialize(pointer);
-
-	std::cout << "&table = " << table.name_ << std::endl;
-	std::cout << "&newtable = " << newtable->name_ << std::endl;
-	
-	return (0);
+		var	temp;
+		temp = x;
+		x = y;
+		y = temp;
 }
+
+template	<typename var> var min(var& x, var& y)
+{
+	return (x > y ? y : x);
+}
+
+template	<typename var> var max(var& x, var& y)
+{
+	return (x > y ? x : y);
+}
+
+#endif
