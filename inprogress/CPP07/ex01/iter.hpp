@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 15:42:21 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/12/07 18:39:52 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/12/12 10:34:54 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,20 @@
 # include <iostream>
 # include <istream>
 
-template <typename var, typename var2> void iter(var* arr, size_t len, var2 func)
+template <typename v> void iter(v* arr, size_t len, void (*func)(v &))
 {
 	for(size_t i = 0; i < len; i++)
 		func(arr[i]);
+}
+
+template <typename v> void printit(v &something)
+{
+	std::cout << something << " ";
+}
+
+template <typename T> void fun(T &var)
+{
+	var = 47;
 }
 
 #endif
