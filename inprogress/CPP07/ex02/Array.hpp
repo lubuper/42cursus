@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 11:35:50 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/12/13 15:41:40 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/12/14 13:35:44 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ template <class T> class	Array
 				virtual const char *what() const throw()
 				{
 					return ("Error: Index out of bounds");
-				};
+				}
 		};
 };
 

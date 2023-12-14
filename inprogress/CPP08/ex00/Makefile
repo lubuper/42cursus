@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/12/12 11:02:43 by lde-sous          #+#    #+#              #
-#    Updated: 2023/12/14 13:35:23 by lde-sous         ###   ########.fr        #
+#    Created: 2023/12/14 10:08:41 by lde-sous          #+#    #+#              #
+#    Updated: 2023/12/14 11:08:46 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,14 +16,15 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
 # NAME && FOLDERS
-NAME = array
-SRC =	main.cpp \
-	#test.cpp
+NAME = easyfind
+SRC =	main.cpp
 
 OBJ_D = bin
+
 OBJ = $(addprefix $(OBJ_D)/, $(SRC:.cpp=.o))
 
 # RULES
+
 all: $(NAME)
 
 $(NAME): $(OBJ)
@@ -50,3 +51,4 @@ re: fclean all
 .SILENT:
 
 .PHONY: all clean fclean re
+		
