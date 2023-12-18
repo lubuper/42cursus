@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 11:35:50 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/12/14 13:35:44 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/12/18 11:16:12 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <string>
 # include <iostream>
+# include <cstdlib>
 
 template <class T> class	Array
 {

@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/12/07 15:41:21 by lde-sous          #+#    #+#              #
-#    Updated: 2023/12/18 11:20:18 by lde-sous         ###   ########.fr        #
+#    Created: 2023/12/18 11:31:49 by lde-sous          #+#    #+#              #
+#    Updated: 2023/12/18 11:37:56 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,9 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
 # NAME && FOLDERS
-NAME = iter
-SRC =	main.cpp
+NAME = span
+SRC =	main.cpp \
+		Span.cpp \
 
 OBJ_D = bin
 OBJ = $(addprefix $(OBJ_D)/, $(SRC:.cpp=.o))

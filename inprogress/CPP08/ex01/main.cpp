@@ -1,37 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iter.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/07 15:42:21 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/12/18 11:18:00 by lde-sous         ###   ########.fr       */
+/*   Created: 2023/12/18 11:39:50 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/12/18 11:40:22 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ITER_HPP
-# define ITER_HPP
-
-# include <string>
-# include <iostream>
-# include <istream>
-# include <cstdlib>
-
-template <typename v> void iter(v* arr, size_t len, void (*func)(v &))
+int main(void)
 {
-	for(size_t i = 0; i < len; i++)
-		func(arr[i]);
+	return (0);
 }
-
-template <typename v> void printit(v &something)
-{
-	std::cout << something << " ";
-}
-
-template <typename T> void fun(T &var)
-{
-	var = 47;
-}
-
-#endif
