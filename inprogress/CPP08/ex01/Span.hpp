@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 11:38:19 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/12/18 16:00:39 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/12/18 19:00:04 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ class	Span
 		void	addNumber(int number);
 		int		shortestSpan(void);
 		int		longestSpan(void);
+		template <typename Iterator> void fillSpan(Iterator begin, Iterator end);
 		class	MaxStorageException : public std::exception
 		{
 			public:
