@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 11:38:19 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/12/18 14:02:24 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/12/18 16:00:39 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <vector>
 # include <list>
 # include <map>
+# include <climits>
 
 class	Span
 {
@@ -32,8 +33,8 @@ class	Span
 		Span &operator=(Span const &base);
 		~Span();
 		void	addNumber(int number);
-		int		shortestSpan();
-		int		longestSpan();
+		int		shortestSpan(void);
+		int		longestSpan(void);
 		class	MaxStorageException : public std::exception
 		{
 			public:
