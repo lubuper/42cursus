@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 11:38:24 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/12/18 19:07:49 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/12/19 16:16:25 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,3 @@ int	Span::longestSpan(void)
 	else
 		return (max - min);
 }
-
-template <typename Iterator> void Span::fillSpan(Iterator begin, Iterator end)
-{
-	if (std::distance(begin, end) > (storage_ - nums_.size()))
-		throw MaxStorageException();
-	
-}
-

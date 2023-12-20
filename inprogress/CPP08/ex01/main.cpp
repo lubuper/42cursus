@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 11:39:50 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/12/18 18:25:34 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/12/19 16:19:28 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ int main(void)
 		test3.addNumber(4);
 		test3.addNumber(4);
 		std::cout << test3.shortestSpan() << std::endl;
-		//std::cout << test3.longestSpan() << std::endl;
 	}
 	catch(std::exception &e)
 	{
@@ -77,7 +76,15 @@ int main(void)
 	try
 	{
 		Span test5 = Span(20);
-		test5.fillSpan();
+		int	arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9 , 10};
+		int arr2[] = {11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
+		test5.fillSpan(arr, arr + sizeof(arr) / sizeof(int));
+		test5.fillSpan(arr2, arr2 + sizeof(arr2) / sizeof(int));
+		/*arr and arr2 are arrays, and in C++, arrays can be used with pointer arithmetic to form a range.
+		arr is a pointer to the first element of the array, and arr + sizeof(arr) / sizeof(int) is a pointer
+		to one past the end of the array. This forms a valid range [begin, end].*/
+		std::cout << test5.shortestSpan() << std::endl;
+		std::cout << test5.longestSpan() << std::endl;
 	}
 	catch(std::exception &e)
 	{
