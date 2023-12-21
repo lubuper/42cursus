@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 16:56:49 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/12/21 19:00:31 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/12/21 19:55:45 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,15 @@ void	testMutant(void)
 		std::cout << *it1 << std::endl;
 		++it1;
 	}
+	MutantStack<int>::const_iterator cit1 = mstack.it_begin();
+	MutantStack<int>::const_iterator cit2 = mstack.it_end();
+
+	std::cout << "Iterating const \e[1;31m<int> \e[1;31mMu\e[1;32mTaN\e[1;33mt \e[1;34mStA\e[1;35mcK...\e[1;0m" << std::endl;
+	while (cit1 != cit2) {
+		std::cout << *cit1 << std::endl;
+		++cit1;
+	}
+	
 	std::cout << "Iteration \e[1;32m\e[1;5mcomplete!\e[1;0m" << std::endl;
 }
 

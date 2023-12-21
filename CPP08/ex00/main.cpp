@@ -6,13 +6,13 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:09:44 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/12/18 11:27:34 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/12/21 19:46:38 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "easyfind.hpp"
 
-int	main(void)
+void	testList(void)
 {
 	try
 	{
@@ -28,6 +28,10 @@ int	main(void)
 	{
 		std::cerr << e.what() << std::endl;
 	}
+}
+
+void	testVector(void)
+{
 	try
 	{
 		std::vector<int>	intvector;
@@ -42,5 +46,30 @@ int	main(void)
 	{
 		std::cerr << e.what() << std::endl;
 	}
+}
+
+void	testDeque(void)
+{
+	try
+	{
+		std::deque<int>	intdeque;
+		intdeque.push_back(1);
+		intdeque.push_back(2);
+		intdeque.push_back(3);
+		intdeque.push_back(4);
+		easyfind(intdeque, 3);
+		easyfind(intdeque, 10);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+}
+
+int	main(void)
+{
+	testList();
+	testVector();
+	testDeque();
 	return (0);	
 }
