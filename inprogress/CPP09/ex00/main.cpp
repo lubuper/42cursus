@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 14:54:52 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/12/27 17:09:57 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/12/28 16:37:50 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main(int ac, char **av)
 	{
 		BitcoinExchange	btc;
 		btc.treatDb();
+		btc.treatInput((av[1]));
 	}
 	catch(std::exception &e)
 	{
