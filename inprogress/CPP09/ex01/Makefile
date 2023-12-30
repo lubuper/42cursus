@@ -5,21 +5,21 @@
 #                                                     +:+ +:+         +:+      #
 #    By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/12/27 14:47:08 by lde-sous          #+#    #+#              #
-#    Updated: 2023/12/29 17:47:44 by lde-sous         ###   ########.fr        #
+#    Created: 2023/12/29 17:42:45 by lde-sous          #+#    #+#              #
+#    Updated: 2023/12/30 11:31:37 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # FLAGS && VARIABLES
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
 # NAME && FOLDERS
-NAME = btc
+NAME = RPN
 
 SRC =	main.cpp \
-		BitcoinExchange.cpp
+		RPN.cpp
 
 OBJ_D = bin
 

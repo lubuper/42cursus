@@ -5,21 +5,21 @@
 #                                                     +:+ +:+         +:+      #
 #    By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/12/27 14:47:08 by lde-sous          #+#    #+#              #
-#    Updated: 2023/12/29 17:47:44 by lde-sous         ###   ########.fr        #
+#    Created: 2023/12/30 11:20:13 by lde-sous          #+#    #+#              #
+#    Updated: 2023/12/30 11:34:16 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # FLAGS && VARIABLES
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
 # NAME && FOLDERS
-NAME = btc
+NAME = PmergeMe
 
 SRC =	main.cpp \
-		BitcoinExchange.cpp
+		PmergeMe.cpp
 
 OBJ_D = bin
 
@@ -31,7 +31,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 		@echo "Installing..."
 		$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
-		@echo "Instalation complete!"
+		@echo "Installation complete!"
 
 $(OBJ_D)/%.o: %.cpp
 		mkdir -p $(@D)
