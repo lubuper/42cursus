@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 11:35:10 by lde-sous          #+#    #+#             */
-/*   Updated: 2024/01/08 19:12:29 by lde-sous         ###   ########.fr       */
+/*   Updated: 2024/01/15 19:16:48 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <iostream>
 # include <vector>
 # include <deque>
+# include <sys/time.h>
 
 class	PmergeMe
 {

@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 17:53:11 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/12/29 21:34:50 by lde-sous         ###   ########.fr       */
+/*   Updated: 2024/01/15 19:06:40 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,20 +37,28 @@ void	RPN::fillstack(std::string parameters)
 	std::string	operators = "+-*/";
 	std::string temp;
 	const char	*params = parameters.c_str();
+	int operator_counter = 0;
+	int operand_counter = 0;
 	for (size_t i = 0; i < parameters.length(); i++)
 	{
 		if (params[i] == ' ')
 			continue;
 		else if (isdigit(params[i]))
-		{
+		{	
 			temp = params[i];
 			arr_.push(std::atof(temp.c_str()));
+			operand_counter++;
 		}
 		else if (operators.find(params[i]) != std::string::npos)
+		{
 			arr_.push(executeRPN(params[i]));
-		 else
+			operator_counter++;
+		}
+		else
 			throw (std::runtime_error("Error: invalid parameter"));
 	}
+	if (operator_counter != operand_counter - 1)
+		throw (std::runtime_error("Error: invalid operand-operator proportion"));
 	std::cout << arr_.top() << std::endl;
 	arr_.pop();
 }
