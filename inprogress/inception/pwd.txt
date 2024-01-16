@@ -1,0 +1,4 @@
+name lde-sous
+computersname ldesous-VB
+username lde-sous
+password sous-LDE47
