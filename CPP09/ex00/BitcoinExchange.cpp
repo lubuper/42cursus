@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 14:55:02 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/12/29 17:25:41 by lde-sous         ###   ########.fr       */
+/*   Updated: 2024/01/16 17:03:10 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,10 +104,16 @@ bool	BitcoinExchange::checkCalendar(std::string year, std::string month, std::st
 	if (y < 2009)
 		return (std::cout << "Error: Bitcoin doesn't have a value on this date" << std::endl, false);
 	//months
+	for (int i = 0; i < 2; i++)
+		if (!isdigit(month.c_str()[i]))
+			return (std::cout << "Error: invalid month input" << std::endl, false);
 	int m = atoi(month.c_str());
 	if (m < 1 || m > 12)
 		return (std::cout << "Error: invalid month input" << std::endl, false);
 	//days
+	for (int i = 0; i < 2; i++)
+		if (!isdigit(day.c_str()[i]))
+			return (std::cout << "Error: invalid day input" << std::endl, false);
 	int d = atoi(day.c_str());
 	if (d < 1 || d > 31)
 		return (std::cout << "Error: invalid day input" << std::endl, false);
