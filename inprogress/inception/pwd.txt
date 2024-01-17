@@ -2,3 +2,12 @@ name lde-sous
 computersname ldesous-VB
 username lde-sous
 password sous-LDE47
+
+--------------------------------
+docker commands
+delete all containers -> docker container rm -f $(docker container ls -aq)
+delete all images -> docker image rm -f $(docker container ls -a)
+build image -> docker build -t <NAME> <PATH>
+list docker images -> docker images
+list all docker containers -> docker ps -a
+list running docker containers ->docker ps
