@@ -1,7 +1,7 @@
-## ABOUT
-The first project at 42, libft, involves learning how the standard functions of C programming work by writing them from scratch and creating a personal library. This project is vital as the library will be used in future assignments at 42.
-
-If you're a 42 student, it's highly recommended that you go through the process of writing your own code and testing it yourself rather than copying and pasting code that you only partially understand. If you've successfully completed your piscine, there's no reason why you couldn't tackle this project on your own! Be patient and thorough.
+## Introducing LibFT!
+This was my first ever project from the 42 Common Core, and it was meant to be a lesson about how the standard functions in C programming work, as well as a first contact with Makefile.
+Although being the first project it was made with some rigor, as future assignments at 42 demand the use of the functions made.
+Every function with a ft_ prefix was made to have the same output and behaviour of their non-prefixed counterpart.
 
 <a href="https://github.com/lubuper/libft/blob/master/subject/en_subject_libft.pdf">Click here</a> for the subject of this project.
 
