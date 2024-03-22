@@ -1,0 +1,30 @@
+Building your own web server in C++ involves understanding the fundamental concepts of networking and how to use the relevant system calls and libraries to handle network communication. Here's an explanation of the importance of `socket`, `bind`, `listen`, and `accept` and how they connect:
+
+1. **Socket Creation (`socket`):**
+   - A socket is a communication endpoint that allows processes to communicate with each other, either on the same machine or over a network. It's essentially a combination of IP address and port number.
+   - In C++, you use the `socket()` system call to create a new socket. This call returns a file descriptor (an integer) that uniquely identifies the socket in the system.
+
+2. **Binding a Socket to an Address (`bind`):**
+   - After creating a socket, you need to associate it with a specific network address (IP address and port number) on the local machine.
+   - The `bind()` system call is used for this purpose. It takes the socket file descriptor, a pointer to a sockaddr structure containing the address information, and the size of the structure as arguments.
+   - Binding ensures that data sent to the specified address and port is received by the socket.
+
+3. **Listening for Connections (`listen`):**
+   - Once a socket is bound to an address, it can start listening for incoming connections.
+   - The `listen()` system call tells the operating system that the socket should be used for accepting incoming connections.
+   - When you call `listen()`, you specify the maximum number of connections that can be queued for this socket.
+
+4. **Accepting Connections (`accept`):**
+   - When a client tries to establish a connection with the server, the server's socket enters a listening state.
+   - The `accept()` system call is used to accept an incoming connection request. It blocks until a connection is pending.
+   - Upon accepting a connection, `accept()` returns a new socket file descriptor that represents the connection between the client and the server.
+   - The original listening socket remains available for accepting further connections.
+
+How They Connect:
+- The `socket()` function creates a socket and returns a file descriptor.
+- `bind()` associates the socket with a specific address and port.
+- `listen()` tells the operating system to start listening for incoming connections on that socket.
+- When a client connects to the server, the `accept()` function is called, which blocks until a connection is established. It returns a new file descriptor representing the connection.
+- You can then communicate with the client using the new socket returned by `accept()`.
+  
+In summary, these functions are essential for setting up a server-client communication infrastructure, allowing your web server to accept incoming connections from clients and handle communication over those connections. Understanding how they work together is crucial for building a functioning web server in C++.

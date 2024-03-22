@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Webserv</title>
+</head>
+<body>
+    <div class="container">
+        <h1></h1>
+        <h1>Upload | Check | Delete</h1>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="file">
+            <button type="submit">Upload File</button>
+        </form>
+		<form action="/delete" method="post">
+            <label for="filenameToDelete">Filename to Delete:</label>
+            <input type="text" id="filenameToDelete" name="filename" required>
+            <button type="submit">Delete File</button>
+        </form>
+    </div>
+</body>
+</html>
