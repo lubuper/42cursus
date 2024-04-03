@@ -7,7 +7,7 @@ This project was all about recreating the well-known C library function, printf.
 #### COMPILING AND EXECUTION
 #### 1º - Clone the repository
 ```git
-git clone git@github.com:lubuper/ft_printf.git
+git clone git@github.com:lubuper/42cursus.git
 ```
 
 #### 2º - Enter the project folder and run `make`
