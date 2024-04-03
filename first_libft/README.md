@@ -9,12 +9,12 @@ Every function with a ft_ prefix was made to have the same output and behaviour 
 #### COMPILATION
 #### 1º - Clone the repository
 ```bash
-git clone git@github.com:lubuper/libft.git
+git clone git@github.com:lubuper/42cursus.git
 ```
 
 #### 2º - Enter the project folder and run `make`
 ```bash
-cd libft/libft
+cd first_libft
 make
 ```
 
