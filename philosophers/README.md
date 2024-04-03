@@ -1,14 +1,13 @@
 ## ABOUT
 
-The Philosophers project at 42 School addresses the classic Dining Philosophers Problem to teach synchronization in concurrent programming. It involves philosophers who must alternate between eating, thinking, and sleeping, using forks to eat. The challenge is preventing deadlock and ensuring no philosopher starves by managing access to these forks.
-    Without Bonus: The focus is on using threads and mutexes for synchronization. Philosophers are represented by threads, sharing memory, with mutexes ensuring exclusive access to forks.
-    With Bonus: It introduces semaphores or processes for advanced synchronization, requiring students to handle inter-process communication (IPC) and potentially adding more complex rules or visualization.
-The project deepens understanding of concurrency, resource management, and synchronization techniques in computer science.
+This project addressed the classic Dining Philosophers Problem for me to learn about synchronization in concurrent programming. It involved philosophers who must alternate between eating, thinking, and sleeping, using forks to eat. The challenge was preventing deadlock and ensuring no philosopher starved by managing access to these forks.
+    - Without Bonus: The focus was on using threads and mutexes for synchronization. Philosophers were represented by threads, sharing memory, with mutexes ensuring exclusive access to forks.
+    - With Bonus: It introduced semaphores or processes for advanced synchronization, requiring me to handle inter-process communication (IPC) and changing a bit the rules coming from the non-Bonus version.
+
+This project deepened my understanding of concurrency, resource management, and synchronization techniques in computer science.
 
 For further exploration of this problem, you can consult the <a href="https://en.wikipedia.org/wiki/Dining_philosophers_problem">Wikipedia</a> article.
 
-- [Subject](https://github.com/lubuper/philosophers/blob/master/subject/en_subject_philosophers.pdf) `PDF`
-- [References](https://github.com/lubuper/42-resources#03-philosophers) `GitHub`
 
 ## HOW TO USE
 #### 1º - Clone the repository
@@ -26,6 +25,17 @@ make
 > The last argument is optional for the execution of the program.
 ```bash
 ./philo [n of philos] [time to die] [time to eat] [time to sleep] [n times each philo must eat]
+```
+#### ALTERNATE 2º - Enter the project folder and run `make bonus`
+```bash
+cd philosophers/philosophers
+make philo_bonus
+```
+
+#### ALTERNATE 3º - Launch the bonus program
+> The last argument is optional for the execution of the program.
+```bash
+./philo_bonus [n of philos] [time to die] [time to eat] [time to sleep] [n times each philo must eat]
 ```
 
 #### MAKEFILE RULES
@@ -80,38 +90,52 @@ In the context of the given example:
 Make even or odd philosophers start with a delay.** If all philosophers start at the same time and take their right fork, none of them will be able to eat.
 
 ```c
-if (ph->id % 2 == 0)
-  ft_usleep(ph->pa->eat / 10);
+if (pointer->no % 2 == 0)
+		ft_usleep(10);
 ```
  
-Each philosopher has their fork on the left (`left_fork`) and borrows the fork from their right neighbour using a pointer (`*right_fork`) that points to the left fork of the neighbour on the right.
+Each philosopher has their fork on the left (`l_fork`) and borrows the fork from their right neighbour using a pointer (`*r_fork`) that points to the left fork of the neighbour on the right.
  
 ```c
-while (i < p->a.total)
-{
-  p->ph[i].id = i + 1;
-  // Each philosopher has their fork on the left
-  pthread_mutex_init(&p->ph[i].left_fork, NULL);
-  if (i == p->a.total - 1)
-    // Borrow the fork from the right neighbour if the philosopher is the last one
-    p->ph[i].right_fork = &p->ph[0].left_fork;
-  else
-    // Borrow the fork from the right neighbor
-    p->ph[i].right_fork = &p->ph[i + 1].left_fork;
-  i++;
-}
+while (i < p->arg.nb_phils)
+	{
+		p->ph[i].no = i + 1;
+		p->ph[i].last_meal = get_time() - p->arg.t_start;
+		p->ph[i].r_fork = NULL;
+		p->ph[i].arg = &p->arg;
+		pthread_mutex_init(&p->ph[i].l_fork, NULL);
+		if (p->arg.nb_phils == 1)
+			break ;
+		if (i + 1 == p->arg.nb_phils)
+			p->ph[i].r_fork = &p->ph[0].l_fork;
+		else
+			p->ph[i].r_fork = &p->ph[i + 1].l_fork;
+		i++;
+	}
 ```
  
 Death checking is performed in a separate **thread** to ensure timely detection. If the main **thread** continuously checks for death, it can significantly impact performance. So, when a philosopher performs their activities, a separate **thread** is launched to check if any philosopher has died. This **thread** sleeps for the duration specified by `time_to_die` and then checks if the philosopher is still alive.
  
 ```c
-pthread_create(&ph->thread_death_id, NULL, is_dead, data);
-void *is_dead(void *data)
+void	*check_death(void *data)
 {
-  ft_usleep(ph->pa->die + 1);
-  if (!check_death(ph, 0) && !ph->finish && ((actual_time() - ph->ms_eat) >= (long)(ph->pa->die)))
-{
-// The philosopher is dead
+	...
+	ft_usleep(dp->arg.t_until_death);
+	while (i < dp->arg.nb_phils)
+	{
+		pthread_mutex_lock(&dp->arg.last_mutex);
+		if ((get_time() - dp->ph[i].last_meal)
+			>= (long int)dp->arg.t_until_death)
+		{
+			pthread_mutex_unlock(&dp->arg.last_mutex);
+			printmsg(DEADMSG, &dp->ph[i]);
+			pthread_mutex_lock(&dp->arg.end_mutex);
+			dp->arg.is_dead = 1;
+			pthread_mutex_unlock(&dp->arg.end_mutex);
+			return (NULL);
+		}
+    ...
+}
 ```
  
 #### TIME MANAGEMENT
@@ -131,28 +155,29 @@ printf("seconds : %ld\nmicro seconds : %d", current_time.tv_sec, current_time.tv
  
 To get the current time in milliseconds using `gettimeofday`, the following function can be used:
 ```c
-long int actual_time(void)
+long int	get_time(void)
 {
-  long int time;
-  struct timeval current_time;
-  time = 0;
-  if (gettimeofday(&current_time, NULL) == -1)
-    ft_exit("Gettimeofday returned -1\n");
-  //time in milliseconds
-  time = (current_time.tv_sec * 1000) + (current_time.tv_usec / 1000);
-  return (time);
+	struct timeval	ftime;
+	long int		time;
+
+	time = 0;
+	if (gettimeofday(&ftime, NULL))
+		return (-1);
+	time = (ftime.tv_sec * 1000) + (ftime.tv_usec / 1000);
+	return (time);
 }
 ```
  
 A custom `ft_usleep` function is created to provide more precise control over the sleep time compared to the actual `usleep` function, which waits at least the specified time. The custom function repeatedly checks the time difference until the desired time has passed.
 ```c
-void ft_usleep(long int time_in_ms)
+void	ft_usleep(long int miliseconds)
 {
-  long int start_time;
-  start_time = 0;
-  start_time = actual_time();
-  while ((actual_time() - start_time) < time_in_ms)
-    usleep(time_in_ms / 10);
+	long int	start;
+
+	start = 0;
+	start = get_time();
+	while (get_time() - start < miliseconds)
+		usleep(miliseconds / 10);
 }
 ````
  
