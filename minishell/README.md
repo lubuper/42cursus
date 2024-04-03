@@ -1,6 +1,8 @@
 ## ABOUT
 This project was a big milestone that was set to split the cursus in half. It was the first group project and it required us to build a simplified version of a Unix/Linux shell. It served us to understand the inner workings of command-line interpreters through tasks like parsing commands, implementing shell built-in commands (e.g., echo, cd), managing environment variables, basic signal handling, and implementing pipes and redirection for command input and output.
 
+A big thank you to my collaborators Alexandre Fernandes - my group partner - João Oliveira and João Almeida for being a big part of the running wheel that this project was!
+
 ## HOW TO USE
 #### COMPILATION AND EXECUTION
 #### 1º - Clone the repository
