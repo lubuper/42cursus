@@ -5,7 +5,7 @@ This project was a big milestone that was set to split the cursus in half. It wa
 #### COMPILATION AND EXECUTION
 #### 1º - Clone the repository
 ```bash
-git clone https://github.com/lubuper/minishell
+git clone https://github.com/lubuper/42cursus.git
 ```
 
 #### 2º - Enter the project folder and run `make`
