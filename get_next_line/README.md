@@ -8,7 +8,7 @@ The "get_next_line" project in 42 teaches us how to read from a file descriptor 
 
 #### 1º - Clone the repository
 ```git
-git clone git@github.com:lubuper/get_next_line.git
+git clone git@github.com:lubuper/42cursus.git
 ```
 
 #### 2º - Enter the project folder
