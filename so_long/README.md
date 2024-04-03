@@ -8,7 +8,7 @@ It is created using the MiniLibX library and requires students to implement game
 #### COMPILATION AND EXECUTION
 #### 1º - Clone the repository
 ```bash
-git clone git@github.com:lubuper/so_long.git
+git clone git@github.com:lubuper/42cursus.git
 ```
 #### 2º - Enter the project folder and run `make` or `make bonus`
 > **Important:** To run the program, you will need to download MiniLibX.
