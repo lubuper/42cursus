@@ -9,6 +9,8 @@ Moreover, I navigated through the complexities of parsing a custom map format, e
 
 Beyond the sheer technicality of graphics programming, the cub3D project was a masterclass in code structure, efficient memory management, and the art of algorithmic problem-solving. It was an adventure that not only honored the legacy of a game that shaped an entire genre but also pushed me to the forefront of software development and design thinking.
 
+Thank you to my collaboration partner Alexandre Barbosa and to Joao Caetano who helped us revamping our ray-casting algorithm.
+
 ## HOW TO USE
 #### COMPILATION AND EXECUTION
 #### 1º - Clone the repository
