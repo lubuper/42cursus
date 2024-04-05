@@ -4,7 +4,7 @@ This repository contains code developed at **42 Porto Common Core**, from **02/1
 
 The **42 Common Core** was developed in Paris in 2013 and is continually evaluated and developed. Students progress through the program by completing projects and earning points to level up, making the learning experience feel like a game.
 
-If you are looking for code related to the **42 Porto Piscine**, <a href="https://github.com/lubuper/42-piscine">click here</a>.
+If you are looking for code related to the **42 Porto Piscine**, it will be added later!
 
 ## PROJECTS
 <div align="center">
