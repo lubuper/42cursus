@@ -1,6 +1,6 @@
 # Webserv Project
 
-This project aims to develop a simple local HTTP server capable of hosting multiple ports, each with its own environment. Additionally, we explored CGI handling and various transfer-encoding scenarios.
+This project aims to develop a simple local HTTP server capable of hosting multiple ports, each with its own environment. It was a group project in which we decided, initially, to split the team, working in parsing and CGI independently, and afterwards we combined forces to put everything up and running.
 
 <details>
 <summary><h2>Table Of Contents</h2></summary>
