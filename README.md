@@ -50,7 +50,7 @@ If you are looking for code related to the **42 Porto Piscine**, it will be adde
 	
 | Exam | Rank | Status | Date | Score |
 | :---: | :---: | :---: | :---: | :---: |
-| Exam 06 | 06 | - | - | - | - |
+| Exam 06 | 06 | <img src="https://img.shields.io/badge/sucess-sucess" /> | 05-06-2024 | <img src="https://img.shields.io/badge/100%20%2F%20100%20%20%E2%98%85-sucess" /> | 
 
 </div>
 
