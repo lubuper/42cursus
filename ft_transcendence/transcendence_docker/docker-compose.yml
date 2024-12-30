@@ -1,0 +1,62 @@
+services:
+  transcendence_db:
+    build:
+      context: ./postgreSQL
+      dockerfile: Dockerfile
+    ports:
+      - "5432:5432"
+    networks:
+      custom_network:
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+
+  web:
+    build:
+      context: ./django
+      dockerfile: Dockerfile
+    volumes:
+    - ./django/project_files/templates/static/media:/transcendence/templates/static/media
+    ports:
+      - "8000:8000"
+    networks:
+      custom_network:
+    env_file:
+      - .env
+    environment:
+      DJANGO_SETTINGS_MODULE: transcendence.settings
+      DJANGO_SUPERUSER_USERNAME: ${DJANGO_SUPERUSER_USERNAME}
+      DJANGO_SUPERUSER_PASSWORD: ${DJANGO_SUPERUSER_PASSWORD}
+    depends_on:
+      - transcendence_db
+    command: ["sh", "-c", "python3 manage.py migrate && daphne -b 0.0.0.0 -p 8000 transcendence.asgi:application"]
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    volumes:
+      - ./django/project_files/templates/static:/django
+      - ./django/project_files/templates/static/media:/media
+    ports:
+      - "8080:80"
+      - "8443:443"
+    networks:
+      custom_network:
+    env_file:
+      - .env
+    depends_on:
+      - transcendence_db
+
+  redis:
+    image: "redis:alpine"
+    ports:
+      - "6370:6379"
+    networks:
+      custom_network:
+
+networks:
+  custom_network:
+    driver: bridge

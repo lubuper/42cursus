@@ -1,0 +1,150 @@
+/* Chat popup styling */
+.chat-popup {
+    width: 308px;
+    background-color: #111;
+    border: 2px solid #7e378c;
+    box-shadow: 0px 0px 10px #7e378c;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    border-radius: 6px;
+    animation: fadeIn 0.3s ease-in-out forwards; /* Animation on open */
+    overflow: hidden;
+    margin-top: 16px;
+}
+
+.chat-popup.fade-out {
+    animation: fadeOut 0.3s ease-in-out forwards; /* Animation on close */
+}
+
+/* Hide content when minimized */
+.hidden {
+    height: 0;
+}
+
+.display-none {
+    display: none;
+}
+
+/* Chat header with close and minimize buttons */
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    background-color: #212529;
+    border-bottom: 2px solid #7e378c;
+    color: #fff;
+}
+
+.close-btn,
+.minimize-btn {
+    background: none;
+    border: none;
+    color: #7e378c;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+/* Chat box styling */
+.chat-box {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Chat content (wrapping messages and input) */
+.chat-content {
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease; /* Smooth transition */
+}
+
+/* Messages styling */
+.messages {
+    background-color: #212529;
+    color: white;
+    border: 2px solid #7e378c;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    height: 250px; /* Height for messages area */
+    overflow-y: auto; /* Enable scrolling for overflow */
+    font-size: 14px;
+}
+
+/* Input container styling */
+.input-container {
+    display: flex;
+    width: 100%;
+    padding: 5px;
+    background-color: #212529;
+    border-top: 2px solid #7e378c;
+}
+
+.message-input {
+    flex-grow: 1;
+    padding: 10px;
+    background-color: #212529;
+    color: white;
+    border: 2px solid #7e378c;
+    border-radius: 5px;
+    margin-right: 5px; /* Add margin to keep distance from Send button */
+    width: calc(100% - 80px); /* Adjust width to fit Send button properly */
+}
+
+.sender {
+    padding: 10px;
+    background-color: #7e378c;
+    color: #e9ecef;
+    border: none;
+    cursor: pointer;
+    width: 70px;
+    text-transform: uppercase;
+    border-radius: 5px; /* Rounded corners for the Send button */
+    text-align: left; /* Align text to the left */
+    padding-left: 12px; /* Adjust the padding to move text to the left */
+    box-sizing: border-box; /* Ensure padding fits within button width */
+    white-space: nowrap; /* Prevent text wrap */
+}
+
+
+.friend-message {
+    align-self: flex-start;
+    background-color: #c6c7c8;
+    color: #7e378c;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+.my-message {
+    align-self: flex-end;
+    background-color: #7e378c;
+    color: #fff;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+/* Animation for chat popup */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+}
