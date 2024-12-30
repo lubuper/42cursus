@@ -1,6 +1,6 @@
 # 42cursus
 ## ABOUT
-This repository contains code developed at **42 Porto Common Core**, from **02/11/2022** to **present day**. </br>
+This repository contains code developed at **42 Porto Common Core**, from **02/11/2022** to **19/12/2024**. </br>
 
 The **42 Common Core** was developed in Paris in 2013 and is continually evaluated and developed. Students progress through the program by completing projects and earning points to level up, making the learning experience feel like a game.
 
@@ -26,6 +26,7 @@ If you are looking for code related to the **42 Porto Piscine**, it will be adde
 | [CPP 05-09](https://github.com/lubuper/42cursus/tree/master/CPP%2005-09) | 05 | <img src="https://img.shields.io/badge/done-sucess" /> | <img src="https://img.shields.io/badge/C++-00599C?style=flat&logo=c%2B%2B&logoColor=white" /> | <img src="https://img.shields.io/badge/93%20%2F%20100-success" /> | **Jan 2024** |
 | [Inception](https://github.com/lubuper/42cursus/tree/master/inception) | 05 | <img src="https://img.shields.io/badge/done-sucess" /> | <img src="https://img.shields.io/badge/Dockerfile-2496ED?style=flat&logo=docker&logoColor=white" /> | <img src="https://img.shields.io/badge/100%20%2F%20100-success" /> | **Feb 2024** |
 | [Webserv](https://github.com/lubuper/42cursus/tree/master/webserv) | 05 | <img src="https://img.shields.io/badge/done-sucess" /> | <img src="https://img.shields.io/badge/C++-00599C?style=flat&logo=c%2B%2B&logoColor=white" /> <img src="https://img.shields.io/badge/Dockerfile-2496ED?style=flat&logo=docker&logoColor=white" /> | <img src="https://img.shields.io/badge/110%20%2F%20100-success" /> | **May 2024** |
+| [ft_transcendence](https://github.com/lubuper/42cursus/tree/master/ft_transcendence) | 06 | <img src="https://img.shields.io/badge/done-sucess" /> | <img src="https://img.shields.io/badge/C++-00599C?style=flat&logo=c%2B%2B&logoColor=white" /> <img src="https://img.shields.io/badge/Dockerfile-2496ED?style=flat&logo=docker&logoColor=white" /> | <img src="https://img.shields.io/badge/121%20%2F%20100-success" /> | **Dec 2024** |
 </div>
 
 ## EXAMS
